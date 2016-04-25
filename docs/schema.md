@@ -1,32 +1,53 @@
 # Schema Information
 
-## notes
+## stage_events
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 title       | string    | not null
-body        | text      | not null
-author_id   | integer   | not null, foreign key (references users), indexed
-notebook_id | integer   | not null, foreign key (references notebooks), indexed
-archived    | boolean   | not null, default: false
+description | text      | not null
+image_url   | text      | not null
+venue_id    | integer   | not null, foreign key (references venues), indexed
 
-## notebooks
+## performances
+column name    | data type | details
+---------------|-----------|-----------------------
+id             | integer   | not null, primary key
+stage_event_id | integer   | not null, foreign key (references stage_events), indexed
+date           | date      | not null
+
+## ticketings
+column name       | data type | details
+------------------|-----------|-----------------------
+id                | integer   | not null, primary key
+user_id           | integer   | not null, foreign key (references users), indexed
+seat_id           | integer   | not null, foreign key (references seats), indexed with performance_id, unique
+performance_id    | integer   | not null, foreign key (references performances), indexed with seat_id, unique
+
+## venues
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
-title       | string    | not null
-description | string    | 
+name        | string    | not null
 
-## reminders
+## sections
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-user_id     | integer   | not null, foreign key (references users), indexed
-note_id     | string    | not null, foreign key (references notes), indexed
-date        | datetime  | not null
-type        | string    | not null
-prev_id     | integer   | foreign key (references reminders), indexed
+venue_id    | integer   | not null, foreign key (references venues), indexed
+
+## seat_blocks
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+section_id  | integer   | not null, foreign key (references sections), indexed
+
+## seats
+column name   | data type | details
+--------------|-----------|-----------------------
+id            | integer   | not null, primary key
+seat_block_id | integer   | not null, foreign key (references seat_blocks), indexed
+name          | string    | not null
 
 ## tags
 column name | data type | details
@@ -35,12 +56,12 @@ id          | integer   | not null, primary key
 name        | string    | not null
 
 ## taggings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-name        | string    | not null
-note_id     | integer   | not null, foreign key (references notes), indexed, unique [tag_id]
-tag_id      | integer   | not null, foreign key (references tags), indexed
+column name    | data type | details
+---------------|-----------|-----------------------
+id             | integer   | not null, primary key
+name           | string    | not null
+stage_event_id | integer   | not null, foreign key (references stage_events), indexed, unique [tag_id]
+tag_id         | integer   | not null, foreign key (references tags), indexed
 
 ## users
 column name     | data type | details

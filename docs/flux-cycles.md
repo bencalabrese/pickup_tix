@@ -4,7 +4,7 @@
 
 * `fetchStageEvents`
   0. invoked from `StageEventsIndex` `didMount`/`willReceiveProps`
-  0. `GET /api/stage_events` is called with `queryParams` as a parameter
+  0. `GET /api/stage_events` is called with `query_params` as a parameter
   0. `receiveStageEvents` is set as the callback.
 
 * `fetchSingleStageEvent`
@@ -52,7 +52,7 @@
 
 * `createTicketings`
   0. invoked from `CartCheckout` button `onClick`
-  0. `POST /api/ticketings` is called.
+  0. `POST /api/performances/:performance_id/ticketings` is called.
   0. `receiveTicketings` is set as the callback.
 
 ### Carts API Response Actions
