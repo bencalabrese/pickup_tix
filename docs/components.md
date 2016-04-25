@@ -1,13 +1,31 @@
 ## Component Hierarchy
 
 * `App`
-  * `SearchIndex`
-  * `NotebooksIndex`
-    * `NotebookIndexItem`
-  * `NotebookForm`
-  * `NotesIndex`
-    * `NoteForm`
-    * `NoteIndexItem`
+  * `UserCredentialModal`
+  * `StageEventsIndex`
+    * `StageEventsIndexItem`
+  * `StageEventModal`
+    * `StageEventModalNav`
+    * `StageEventDetail`
+    * `PerformancePicker`
+    * `SeatPicker`
+    * `CartCheckout`
+  * `Header`
+    * `UserLinks`
+    * `StageEventSearch`
+  * `Footer`
+  * `Splash`
+    * `Jumbotron`
+  * `QueryPage`
+    * `QuerySidebar`
+      * `CurrentParams`
+      * `ParamsIndex`
+        * `ParamsIndexItem`
+    * `QueryResults`
+  * `UserShows`
+    * `UserShowsSidebar`
+      * `UserTicketsIndex`
+        * `UserTicketsIndexItem`
   * `NoteDetail`
     * `NoteTags`
     * `NoteEditArea`

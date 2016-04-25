@@ -1,22 +1,30 @@
 # View Wireframes
 
-## New User
-![new-user]
+## Splash
+![splash]
+![splash_components]
 
-## New Session
-![new-session]
+## User Credentials
+![user_credentials]
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## User Shows
+![user_shows]
+![user_shows_components]
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
+## Query Page
+![query_page]
+![query_page_components]
 
-## NotebookForm
-![notebook-form]
+## StageEvent Modal
+![stage_event_modal]
+![stage_event_modal_components]
 
-[new-user]: ./wireframes/new_user.png
-[new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
+[splash]: ./wireframes/splash.png
+[splash_components]: ./wireframes/splash_components.png
+[user_credentials]: ./wireframes/user_credentials.png
+[user_shows]: ./wireframes/user_shows.png
+[user_shows_components]: ./wireframes/user_shows_components.png
+[query_page]: ./wireframes/query_page.png
+[query_page_components]: ./wireframes/query_page_components.png
+[stage_event_modal]: ./wireframes/stage_event_modal.png
+[stage_event_modal_components]: ./wireframes/stage_event_modal_components.png
