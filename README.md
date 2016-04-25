@@ -14,7 +14,6 @@ focused on a clean and engaging UI. It will at minimum satisfy the folowing crit
 - [ ] Engaging seed data
 - [ ] Searchable events, event tags/categories, reserving tickets for multiple events and for multiple nights, reservation history
 - [ ] Visually appealing styling on all pages with feedback for user interactions
-- [ ]
 
 ## Product Goals and Priorities
 
@@ -53,78 +52,46 @@ PickupTix will allow users to do the following:
 - [ ] user signup/signin forms
 - [ ] detect signed in vs. not signed in user
 
-### Phase 2: Notes Model, API, and basic APIUtil (1.5 days)
+### Phase 2: Venues Model, StageEvents Model (1 days)
 
-**Objective:** Notes can be created, read, edited and destroyed through
-the API.
+**Objective:** StageEvents can be created, read, edited and destroyed through
+the terminal.
 
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [ ] Venues have sections, seat_blocks, and seats
+- [ ] StageEvents have seats through their venue
+- [ ] Venues can have multiple StageEvents
 
-### Phase 3: Flux Architecture and Router (1.5 days)
+### Phase 3: Flux Architecture and Router (1 days)
 
-**Objective:** Notes can be created, read, edited and destroyed with the
-user interface.
+**Objective:** Set up basic components for index and splash pages
 
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [ ] React views for indexing all ShowEvents
+- [ ] Splash page
+- [ ] Components set-up with dummy divs for spacing
 
-### Phase 4: Start Styling (0.5 days)
+### Phase 4: Perfomances Model, Ticketings Model API, and basic ApiUtil (1.5 days)
+
+**Objective:** Performances can be read, through the API.
+
+- [ ] Performances have seats through their StageEvent
+- [ ] API can read seats from `show`
+- [ ] API can read remaining seats and booked seats
+- [ ] API allows booking of remaining seats
+
+### Phase 5: Start Styling (1 days)
 
 **Objective:** Existing pages (including singup/signin) will look good.
 
-- [ ]
-- [ ]
-- [ ]
-
-### Phase 5: Notebooks (1 day)
-
-**Objective:** Notes belong to Notebooks, and can be viewed by notebook.
-
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-
-Phase 3 adds organization to the Notes. Notes belong to a Notebook,
-which has its own `Index` view.
+- [ ] Make it pretty
 
 ### Phase 6: Tags (1.5 days)
 
-**Objective:** Notes can be tagged with multiple tags, and tags are searchable.
+**Objective:** StageEvents can be tagged with multiple tags, and tags are searchable.
 
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [ ] Search by tags
+- [ ] Also search by dates and venue size
 
-### Phase 7: Allow Complex Styling in Notes (0.5 days)
-
-**objective:** Enable complex styling of notes.
-
-- [ ]
-- [ ]
-- [ ]
-
-### Phase 8: Styling Cleanup and Seeding (1 day)
-
-**objective:** Make the site feel more cohesive and awesome.
-
-- [ ]
-- [ ]
-- [ ]
+Just didn't make it this far. No excuses- will finish up today.
 
 ### Bonus Features (TBD)
 - [ ]

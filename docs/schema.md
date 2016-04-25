@@ -40,6 +40,7 @@ venue_id    | integer   | not null, foreign key (references venues), indexed
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
+style       | string    | not null
 section_id  | integer   | not null, foreign key (references sections), indexed
 
 ## seats
