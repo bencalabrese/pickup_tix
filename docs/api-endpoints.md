@@ -6,9 +6,14 @@
 
 - `GET /` - loads React web app
 
-I have a few questions about implementing users and sessions with React
+*edit*
+So focused on finding the answer to this question (and others) that I didn't read the days assignment which, naturally, had the answer.
+
+~~I have a few questions about implementing users and sessions with React
 I'd love to implement on the front-end, but see some pitfalls. Any best
-practices with that?
+practices with that?~~
+
+
 
 ## JSON API
 
