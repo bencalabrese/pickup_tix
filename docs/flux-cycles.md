@@ -1,119 +1,79 @@
-# Flux Cycles
+## StageEvent Cycles
 
-Flux loops are organized by data type. Under each data type, there may
-be sub-categories, and each action is listed with the sequence of events
-that result from its invocation, ending with the API or store. Finally,
-store listeners are listed at the end.
+### StageEvents API Request Actions
 
-You should be able to use this document trace an **action** starting
-with where it was invoked, through the **API**/**store** involved, and
-finally to the **components** that update as a result. This is important
-because once you start implementing your flux loops, that's precisely
-what you'll need to do.
+* `fetchStageEvents`
+  0. invoked from `StageEventsIndex` `didMount`/`willReceiveProps`
+  0. `GET /api/stage_events` is called with `queryParams` as a parameter
+  0. `receiveStageEvents` is set as the callback.
+
+* `fetchSingleStageEvent`
+  0. invoked from `StageEventModal` `didMount`/`willReceiveProps`
+  0. `GET /api/stage_events/:id` is called.
+  0. `receiveSingleStageEvent` is set as the callback.
 
 
-## Note Cycles
+### StageEvents API Response Actions
 
-### Notes API Request Actions
-
-* `fetchAllNotes`
-  0. invoked from `NotesIndex` `didMount`/`willReceiveProps`
-  0. `GET /api/notes` is called.
-  0. `receiveAllNotes` is set as the callback.
-
-* `createNote`
-  0. invoked from new note button `onClick`
-  0. `POST /api/notes` is called.
-  0. `receiveSingleNote` is set as the callback.
-
-* `fetchSingleNote`
-  0. invoked from `NoteDetail` `didMount`/`willReceiveProps`
-  0. `GET /api/notes/:id` is called.
-  0. `receiveSingleNote` is set as the callback.
-
-* `updateNote`
-  0. invoked from `NoteForm` `onSubmit`
-  0. `POST /api/notes` is called.
-  0. `receiveSingleNote` is set as the callback.
-
-* `destroyNote`
-  0. invoked from delete note button `onClick`
-  0. `DELETE /api/notes/:id` is called.
-  0. `removeNote` is set as the callback.
-
-### Notes API Response Actions
-
-* `receiveAllNotes`
+* `receiveStageEvents`
   0. invoked from an API callback.
-  0. `Note` store updates `_notes` and emits change.
+  0. `StageEvent` store updates `_stageEvents` and emits change.
 
-* `receiveSingleNote`
+* `receiveSingleStageEvent`
   0. invoked from an API callback.
-  0. `Note` store updates `_notes[id]` and emits change.
-
-* `removeNote`
-  0. invoked from an API callback.
-  0. `Note` store removes `_notes[id]` and emits change.
+  0. `StageEvent` store updates `_stageEvents[id]` and emits change.
 
 ### Store Listeners
 
-* `NotesIndex` component listens to `Note` store.
-* `NoteDetail` component listens to `Note` store.
+* `StageEventsIndex` component listens to `StageEvent` store.
+* `StageEventModal` component listens to `StageEvent` store.
 
 
-## Notebook Cycles
+## Cart Cycles
 
-### Notebooks API Request Actions
+* `openCart`
+  0. invoked from reserve tickets button `onClick`
+  0. `Cart` store updates `_cart[status]` and emits change.
 
-* `fetchAllNotebooks`
-  0. invoked from `NotebooksIndex` `didMount`/`willReceiveProps`
-  0. `GET /api/notebooks` is called.
-  0. `receiveAllNotebooks` is set as the callback.
+* `addSingleSeat`
+  0. invoked from `SeatPicker` seat `onClick`
+  0. `Cart` store adds `_cart[selectedSeats[id]]` and emits change.
 
-* `createNotebook`
-  0. invoked from new notebook button `onClick`
-  0. `POST /api/notebooks` is called.
-  0. `receiveSingleNotebook` is set as the callback.
+* `removeSingleSeat`
+  0. invoked from `SeatPicker` seat `onClick`
+  0. `Cart` store removes `_cart[selectedSeats[id]]` and emits change.
 
-* `fetchSingleNotebook`
-  0. invoked from `NotebookDetail` `didMount`/`willReceiveProps`
-  0. `GET /api/notebooks/:id` is called.
-  0. `receiveSingleNotebook` is set as the callback.
+### Carts API Request Actions
 
-* `updateNotebook`
-  0. invoked from `NotebookForm` `onSubmit`
-  0. `POST /api/notebooks` is called.
-  0. `receiveSingleNotebook` is set as the callback.
+* `fetchSinglePerformance`
+  0. invoked from `PerformancePicker` select seats button `onClick`
+  0. `GET /api/performances/:id` is called
+  0. `receiveSinglePerformance` is set as the callback.
 
-* `destroyNotebook`
-  0. invoked from delete notebook button `onClick`
-  0. `DELETE /api/notebooks/:id` is called.
-  0. `removeNotebook` is set as the callback.
+* `createTicketings`
+  0. invoked from `CartCheckout` button `onClick`
+  0. `POST /api/ticketings` is called.
+  0. `receiveTicketings` is set as the callback.
 
-### Notebooks API Response Actions
+### Carts API Response Actions
 
-* `receiveAllNotebooks`
-  0. invoked from an API callback.
-  0. `Notebook` store updates `_notebooks` and emits change.
+* `receiveSinglePerformance`
+  0. invoked from an API callback
+  0. `Cart` store updates `_cart[performance]` and emits change.
 
-* `receiveSingleNotebook`
-  0. invoked from an API callback.
-  0. `Notebook` store updates `_notebooks[id]` and emits change.
-
-* `removeNotebook`
-  0. invoked from an API callback.
-  0. `Notebook` store removes `_notebooks[id]` and emits change.
+* `receiveTicketings`
+  0. invoked from an API callback
+  0. `Cart` store updates `_cart[status]` and emits change.
 
 ### Store Listeners
 
-* `NotebooksIndex` component listens to `Notebook` store.
-
+* `StageEventModal` component listens to `Cart` store.
 
 ## SearchSuggestion Cycles
 
 * `fetchSearchSuggestions`
-  0. invoked from `NoteSearchBar` `onChange` when there is text
-  0. `GET /api/notes` is called with `text` param.
+  0. invoked from `StageEventSearch` `onChange` when there is text
+  0. `GET /api/stage_events` is called with `text` param.
   0. `receiveSearchSuggestions` is set as the callback.
 
 * `receiveSearchSuggestions`
@@ -121,9 +81,27 @@ what you'll need to do.
   0. `SearchSuggestion` store updates `_suggestions` and emits change.
 
 * `removeSearchSuggestions`
-  0. invoked from `NoteSearchBar` `onChange` when empty
+  0. invoked from `StageEventSearch` `onChange` when empty
   0. `SearchSuggestion` store resets `_suggestions` and emits change.
 
 ### Store Listeners
 
-* `SearchBarSuggestions` component listens to `SearchSuggestion` store.
+* `SearchSuggestions` component listens to `SearchSuggestion` store.
+
+## QueryParams Cycles
+
+* `addQueryParam`
+  0. invoked from `ParamsIndexItem` click
+  0. adds `param` to `_params[paramType]`
+
+* `removeQueryParam`
+  0. invoked from `ParamsIndexItem` click
+  0. removes `param` to `_params`
+
+* `resetQueryParamType`
+  0. invoked from `CurrentParams` click
+  0. resets `_params[paramType]`
+
+### Store Listeners
+
+* `QueryResults` component listens to `QueryParam` store.

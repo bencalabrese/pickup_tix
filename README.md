@@ -1,4 +1,4 @@
-# FresherNote
+# PickupTix
 
 [Heroku link][heroku]
 
@@ -7,7 +7,7 @@
 ## Minimum Viable Product
 
 PickupTix is a web application for event ticketing inspired by EventBrite
-and other ticketing apps. It will at minimum satisfy the folowing criteria:
+focused on a clean and engaging UI. It will at minimum satisfy the folowing criteria:
 
 - [ ] New user signup, login, and demo login
 - [ ] Bug-free navigation
