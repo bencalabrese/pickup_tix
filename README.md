@@ -93,6 +93,8 @@ the terminal.
 
 Just didn't make it this far. No excuses- will finish up today.
 
+Basically will cover seat-picker, recommendations, user shows
+
 ### Bonus Features (TBD)
 - [ ]
 - [ ]
