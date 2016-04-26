@@ -17,16 +17,6 @@ var LoginForm = React.createClass({
     };
   },
 
-  handleLogout: function(event) {
-    event.preventDefault();
-    UserActions.logout();
-  },
-
-  handleDeleteAccount: function(event) {
-    event.preventDefault();
-    UserActions.destroy();
-  },
-
   handleLogin: function(event) {
     event.preventDefault();
     UserActions.login({
@@ -52,20 +42,20 @@ var LoginForm = React.createClass({
   },
 
   render: function() {
-    var content,
-        authErrorsUL;
+    var authErrorsUL;
 
-    if (this.state.currentUser) {
-      content = (
-        <div>
-          <button onClick={this.handleLogout}>Logout</button>
-          <button onClick={this.handleDeleteAccount}>
-            Delete Account
-          </button>
-        </div>
-      );
-    } else {
-      content = (
+    if (this.state.authErrors.length > 0) {
+      var authErrorLIs = this.state.authErrors.map(function(error) {
+        return <li key={error}>{error}</li>;
+      });
+
+      authErrorsUL = <ul>{authErrorLIs}</ul>;
+    }
+
+    return (
+      <div>
+        {authErrorsUL}
+
         <form>
           <label>Username
             <input type="text" valueLink={this.linkState("username")}/>
@@ -83,21 +73,6 @@ var LoginForm = React.createClass({
                  value="Sign Up"
                  onClick={this.handleSignUp}/>
         </form>
-      );
-    }
-
-    if (this.state.authErrors.length > 0) {
-      var authErrorLIs = this.state.authErrors.map(function(error) {
-        return <li key={error}>{error}</li>;
-      });
-
-      authErrorsUL = <ul>{authErrorLIs}</ul>;
-    }
-
-    return (
-      <div>
-        {authErrorsUL}
-        {content}
       </div>
     );
   }

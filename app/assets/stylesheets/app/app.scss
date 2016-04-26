@@ -1,6 +1,6 @@
 // RESET
 
-html, body, section, article, header, footer, h1, h2, p {
+html, body, section, article, header, footer, h1, h2, p, a {
   margin: 0;
   border: 0;
   padding: 0;
@@ -35,6 +35,12 @@ html, body, body > div {
   color: white;
   background: blue;
   height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.user-nav {
+  margin-left: auto;
 }
 
 .content {
@@ -42,8 +48,11 @@ html, body, body > div {
   flex-grow: 1;
 }
 
-.footer {
+footer {
   color: white;
   background: red;
   height: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

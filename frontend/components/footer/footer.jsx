@@ -4,8 +4,11 @@ var Footer = React.createClass({
 
   render: function() {
     return (
-      <footer className="footer">
-        I'm a footer
+      <footer>
+        <a href="#">About</a>
+        <a href="#">GitHub</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Contact</a>
       </footer>
     );
   }
