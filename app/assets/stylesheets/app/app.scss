@@ -1,0 +1,49 @@
+// RESET
+
+html, body, section, article, header, footer, h1, h2, p {
+  margin: 0;
+  border: 0;
+  padding: 0;
+
+  font: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  color: inherit;
+
+  background: transparent;
+}
+
+// CLEARFIX
+
+.group:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+html, body, body > div {
+  height: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.header {
+  color: white;
+  background: blue;
+  height: 100px;
+}
+
+.content {
+  background-color: orange;
+  flex-grow: 1;
+}
+
+.footer {
+  color: white;
+  background: red;
+  height: 100px;
+}

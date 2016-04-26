@@ -8,26 +8,18 @@ var ReactRouter = require('react-router'),
     Link = ReactRouter.Link,
     browserHistory = ReactRouter.browserHistory;
 
-var LoginForm = require('./components/user/login_form');
+var Header = require('./components/header/header'),
+    Footer = require('./components/footer/footer'),
+    Splash = require('./components/splash/splash');
 
 var App = React.createClass({
   render: function() {
     return (
-      <div>
-        <Link to="test">Go to test page</Link>
+      <div className="app">
+        <Header/>
         {this.props.children}
+        <Footer/>
       </div>
-    );
-  }
-});
-
-var React = require('react');
-var PropTypes = React.PropTypes;
-
-var HelloWorld = React.createClass({
-  render: function() {
-    return (
-      <div>Hello World</div>
     );
   }
 });
@@ -35,12 +27,11 @@ var HelloWorld = React.createClass({
 var appRouter = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={LoginForm}/>
-      <Route path="test" component={HelloWorld}/>
+      <IndexRoute component={Splash}/>
     </Route>
   </Router>
 );
 
 $(function() {
-  ReactDOM.render(appRouter, document.getElementById('content'));
+  ReactDOM.render(appRouter, document.getElementById('root'));
 });
