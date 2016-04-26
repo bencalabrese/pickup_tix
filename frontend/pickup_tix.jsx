@@ -5,7 +5,8 @@ var ReactRouter = require('react-router'),
     Router = ReactRouter.Router,
     Route = ReactRouter.Route,
     IndexRoute = ReactRouter.IndexRoute,
-    hashHistory = ReactRouter.hashHistory;
+    Link = ReactRouter.Link,
+    browserHistory = ReactRouter.browserHistory;
 
 var LoginForm = require('./components/user/login_form');
 
@@ -13,16 +14,29 @@ var App = React.createClass({
   render: function() {
     return (
       <div>
+        <Link to="test">Go to test page</Link>
         {this.props.children}
       </div>
     );
   }
 });
 
+var React = require('react');
+var PropTypes = React.PropTypes;
+
+var HelloWorld = React.createClass({
+  render: function() {
+    return (
+      <div>Hello World</div>
+    );
+  }
+});
+
 var appRouter = (
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={LoginForm}/>
+      <Route path="test" component={HelloWorld}/>
     </Route>
   </Router>
 );
