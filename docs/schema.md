@@ -1,6 +1,6 @@
 # Schema Information
 
-## stage_events
+## spectacles
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
@@ -13,7 +13,7 @@ venue_id    | integer   | not null, foreign key (references venues), indexed
 column name    | data type | details
 ---------------|-----------|-----------------------
 id             | integer   | not null, primary key
-stage_event_id | integer   | not null, foreign key (references stage_events), indexed
+stage_event_id | integer   | not null, foreign key (references spectacles), indexed
 date           | date      | not null
 
 ## ticketings
@@ -61,7 +61,7 @@ column name    | data type | details
 ---------------|-----------|-----------------------
 id             | integer   | not null, primary key
 name           | string    | not null
-stage_event_id | integer   | not null, foreign key (references stage_events), indexed, unique [tag_id]
+stage_event_id | integer   | not null, foreign key (references spectacles), indexed, unique [tag_id]
 tag_id         | integer   | not null, foreign key (references tags), indexed
 
 ## users

@@ -1,8 +1,8 @@
 # PickupTix
 
-[Heroku link][heroku]
+[Site page][heroku]
 
-[heroku]: http://www.herokuapp.com
+[heroku]: http://www.pickuptix.io
 
 ## Minimum Viable Product
 
@@ -46,58 +46,96 @@ PickupTix will allow users to do the following:
 
 **Objective:** Functioning rails project with Authentication
 
-- [ ] create project
-- [ ] create `User` model
-- [ ] authentication
-- [ ] user signup/signin forms
-- [ ] detect signed in vs. not signed in user
+- [X] create project
+- [X] create `User` model
+- [X] authentication
+- [X] user signup/signin forms
+- [X] detect signed in vs. not signed in user
 
-### Phase 2: Venues Model, StageEvents Model (1 days)
-
-**Objective:** StageEvents can be created, read, edited and destroyed through
-the terminal.
-
-- [ ] Venues have sections, seat_blocks, and seats
-- [ ] StageEvents have seats through their venue
-- [ ] Venues can have multiple StageEvents
-
-### Phase 3: Flux Architecture and Router (1 days)
+### Phase 2: Flux Architecture and Router (1 days)
 
 **Objective:** Set up basic components for index and splash pages
 
-- [ ] React views for indexing all ShowEvents
-- [ ] Splash page
-- [ ] Components set-up with dummy divs for spacing
+- [X] React views
+- [X] Splash page
+- [X] Components set-up with dummy divs for spacing
+- [X] Basic styling of header, footer and main content box spacing
+- [X] Live on Heroku
 
-### Phase 4: Perfomances Model, Ticketings Model API, and basic ApiUtil (1.5 days)
+### Phase 3: Venues Model, Spectacles Model (1 days)
+
+**Objective:** Spectacles can be created, read, edited and destroyed through
+the terminal.
+
+- [ ] Venues have sections, seat_blocks, and seats
+- [ ] Spectacles have seats through their venue
+- [ ] Venues can have multiple Spectacles
+
+### Phase 4: Styling (0.5 days)
+
+**Objective:** Existing pages will look presentable and have correct spacing.
+
+- [ ] Layout for SpectaclesIndex
+- [ ] Layout for SpectaclesIndexItem
+- [ ] Make it pretty
+
+### Phase 5: Perfomances Model, Ticketings Model API, and basic ApiUtil (1 days)
 
 **Objective:** Performances can be read, through the API.
 
-- [ ] Performances have seats through their StageEvent
-- [ ] API can read seats from `show`
+- [ ] Performances have seats through their Spectacle
+- [ ] API can read seats from `performance`
 - [ ] API can read remaining seats and booked seats
 - [ ] API allows booking of remaining seats
 
-### Phase 5: Start Styling (1 days)
+### Phase 6: Tags (0.5 day)
 
-**Objective:** Existing pages (including singup/signin) will look good.
-
-- [ ] Make it pretty
-
-### Phase 6: Tags (1.5 days)
-
-**Objective:** StageEvents can be tagged with multiple tags, and tags are searchable.
+**Objective:** Spectacles can be tagged with multiple tags, tags are searchable.
 
 - [ ] Search by tags
 - [ ] Also search by dates and venue size
 
-Just didn't make it this far. No excuses- will finish up today.
+### Phase 7: Search Bar and Filtering Views (1 day)
 
-Basically will cover seat-picker, recommendations, user shows
+**Objective:** Views for search bar and filter page
+
+- [ ] Search Bar searches by Spectacle name
+- [ ] Filtering allows searches to be broken down by tags, venue size, and dates
+- [ ] SpectaclesStore updates according to filter and displays results
+
+### Phase 8: SpectacleDetail Modal and Checkout process (2 days)
+
+**Objective:** Spectacles can be seen in detail. Create ticketings through UI.
+
+- [ ] Spectacle detail modal shows individual Spectacle
+- [ ] Pick performances, seats (from dropdown), checkout in modal
+- [ ] Style modal
+
+### Phase 9: Seed and build logo (1 day)
+
+**Objective:** Create logo and seed data
+
+- [ ] SVG logo with sticks to be used in multiple places
+- [ ] Seed several Spectacles with pictures (est. 200 needed)
+
+### Phase 10: Style review and Splash layout (2 day)
+
+**Objective:** Layout splash and refine style on all pages.
+
+- [ ] Create Jumbotron and details
+- [ ] Add small spectacle index to splash
+- [ ] Review and refine style on all pages
+
+### Phase 11: Users page with user purchase history (0.5 days)
+
+**Objective:** Users page
+
+- [ ] Sidebar with upcoming performances
+- [ ] See all upcoming Spectacles and all past Spectacles attended
 
 ### Bonus Features (TBD)
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [ ] Seat picker in purchase modal
+- [ ] Recommendation engine in Rails
+- [ ] Display recommended Spectacles
+- [ ] Animations
+- [ ] Users can create new spectacles (lowest priority)
