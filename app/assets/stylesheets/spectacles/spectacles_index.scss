@@ -1,9 +1,9 @@
 @import "../app/app";
 
 .spectacles-index {
-  border: 3px solid blue;
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .spectacle-thumbnail {
@@ -17,6 +17,9 @@
     font-size: 20px;
     font-weight: bold;
     color: $reddish-gray;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 }
 
