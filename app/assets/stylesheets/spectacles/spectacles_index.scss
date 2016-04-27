@@ -1,0 +1,46 @@
+@import "../app/app";
+
+.spectacles-index {
+  border: 3px solid blue;
+  display: flex;
+  align-items: flex-start;
+}
+
+.spectacle-thumbnail {
+  height: 270px;
+  width: 270px;
+  padding: 15px;
+  color: $medium-gray;
+  box-sizing: border-box;
+
+  h4 {
+    font-size: 20px;
+    font-weight: bold;
+    color: $reddish-gray;
+  }
+}
+
+.venue-name {
+  color: $dark-pink;
+}
+
+.date-range {
+  color: $light-gray;
+  margin-left: 20px;
+}
+
+.venue-name, .date-range {
+  padding: 5px 0;
+}
+
+.thumbnail-description {
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  height: 40px; /* Fallback for non-webkit */
+  margin: 0 auto;
+  line-height: 1.25;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

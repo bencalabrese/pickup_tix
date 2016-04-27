@@ -8,8 +8,6 @@ var SpectacleApiUtil = {
       dataType: 'json',
       url: 'api/spectacles',
       success: function(fetchedSpectacles) {
-        console.log(fetchedSpectacles);
-        console.log("hello");
         SpectacleServerActions.receiveAllSpectacles(fetchedSpectacles);
       },
       error: function(response) {
