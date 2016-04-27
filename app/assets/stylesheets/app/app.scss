@@ -1,6 +1,7 @@
 // RESET
 
-html, body, section, article, header, footer, h1, h2, p, a {
+html, body, section, article, header, footer, h1, h2, p, a,
+button {
   margin: 0;
   border: 0;
   padding: 0;
@@ -11,6 +12,8 @@ html, body, section, article, header, footer, h1, h2, p, a {
   color: inherit;
 
   background: transparent;
+
+  cursor: default;
 }
 
 // CLEARFIX

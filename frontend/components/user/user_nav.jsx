@@ -13,7 +13,10 @@ var UserNav = React.createClass({
   },
 
   getInitialState: function() {
-    return { modalIsOpen: false };
+    return {
+      modalIsOpen: false,
+      formType: null
+    };
   },
 
   handleLogout: function(event) {
@@ -21,8 +24,21 @@ var UserNav = React.createClass({
     UserActions.logout();
   },
 
-  openModal: function(event) {
+  openLogin: function(event) {
     event.preventDefault();
+
+    this.setState({ formType: "Login" });
+    this.openModal();
+  },
+
+  openSignUp: function(event) {
+    event.preventDefault();
+
+    this.setState({ formType: "Sign Up" });
+    this.openModal();
+  },
+
+  openModal: function() {
     this.setState({ modalIsOpen: true });
   },
 
@@ -35,13 +51,14 @@ var UserNav = React.createClass({
 
     if (this.state.currentUser) {
       links = [
-        <button key="myShows" href="#">My Shows</button>,
-        <button key="logout" onClick={this.handleLogout}>Logout</button>
+        <p key="user">Logged in as: {this.state.currentUser.username}</p>,
+        <a key="myShows" href="#">My Shows</a>,
+        <a key="logout" onClick={this.handleLogout}>Logout</a>,
       ];
     } else {
       links = [
-        <button key="login" onClick={this.openModal}>Login</button>,
-        <button key="signUp" onClick={this.openModal}>Sign Up</button>
+        <a key="login" onClick={this.openLogin}>Login</a>,
+        <a key="signUp" onClick={this.openSignUp}>Sign Up</a>
       ];
     }
 
@@ -52,7 +69,8 @@ var UserNav = React.createClass({
         <Modal isOpen={this.state.modalIsOpen}
                onRequestClose={this.closeModal}>
 
-          <LoginForm/>
+          <LoginForm closeCallback={this.closeModal}
+                     formType={this.state.formType}/>
         </Modal>
       </nav>
     );

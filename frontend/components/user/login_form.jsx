@@ -7,42 +7,46 @@ var LoginForm = React.createClass({
   mixins: [CurrentUserStateMixin, LinkedStateMixin],
 
   getInitialState: function() {
-    return this.defaultUserState();
+    return {
+      username: "",
+      password: "",
+      formType: this.props.formType
+    };
   },
 
   defaultUserState: function() {
     return {
       username: "",
-      password: ""
+      password: "",
     };
   },
 
-  handleLogin: function(event) {
+  handleSubmit: function(event) {
     event.preventDefault();
-    UserActions.login({
+
+    var credentials = {
       user: {
         username: this.state.username,
         password: this.state.password
       }
-    });
+    };
+
+    this.state.formType === "Login" ?
+      UserActions.login(credentials) :
+      UserActions.create(credentials);
 
     this.setState(this.defaultUserState());
+    this.props.closeCallback();
   },
 
-  handleSignUp: function(event) {
-    event.preventDefault();
-    UserActions.create({
-      user: {
-        username: this.state.username,
-        password: this.state.password
-      }
-    });
+  toggleType: function() {
+    var newType = this.state.formType === "Login" ? "Sign Up" : "Login";
 
-    this.setState(this.defaultUserState());
+    this.setState({ formType: newType });
   },
 
   render: function() {
-    var authErrorsUL;
+    var authErrorsUL, toggleTypeText;
 
     if (this.state.authErrors.length > 0) {
       var authErrorLIs = this.state.authErrors.map(function(error) {
@@ -52,11 +56,15 @@ var LoginForm = React.createClass({
       authErrorsUL = <ul>{authErrorLIs}</ul>;
     }
 
+    toggleTypeText = this.state.formType === "Login" ?
+      <p>Need an account? Sign up <a onClick={this.toggleType}>here</a></p> :
+      <p>Already have an account? Login <a onClick={this.toggleType}>here</a></p>;
+
     return (
       <div>
         {authErrorsUL}
 
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>Username
             <input type="text" valueLink={this.linkState("username")}/>
           </label>
@@ -65,14 +73,10 @@ var LoginForm = React.createClass({
             <input type="password" valueLink={this.linkState("password")}/>
           </label>
 
-          <input type="submit"
-                 value="Login"
-                 onClick={this.handleLogin}/>
-
-          <input type="submit"
-                 value="Sign Up"
-                 onClick={this.handleSignUp}/>
+          <input type="submit" value={this.state.formType}/>
         </form>
+
+        {toggleTypeText}
       </div>
     );
   }
