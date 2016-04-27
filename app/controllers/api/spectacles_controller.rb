@@ -1,6 +1,6 @@
 class Api::SpectaclesController < ApplicationController
   def index
-    @spectacles = Spectacle.all
+    @spectacles = Spectacle.all.take(6)
     render :index
   end
 

@@ -1,0 +1,33 @@
+@import "../app/app";
+
+.splash {
+  display: flex;
+  justify-content: center;
+}
+
+.splash-spectacles-index {
+  width: 840px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h5, button {
+    color: white;
+    padding: 10px 20px;
+    background: $dark-pink;
+    font-size: 20px;
+  }
+
+  a {
+    margin-left: auto;
+  }
+
+  .coming-up {
+    width: 780px;
+    border-top: 1px solid $dark-pink;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+}
