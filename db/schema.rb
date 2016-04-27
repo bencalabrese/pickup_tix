@@ -11,10 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426175532) do
+ActiveRecord::Schema.define(version: 20160427160953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "seat_blocks", force: :cascade do |t|
+    t.string   "style",      null: false
+    t.integer  "section_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "seat_blocks", ["section_id"], name: "index_seat_blocks_on_section_id", using: :btree
+
+  create_table "seats", force: :cascade do |t|
+    t.string   "name",          null: false
+    t.integer  "seat_block_id", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "seats", ["seat_block_id"], name: "index_seats_on_seat_block_id", using: :btree
+
+  create_table "sections", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "venue_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sections", ["venue_id"], name: "index_sections_on_venue_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
@@ -26,5 +53,13 @@ ActiveRecord::Schema.define(version: 20160426175532) do
 
   add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", using: :btree
+
+  create_table "venues", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "venues", ["name"], name: "index_venues_on_name", using: :btree
 
 end
