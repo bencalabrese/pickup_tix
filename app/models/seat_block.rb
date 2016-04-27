@@ -10,4 +10,9 @@
 #
 
 class SeatBlock < ActiveRecord::Base
+  validates :style, :section, presence: true
+
+  belongs_to :section
+  has_one :venue, through: :section
+  has_many :seats
 end

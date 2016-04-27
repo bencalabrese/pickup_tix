@@ -10,4 +10,9 @@
 #
 
 class Section < ActiveRecord::Base
+  validates :venue, :name, presence: true
+
+  belongs_to :venue
+  has_many :seat_blocks
+  has_many :seats, through: :seat_blocks
 end

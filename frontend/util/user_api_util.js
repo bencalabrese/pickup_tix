@@ -1,5 +1,5 @@
 var UserServerActions = require('../actions/user_server_actions'),
-    hashHistory = require('react-router').hashHistory;
+    browserHistory = require('react-router').browserHistory;
 
 var UserApiUtil = {
   fetchCurrentUser: function() {
