@@ -1,3 +1,12 @@
+// COLORS
+$dark-gray:    #2a282b;
+$reddish-gray: #4e3c3e;
+$medium-gray:  #929292;
+$light-gray:   #b5b5b5;
+$dark-pink:    #d94f5c;
+$light-pink:   #f48b95;
+
+
 // RESET
 
 html, body, section, article, header, footer, h1, h2, p, a,
@@ -10,6 +19,7 @@ button {
   text-align: inherit;
   text-decoration: inherit;
   color: inherit;
+  font-family: 'Lato', sans-serif;
 
   background: transparent;
 
@@ -34,12 +44,27 @@ html, body, body > div {
   min-height: 100%;
 }
 
-.header {
-  color: white;
-  background: blue;
-  height: 100px;
+header, footer {
+  color: $medium-gray;
+  background: $dark-gray;
+  height: 70px;
+  font-size: 16px;
   display: flex;
   align-items: center;
+}
+
+header {
+  nav a {
+    border-right: 1px solid $medium-gray;
+  }
+
+  nav a:last-child {
+    border-right: none;
+  }
+}
+
+.logo, a {
+  padding: 0 10px;
 }
 
 .user-nav {
@@ -47,15 +72,9 @@ html, body, body > div {
 }
 
 .content {
-  background-color: orange;
   flex-grow: 1;
 }
 
 footer {
-  color: white;
-  background: red;
-  height: 100px;
-  display: flex;
   justify-content: space-around;
-  align-items: center;
 }

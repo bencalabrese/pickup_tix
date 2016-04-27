@@ -64,14 +64,14 @@ var UserNav = React.createClass({
 
     return (
       <nav className="user-nav">
-        {links}
-
         <Modal isOpen={this.state.modalIsOpen}
                onRequestClose={this.closeModal}>
 
           <LoginForm closeCallback={this.closeModal}
                      formType={this.state.formType}/>
         </Modal>
+
+        {links}
       </nav>
     );
   }

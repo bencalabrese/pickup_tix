@@ -5,18 +5,18 @@ var Header = React.createClass({
   render: function() {
     return (
       <header className="header">
-        <img src="https://placekitten.com/150/75"
+        <img src="https://placekitten.com/150/40"
              alt="logo"
              className="logo"/>
 
         <nav>
-          <a href="#">link</a>
-          <a href="#">link</a>
-          <a href="#">link</a>
-          <a href="#">link</a>
+          <a href="#">Music</a>
+          <a href="#">Dance</a>
+          <a href="#">Theater</a>
+          <a href="#">Site Tour</a>
         </nav>
 
-        <input type="search"/>
+        <input type="search" className="search-bar" placeholder="search"/>
 
         <UserNav/>
       </header>
