@@ -16,6 +16,7 @@ class Spectacle < ActiveRecord::Base
   validates :title, uniqueness: true
 
   belongs_to :venue
+  has_many :seats, through: :venue
 
   has_many :performances
 end

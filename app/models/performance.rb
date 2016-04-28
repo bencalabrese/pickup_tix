@@ -14,4 +14,15 @@ class Performance < ActiveRecord::Base
   validates :datetime, uniqueness: { scope: :spectacle }
 
   belongs_to :spectacle
+  has_many :seats, through: :spectacle
+
+  has_many :tickets
+
+  def available_seats
+    seats - unavailable_seats
+  end
+
+  def unavailable_seats
+    Seat.joins(:tickets).where("tickets.performance_id = ?", self.id)
+  end
 end

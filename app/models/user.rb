@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  has_many :tickets
+
   def self.find_by_credentials(opts)
     user = find_by_username(opts[:username])
 
