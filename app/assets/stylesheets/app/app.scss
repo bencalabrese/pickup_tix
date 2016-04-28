@@ -27,6 +27,10 @@ h5, p, a, button, img, div {
   box-sizing: border-box;
 }
 
+button:focus {
+  outline: none;
+}
+
 // CLEARFIX
 
 .group:after {
@@ -89,4 +93,26 @@ footer {
 .sidebar {
   background: $dark-pink;
   width: 300px;
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(244,139,149,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  border: 1px solid $dark-gray;
+  background: white;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 4px;
+  outline: none;
 }

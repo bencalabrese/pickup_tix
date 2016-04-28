@@ -25,7 +25,9 @@ var SpectaclesIndexItem = React.createClass({
     return (
       <div className="spectacle-thumbnail" onClick={this.openModal}>
         <Modal isOpen={this.state.modalIsOpen}
-               onRequestClose={this.closeModal}>
+               onRequestClose={this.closeModal}
+               className="modal"
+               overlayClassName="modal-overlay">
           <SpectacleModal spectacle={spectacle}/>
         </Modal>
 

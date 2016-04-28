@@ -7,8 +7,11 @@ var SpectacleModal = React.createClass({
     var spectacle = this.props.spectacle;
 
     return (
-      <div>
-        I'm an event modal for {spectacle.title}
+      <div className="spectacle-modal">
+        <div className="spectacle-modal-content">
+          I'm an event modal for {spectacle.title}
+        </div>
+
         <SpectacleModalNav/>
       </div>
     );
