@@ -1,7 +1,7 @@
 var SpectacleConstants = require('../constants/spectacle_constants'),
     dispatcher = require('../dispatcher/dispatcher');
 
-var ServerActions = {
+var SpectacleServerActions = {
   receiveAllSpectacles: function(fetchedSpectacles) {
     dispatcher.dispatch({
       actionType: SpectacleConstants.RECEIVE_ALL_SPECTACLES,
@@ -9,7 +9,7 @@ var ServerActions = {
     });
   },
 
-  recieveSingleSpectacle: function(fetchedSpectacle) {
+  receiveSingleSpectacle: function(fetchedSpectacle) {
     dispatcher.dispatch({
       actionType: SpectacleConstants.RECEIVE_SINGLE_SPECTACLE,
       fetchedSpectacle: fetchedSpectacle
@@ -17,4 +17,4 @@ var ServerActions = {
   },
 };
 
-module.exports = ServerActions;
+module.exports = SpectacleServerActions;

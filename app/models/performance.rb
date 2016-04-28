@@ -16,7 +16,6 @@ class Performance < ActiveRecord::Base
   after_create :generate_tickets
 
   belongs_to :spectacle
-  has_many :seats, through: :spectacle
 
   def generate_tickets
     spectacle.venue.seats.each do |seat|
@@ -26,11 +25,11 @@ class Performance < ActiveRecord::Base
 
   has_many :tickets
 
-  def available_seats
+  def available_tickets
     tickets.where(user_id: nil)
   end
 
-  def unavailable_seats
+  def unavailable_tickets
     tickets.where.not(user_id: nil)
   end
 end

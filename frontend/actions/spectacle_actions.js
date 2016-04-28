@@ -1,13 +1,13 @@
 var SpectacleApiUtil = require('../util/spectacle_api_util');
 
-var ClientActions = {
+var SpectacleClientActions = {
   fetchAllSpectacles: function() {
     SpectacleApiUtil.fetchAllSpectacles();
   },
 
-  fetchSingleSpectacle: function() {
-    SpectacleApiUtil.fetchSingleSpectacle();
+  fetchSingleSpectacle: function(id) {
+    SpectacleApiUtil.fetchSingleSpectacle(id);
   }
 };
 
-module.exports = ClientActions;
+module.exports = SpectacleClientActions;

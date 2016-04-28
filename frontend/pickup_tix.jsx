@@ -37,3 +37,6 @@ var appRouter = (
 $(function() {
   ReactDOM.render(appRouter, document.getElementById('root'));
 });
+
+window.PerformanceStore = require('./stores/performance');
+window.PerformanceActions = require('./actions/performance_actions');

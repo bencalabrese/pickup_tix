@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
 
     resources :spectacles, only: [:index, :show]
+
+    resources :performances, only: :show
   end
 end
