@@ -9,12 +9,30 @@
 
 def gen_spectacles(venue)
   4.times do
-    Spectacle.create!(
+    spectacle = Spectacle.create!(
       venue: venue,
       title: Faker::Name.title,
       description: Faker::Lorem.paragraph(2),
       image_url: "http://www.placekitten.com/240/140"
     )
+
+    gen_performances(spectacle)
+  end
+end
+
+def gen_performances(spectacle)
+  first_performance = Date.today
+
+  first_performance += 1 while !first_performance.thursday?
+  current_performance = first_performance.to_datetime + 20.hours
+
+  3.times do |week|
+    4.times do |day|
+      Performance.create(spectacle: spectacle, datetime: current_performance)
+      current_performance += 1.days
+    end
+
+    current_performance += 3.days
   end
 end
 
