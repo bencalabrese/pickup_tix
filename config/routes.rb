@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     resources :spectacles, only: [:index, :show]
 
     resources :performances, only: :show
+
+    resources :tickets, only: :update
   end
 end
