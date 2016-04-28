@@ -10,6 +10,6 @@ Rails.application.routes.draw do
 
     resources :performances, only: :show
 
-    resources :tickets, only: :update
+    patch "/tickets", to: "tickets#assign_tickets"
   end
 end

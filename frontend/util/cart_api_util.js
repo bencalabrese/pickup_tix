@@ -13,6 +13,20 @@ var CartApiUtil = {
       error: function(response) {
       }
     });
+  },
+
+  assignTickets: function(ticketIds) {
+    $.ajax({
+      method: 'PATCH',
+      dataType: 'json',
+      url: 'api/tickets',
+      data: { ticket_ids: ticketIds },
+      success: function() {
+        CartServerActions.updateCartStatus("checkout completed");
+      },
+      error: function(response) {
+      }
+    });
   }
 };
 

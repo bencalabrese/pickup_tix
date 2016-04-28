@@ -22,7 +22,6 @@ var SpectacleModal = React.createClass({
       </div>
     );
   }
-
 });
 
 module.exports = SpectacleModal;

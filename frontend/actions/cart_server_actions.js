@@ -8,6 +8,13 @@ var CartServerActions = {
       fetchedPerformance: fetchedPerformance
     });
   },
+
+  updateCartStatus: function(newStatus) {
+    dispatcher.dispatch({
+      actionType: CartConstants.UPDATE_CART_STATUS,
+      newStatus: newStatus
+    });
+  }
 };
 
 module.exports = CartServerActions;

@@ -1,1 +1,3 @@
-json.extract! @tickets, :id
+json.array! @tickets do |ticket|
+  json.id ticket.id
+end

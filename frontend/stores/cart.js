@@ -20,6 +20,11 @@ CartStore.__onDispatch = function(payload) {
       removeTicket(payload.ticket);
       this.__emitChange();
       break;
+
+    case CartConstants.UPDATE_CART_STATUS:
+      updateCartStatus(payload.newStatus);
+      this.__emitChange();
+      break;
   }
 };
 
@@ -57,6 +62,10 @@ function addTicket(ticket) {
 
 function removeTicket(ticket) {
   delete _tickets[ticket.id];
+}
+
+function updateCartStatus(newStatus) {
+  _cartStatus = newStatus;
 }
 
 module.exports = CartStore;
