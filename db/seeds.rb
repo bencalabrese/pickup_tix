@@ -7,6 +7,8 @@
 #   Mayor.create!(name: 'Emanuel', city: cities.first)
 
 
+User.create!(username: "Guest", password: "password")
+
 def gen_spectacles(venue)
   4.times do
     spectacle = Spectacle.create!(
@@ -28,7 +30,7 @@ def gen_performances(spectacle)
 
   3.times do |week|
     4.times do |day|
-      Performance.create(spectacle: spectacle, datetime: current_performance)
+      Performance.create!(spectacle: spectacle, datetime: current_performance)
       current_performance += 1.days
     end
 
@@ -60,5 +62,8 @@ end
   venue = Venue.create!(name: Faker::Name.first_name)
 
   gen_sections(venue)
+
+  # refetch data from database
+  venue = Venue.find(venue)
   gen_spectacles(venue)
 end

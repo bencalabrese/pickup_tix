@@ -13,16 +13,24 @@ class Performance < ActiveRecord::Base
   validates :datetime, :spectacle, presence: true
   validates :datetime, uniqueness: { scope: :spectacle }
 
+  after_create :generate_tickets
+
   belongs_to :spectacle
   has_many :seats, through: :spectacle
+
+  def generate_tickets
+    spectacle.venue.seats.each do |seat|
+      Ticket.create!(seat: seat, performance: self)
+    end
+  end
 
   has_many :tickets
 
   def available_seats
-    seats - unavailable_seats
+    tickets.where(user_id: nil)
   end
 
   def unavailable_seats
-    Seat.joins(:tickets).where("tickets.performance_id = ?", self.id)
+    tickets.where.not(user_id: nil)
   end
 end
