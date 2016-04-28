@@ -67,17 +67,17 @@ PickupTix will allow users to do the following:
 **Objective:** Spectacles can be created, read, edited and destroyed through
 the terminal.
 
-- [ ] Venues have sections, seat_blocks, and seats
-- [ ] Spectacles have seats through their venue
-- [ ] Venues can have multiple Spectacles
+- [X] Venues have sections, seat_blocks, and seats
+- [X] Spectacles have seats through their venue
+- [X] Venues can have multiple Spectacles
 
 ### Phase 4: Styling (0.5 days)
 
 **Objective:** Existing pages will look presentable and have correct spacing.
 
-- [ ] Layout for SpectaclesIndex
-- [ ] Layout for SpectaclesIndexItem
-- [ ] Make it pretty
+- [X] Layout for SpectaclesIndex
+- [X] Layout for SpectaclesIndexItem
+- [X] Make it pretty
 
 ### Phase 5: Perfomances Model, Ticketings Model API, and basic ApiUtil (1 days)
 
