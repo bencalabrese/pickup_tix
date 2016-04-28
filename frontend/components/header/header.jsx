@@ -1,13 +1,16 @@
 var React = require('react'),
-    UserNav = require('../user/user_nav');
+    UserNav = require('../user/user_nav'),
+    Link = require('react-router').Link;
 
 var Header = React.createClass({
   render: function() {
     return (
       <header className="header">
-        <img src="https://placekitten.com/150/40"
-             alt="logo"
-             className="logo"/>
+        <Link to="/">
+          <img src="https://placekitten.com/150/40"
+            alt="logo"
+            className="logo"/>          
+        </Link>
 
         <nav>
           <a href="#">Music</a>

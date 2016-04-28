@@ -1,4 +1,5 @@
 var React = require('react'),
+    Link = require('react-router').Link,
     SpectaclesIndex = require('../spectacles/spectacles_index');
 
 var Splash = React.createClass({
@@ -8,12 +9,12 @@ var Splash = React.createClass({
         <div className="splash-spectacles-index">
           <div className="coming-up">
             <h5>Coming Up</h5>
-            <a href="#">View all events</a>
+            <Link to="events">View all events</Link>
           </div>
 
           <SpectaclesIndex/>
 
-          <button>View all events</button>
+          <Link to="events" className="button">View all events</Link>
         </div>
       </div>
     );
