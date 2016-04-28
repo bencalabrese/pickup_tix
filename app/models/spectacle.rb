@@ -19,4 +19,12 @@ class Spectacle < ActiveRecord::Base
   has_many :seats, through: :venue
 
   has_many :performances
+
+  def first_performance
+    performances.order(:datetime).first.datetime
+  end
+
+  def last_performance
+    performances.order(datetime: :desc).first.datetime
+  end
 end
