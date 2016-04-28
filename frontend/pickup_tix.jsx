@@ -5,7 +5,6 @@ var ReactRouter = require('react-router'),
     Router = ReactRouter.Router,
     Route = ReactRouter.Route,
     IndexRoute = ReactRouter.IndexRoute,
-    Link = ReactRouter.Link,
     browserHistory = ReactRouter.browserHistory;
 
 var Header = require('./components/header/header'),
@@ -37,6 +36,3 @@ var appRouter = (
 $(function() {
   ReactDOM.render(appRouter, document.getElementById('root'));
 });
-
-window.PerformanceStore = require('./stores/performance');
-window.PerformanceActions = require('./actions/performance_actions');
