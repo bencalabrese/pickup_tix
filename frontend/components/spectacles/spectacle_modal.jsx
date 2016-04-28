@@ -1,31 +1,24 @@
 var React = require('react'),
-    SpectacleModalNav = require('./spectacle_modal_nav');
+    CartStore = require('../../stores/cart'),
+    SpectacleModalNav = require('./spectacle_modal_nav'),
+    SpectacleModalDetail = require('./spectacle_modal_detail');
 
 var SpectacleModal = React.createClass({
+  getInitialState: function() {
+    return {
+      performance: CartStore.performance(),
+      cartStatus: CartStore.cartStatus(),
+      tickets: CartStore.tickets()
+    };
+  },
 
   render: function() {
-    var spectacle = this.props.spectacle;
+    var content;
 
     return (
       <div className="spectacle-modal">
-        <div className="spectacle-modal-content">
-          <div className="spectacle-modal-picture-pane">
-            <img src={spectacle.image_url}/>
-            <button>Reserve Tickets</button>
-            <button>Find Other Shows</button>
-          </div>
-
-          <div className="spectacle-modal-details">
-            <h2>{spectacle.title}</h2>
-            <h6>The Curran Theater | 200+ seats</h6>
-            <h6>April 22nd 2016 - May 8th 2016</h6>
-            <p>
-              {spectacle.description}
-            </p>
-          </div>
-        </div>
-
-        <SpectacleModalNav/>
+        <SpectacleModalDetail spectacle={this.props.spectacle}/>
+        <SpectacleModalNav cartStatus={this.state.cartStatus}/>
       </div>
     );
   }

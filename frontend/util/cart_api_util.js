@@ -1,14 +1,14 @@
-var PerformanceServerActions = require('../actions/performance_server_actions'),
+var CartServerActions = require('../actions/cart_server_actions'),
     browserHistory = require('react-router').browserHistory;
 
-var PerformanceApiUtil = {
+var CartApiUtil = {
   fetchSinglePerformance: function(id) {
     $.ajax({
       method: 'GET',
       dataType: 'json',
       url: 'api/performances/' + id,
       success: function(fetchedPerformance) {
-        PerformanceServerActions.receiveSinglePerformance(fetchedPerformance);
+        CartServerActions.receiveSinglePerformance(fetchedPerformance);
       },
       error: function(response) {
       }
@@ -16,4 +16,4 @@ var PerformanceApiUtil = {
   }
 };
 
-module.exports = PerformanceApiUtil;
+module.exports = CartApiUtil;
