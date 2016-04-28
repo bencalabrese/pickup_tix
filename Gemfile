@@ -37,8 +37,10 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
   gem 'annotate'
-  gem 'faker'
 end
+gem 'faker'
+# TODO
+# move faker back into dev/test once seed data is in place
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
