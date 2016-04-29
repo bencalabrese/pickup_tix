@@ -5,7 +5,11 @@ var React = require('react'),
 
 var FilterPage = React.createClass({
   getInitialState: function() {
-    return { filters: FilterStore.all() };
+    return {
+      filters: FilterStore.all(),
+      filterStep: FilterStore.filterStep(),
+      availableFilters: FilterStore.availableFilters()
+    };
   },
 
   componentWillMount: function() {
@@ -23,7 +27,10 @@ var FilterPage = React.createClass({
   render: function() {
     return (
       <div className="filter">
-        <FilterSidebar filters={this.state.filters}/>
+        <FilterSidebar
+          filters={this.state.filters}
+          filterStep={this.state.filterStep}
+          availableFilters={this.state.availableFilters}/>
         <FilterResults filters={this.state.filters}/>
       </div>
     );
