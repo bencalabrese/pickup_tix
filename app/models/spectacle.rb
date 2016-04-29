@@ -12,11 +12,12 @@
 #
 
 class Spectacle < ActiveRecord::Base
-  validates :title, :description, :image_url, :venue, :category presence: true
+  validates :title, :description, :image_url, :venue, :categoryga presence: true
   validates :title, uniqueness: true
 
   belongs_to :venue
-  belongs_to :category
+  # TODO
+  # belongs_to :category
   has_many :seats, through: :venue
   has_many :performances
   has_many :taggings
@@ -24,8 +25,9 @@ class Spectacle < ActiveRecord::Base
 
   def self.find_by_filter_params(params = {})
     keyword_where  = params[:keyword] ? ["title LIKE ?", "%#{params[:keyword]}%"] : [nil]
-    category_ids   = params[:category_ids]
-    category_where = params[:category_ids] ? { category_id: category_ids } : nil
+    # TODO
+    # category_ids   = params[:category_ids]
+    # category_where = params[:category_ids] ? { category_id: category_ids } : nil
     order_type     = params[:random] ? "random()" : nil
     limit          = params[:limit]
 
