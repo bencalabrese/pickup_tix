@@ -1,7 +1,11 @@
 var React = require('react'),
-    moment = require('moment');
+    moment = require('moment'),
+    SetFilterStep = require('../../mixins/set_filter_step'),
+    FilterActions = require("../../actions/filter_actions");
 
 var CurrentFilters = React.createClass({
+  mixins: [SetFilterStep],
+
   render: function() {
     var filters = this.props.filters,
         categories = "All Event Types",
@@ -23,14 +27,20 @@ var CurrentFilters = React.createClass({
       venueSize = " > " + filters.venueSize + " seats";
     }
 
-    allFilters.push(<a key="1">{categories}</a>);
-    allFilters.push(<a key="2">{dates}</a>);
-    allFilters.push(<a key="3">{venueSize}</a>);
+    allFilters.push(
+      <a onClick={this.goToCategories} key="1">{categories}</a>
+    );
+    allFilters.push(
+      <a onClick={this.goToDates} key="2">{dates}</a>
+    );
+    allFilters.push(
+      <a onClick={this.goToVenueSize} key="3">{venueSize}</a>
+    );
 
-    var filterButtons = allFilters.slice(0, this.props.filterStep);
+    var filterLinks = allFilters.slice(0, this.props.filterStep);
 
     return (
-      <p>{filterButtons}</p>
+      <p>{filterLinks}</p>
     );
   }
 });

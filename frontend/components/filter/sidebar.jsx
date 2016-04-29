@@ -9,10 +9,12 @@ var FilterSidebar = React.createClass({
         <CurrentFilters
           filters={this.props.filters}
           filterStep={this.props.filterStep}/>
+        <FiltersIndex
+          availableFilters={this.props.availableFilters}
+          filterStep={this.props.filterStep}/>
       </div>
     );
   }
-  // <FiltersIndex filters={this.props.filters}/>
 });
 
 module.exports = FilterSidebar;

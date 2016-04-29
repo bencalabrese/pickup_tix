@@ -21,7 +21,11 @@ var FilterPage = React.createClass({
   },
 
   _onChange: function() {
-    this.setState({ filters: FilterStore.all() });
+    this.setState({
+      filters: FilterStore.all(),
+      filterStep: FilterStore.filterStep(),
+      availableFilters: FilterStore.availableFilters()
+    });
   },
 
   render: function() {
