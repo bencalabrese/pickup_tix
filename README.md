@@ -83,17 +83,17 @@ the terminal.
 
 **Objective:** Performances can be read, through the API.
 
-- [ ] Performances have seats through their Spectacle
+- [X] Performances have seats through their Spectacle
 - [ ] API can read seats from `performance`
 - [ ] API can read remaining seats and booked seats
-- [ ] API allows booking of remaining seats
+- [X] API allows booking of remaining seats
 
 ### Phase 6: Tags (0.5 day)
 
 **Objective:** Spectacles can be tagged with multiple tags, tags are searchable.
 
-- [ ] Search by tags
-- [ ] Also search by dates and venue size
+- [X] Search by tags
+- [X] Also search by dates and venue size
 
 ### Phase 7: Search Bar and Filtering Views (1 day)
 
@@ -107,7 +107,7 @@ the terminal.
 
 **Objective:** Spectacles can be seen in detail. Create ticketings through UI.
 
-- [ ] Spectacle detail modal shows individual Spectacle
+- [X] Spectacle detail modal shows individual Spectacle
 - [ ] Pick performances, seats (from dropdown), checkout in modal
 - [ ] Style modal
 
@@ -123,7 +123,7 @@ the terminal.
 **Objective:** Layout splash and refine style on all pages.
 
 - [ ] Create Jumbotron and details
-- [ ] Add small spectacle index to splash
+- [X] Add small spectacle index to splash
 - [ ] Review and refine style on all pages
 
 ### Phase 11: Users page with user purchase history (0.5 days)
