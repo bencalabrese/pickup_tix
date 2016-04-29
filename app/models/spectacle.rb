@@ -23,6 +23,16 @@ class Spectacle < ActiveRecord::Base
   has_many :taggings
   has_many :tags, through: :taggings
 
+  FILTER_PARAM_KEYS = [
+    :keyword,
+    :category_ids,
+    :random,
+    :limit,
+    :date_range,
+    :tag_ids,
+    :venue_size
+  ]
+
   def self.find_by_filter_params(params = {})
     keyword_where  = params[:keyword] ? ["title LIKE ?", "%#{params[:keyword]}%"] : [nil]
     # TODO
@@ -52,8 +62,8 @@ class Spectacle < ActiveRecord::Base
       seats_having   = [nil]
     end
 
+    # .where(category_where)
     self.where(*keyword_where)
-        .where(category_where)
         .joins(performances_join)
         .where(performances_where)
         .joins(taggings_join)

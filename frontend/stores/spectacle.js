@@ -6,7 +6,7 @@ var Store = require('flux/utils').Store,
 // API
 SpectacleStore.__onDispatch = function(payload) {
   switch (payload.actionType) {
-    case SpectacleConstants.RECEIVE_ALL_SPECTACLES:
+    case SpectacleConstants.RECEIVE_FILTERED_SPECTACLES:
       resetSpectacles(payload.fetchedSpectacles);
       this.__emitChange();
       break;

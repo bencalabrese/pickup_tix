@@ -1,8 +1,9 @@
 var SpectacleApiUtil = require('../util/spectacle_api_util');
 
 var SpectacleClientActions = {
-  fetchAllSpectacles: function() {
-    SpectacleApiUtil.fetchAllSpectacles();
+  fetchSpectaclesByParams: function(params) {
+    var namespacedParams = { filter: params };
+    SpectacleApiUtil.fetchSpectaclesByParams(namespacedParams);
   },
 
   fetchSingleSpectacle: function(id) {

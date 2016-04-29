@@ -4,6 +4,11 @@ var React = require('react'),
 
 var Splash = React.createClass({
   render: function() {
+    var filterParams = {
+      random: true,
+      limit : 6
+    };
+
     return (
       <div className="splash">
         <div className="splash-spectacles-index">
@@ -12,7 +17,7 @@ var Splash = React.createClass({
             <Link to="events">View all events</Link>
           </div>
 
-          <SpectaclesIndex/>
+          <SpectaclesIndex filterParams={filterParams}/>
 
           <Link to="events" className="button">View all events</Link>
         </div>

@@ -2,13 +2,13 @@ var SpectacleServerActions = require('../actions/spectacle_server_actions'),
     browserHistory = require('react-router').browserHistory;
 
 var SpectacleApiUtil = {
-  fetchAllSpectacles: function() {
+  fetchSpectaclesByParams: function(params) {
     $.ajax({
       method: 'GET',
       dataType: 'json',
-      url: 'api/spectacles',
+      url: 'api/spectacles?' + $.param(params),
       success: function(fetchedSpectacles) {
-        SpectacleServerActions.receiveAllSpectacles(fetchedSpectacles);
+        SpectacleServerActions.receiveFilteredSpectacles(fetchedSpectacles);
       },
       error: function(response) {
       }
