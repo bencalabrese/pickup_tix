@@ -1,5 +1,6 @@
 var React = require('react'),
     Modal = require('react-modal'),
+    moment = require('moment'),
     SpectacleModal = require('./spectacle_modal');
 
 var SpectaclesIndexItem = React.createClass({
@@ -20,7 +21,11 @@ var SpectaclesIndexItem = React.createClass({
   },
 
   render: function() {
-    var spectacle = this.props.spectacle;
+    var spectacle = this.props.spectacle,
+        startDate = moment(spectacle.first_performance).format("MMM D"),
+        endDate = moment(spectacle.last_performance).format("MMM D");
+        
+    var dateRange = startDate + " - " + endDate;
 
     return (
       <div className="spectacle-thumbnail" onClick={this.openModal}>
@@ -33,9 +38,9 @@ var SpectaclesIndexItem = React.createClass({
 
         <img src={spectacle.image_url} alt={spectacle.title}/>
 
-        <p className="venue-name">
-          {spectacle.venue_name}
-          <span className="date-range">Apr 22 - May 8</span>
+        <p className="category-name">
+          {spectacle.category}
+          <span className="date-range">{dateRange}</span>
         </p>
 
         <h4>{spectacle.title}</h4>

@@ -10,7 +10,11 @@ var SpectaclesIndex = React.createClass({
 
   componentDidMount: function() {
     this.listener = SpectacleStore.addListener(this._onChange);
-    SpectacleClientActions.fetchSpectaclesByParams(this.props.filterParams);
+    SpectacleClientActions.fetchSpectaclesByParams(this.props.filters);
+  },
+
+  willReceiveProps: function(newProps) {
+    SpectacleClientActions.fetchSpectaclesByParams(newProps.filters);
   },
 
   componentWillUnmount: function() {

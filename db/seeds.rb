@@ -8,10 +8,14 @@
 
 
 User.create!(username: "Guest", password: "password")
+Category.create(name: "Dance")
+Category.create(name: "Music")
+Category.create(name: "Theater")
 
 def gen_spectacles(venue)
   4.times do
     spectacle = Spectacle.create!(
+      category_id: rand(1..3),
       venue: venue,
       title: Faker::Name.title,
       description: Faker::Lorem.paragraph(2),
@@ -26,6 +30,8 @@ def gen_performances(spectacle)
   first_performance = Date.today
 
   first_performance += 1 while !first_performance.thursday?
+  first_performance += rand(1..5).weeks
+
   current_performance = first_performance.to_datetime + 20.hours
 
   3.times do |week|

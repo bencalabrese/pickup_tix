@@ -1,6 +1,5 @@
 class Api::SpectaclesController < ApplicationController
   def index
-    debugger
     @spectacles = Spectacle.find_by_filter_params(filter_params)
     render :index
   end

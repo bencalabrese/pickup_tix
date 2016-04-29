@@ -16,7 +16,9 @@ class Ticket < ActiveRecord::Base
   validate :seat_belongs_to_performance
 
   def seat_belongs_to_performance
-    if performance.seats.none? { |p_seat| p_seat == seat }
+    seats = performance.spectacle.seats
+    
+    if seats.none? { |p_seat| p_seat == seat }
       errors.add(incorrect_seat: "seat does not belong to performance")
     end
   end

@@ -1,11 +1,12 @@
-var React = require('react');
+var React = require('react'),
+    SpectaclesIndex = require('../spectacles/spectacles_index');
 
 var FilterResults = React.createClass({
 
   render: function() {
     return (
       <div>
-        results
+        <SpectaclesIndex filters={this.props.filters}/>
       </div>
     );
   }

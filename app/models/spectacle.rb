@@ -12,12 +12,11 @@
 #
 
 class Spectacle < ActiveRecord::Base
-  validates :title, :description, :image_url, :venue, presence: true
+  validates :title, :description, :image_url, :venue, :category, presence: true
   validates :title, uniqueness: true
 
   belongs_to :venue
-  # TODO
-  # belongs_to :category
+  belongs_to :category
   has_many :seats, through: :venue
   has_many :performances
   has_many :taggings
@@ -25,19 +24,20 @@ class Spectacle < ActiveRecord::Base
 
   FILTER_PARAM_KEYS = [
     :keyword,
-    :category_ids,
     :random,
     :limit,
-    :date_range,
-    :tag_ids,
-    :venue_size
+    {
+      category_ids: [],
+      date_range: [],
+      tag_ids: [],
+      venue_size: []
+    }
   ]
 
   def self.find_by_filter_params(params = {})
     keyword_where  = params[:keyword] ? ["title LIKE ?", "%#{params[:keyword]}%"] : [nil]
-    # TODO
-    # category_ids   = params[:category_ids]
-    # category_where = params[:category_ids] ? { category_id: category_ids } : nil
+    category_ids   = params[:category_ids]
+    category_where = params[:category_ids] ? { category_id: category_ids } : nil
     order_type     = params[:random] ? "random()" : nil
     limit          = params[:limit]
 
@@ -62,8 +62,8 @@ class Spectacle < ActiveRecord::Base
       seats_having   = [nil]
     end
 
-    # .where(category_where)
     self.where(*keyword_where)
+        .where(category_where)
         .joins(performances_join)
         .where(performances_where)
         .joins(taggings_join)
