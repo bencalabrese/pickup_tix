@@ -12,7 +12,7 @@
 #
 
 class Spectacle < ActiveRecord::Base
-  validates :title, :description, :image_url, :venue, :categoryga presence: true
+  validates :title, :description, :image_url, :venue, presence: true
   validates :title, uniqueness: true
 
   belongs_to :venue
