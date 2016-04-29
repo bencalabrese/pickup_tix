@@ -65,7 +65,9 @@ var UserNav = React.createClass({
     return (
       <nav className="user-nav">
         <Modal isOpen={this.state.modalIsOpen}
-               onRequestClose={this.closeModal}>
+               onRequestClose={this.closeModal}
+               className="modal"
+               overlayClassName="modal-overlay">
 
           <LoginForm closeCallback={this.closeModal}
                      formType={this.state.formType}/>

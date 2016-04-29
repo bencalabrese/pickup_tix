@@ -5,16 +5,16 @@ var UserActions = {
     UserApiUtil.fetchCurrentUser();
   },
 
-  login: function(credentials) {
-    UserApiUtil.login(credentials);
+  login: function(credentials, callback) {
+    UserApiUtil.login(credentials, callback);
   },
 
   logout: function() {
     UserApiUtil.logout();
   },
 
-  create: function(credentials) {
-    UserApiUtil.create(credentials);
+  create: function(credentials, callback) {
+    UserApiUtil.create(credentials, callback);
   },
 
   destroy: function() {

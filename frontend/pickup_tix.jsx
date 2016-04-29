@@ -36,7 +36,3 @@ var appRouter = (
 $(function() {
   ReactDOM.render(appRouter, document.getElementById('root'));
 });
-
-
-window.CartActions = require('./actions/cart_actions');
-window.CartStore = require('./stores/cart');

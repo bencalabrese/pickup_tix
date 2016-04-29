@@ -6,6 +6,10 @@ var React = require('react'),
 var LoginForm = React.createClass({
   mixins: [CurrentUserStateMixin, LinkedStateMixin],
 
+  DEMO_USERNAME: ["G", "u", "e", "s", "t"],
+
+  DEMO_PASSWORD: ["p", "a", "s", "s", "w", "o", "r", "d"],
+
   getInitialState: function() {
     return {
       username: "",
@@ -32,17 +36,59 @@ var LoginForm = React.createClass({
     };
 
     this.state.formType === "Login" ?
-      UserActions.login(credentials) :
-      UserActions.create(credentials);
+      UserActions.login(credentials, this.props.closeCallback) :
+      UserActions.create(credentials, this.props.closeCallback);
 
     this.setState(this.defaultUserState());
-    this.props.closeCallback();
   },
 
   toggleType: function() {
     var newType = this.state.formType === "Login" ? "Sign Up" : "Login";
 
     this.setState({ formType: newType });
+  },
+
+  demoLogin: function(event) {
+    event.preventDefault();
+
+    this.setState({
+      username: "",
+      password: "",
+      formType: "Login"
+    });
+
+    var _username = this.DEMO_USERNAME.slice();
+    this.fillDemoUsername(_username);
+  },
+
+  fillDemoUsername: function(_username) {
+    if (_username.length > 0) {
+      setTimeout(function() {
+        this.setState({
+          username: this.state.username + _username.shift()
+        });
+
+        this.fillDemoUsername(_username);
+      }.bind(this), 150);
+    } else {
+      var _password = this.DEMO_PASSWORD.slice();
+      this.fillDemoPassword(_password);
+    }
+  },
+
+  fillDemoPassword: function(_password) {
+    if (_password.length > 0) {
+      setTimeout(function() {
+        this.setState({
+          password: this.state.password + _password.shift()
+        });
+
+        this.fillDemoPassword(_password);
+      }.bind(this), 150);
+    } else {
+      var dummyEvent = { preventDefault: function(){} };
+      this.handleSubmit(dummyEvent);
+    }
   },
 
   render: function() {
@@ -61,10 +107,12 @@ var LoginForm = React.createClass({
       <p>Already have an account? Login <a onClick={this.toggleType}>here</a></p>;
 
     return (
-      <div>
+      <div className="credentials-modal">
         {authErrorsUL}
 
         <form onSubmit={this.handleSubmit}>
+          <h2>{this.state.formType}</h2>
+
           <label>Username
             <input type="text" valueLink={this.linkState("username")}/>
           </label>
@@ -74,9 +122,18 @@ var LoginForm = React.createClass({
           </label>
 
           <input type="submit" value={this.state.formType}/>
+          {toggleTypeText}
         </form>
 
-        {toggleTypeText}
+        <h5>Or</h5>
+
+        <div>
+          <form onSubmit={this.demoLogin}>
+            <h2>Demo</h2>
+
+            <input type="submit" value="Use Demo Account"/>
+          </form>
+        </div>
       </div>
     );
   }

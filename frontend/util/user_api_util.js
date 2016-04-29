@@ -16,7 +16,7 @@ var UserApiUtil = {
     });
   },
 
-  login: function(credentials) {
+  login: function(credentials, callback) {
     $.ajax({
       method: 'POST',
       dataType: 'json',
@@ -24,6 +24,7 @@ var UserApiUtil = {
       data: credentials,
       success: function(currentUser) {
         UserServerActions.receiveCurrentUser(currentUser);
+        callback();
       },
       error: function(response) {
         UserServerActions.recieveErrors(response.responseJSON.errors);
@@ -45,7 +46,7 @@ var UserApiUtil = {
     });
   },
 
-  create: function(credentials) {
+  create: function(credentials, callback) {
     $.ajax({
       method: 'POST',
       dataType: 'json',
@@ -53,6 +54,7 @@ var UserApiUtil = {
       data: credentials,
       success: function(currentUser) {
         UserServerActions.receiveCurrentUser(currentUser);
+        callback();
       },
       error: function(response) {
         UserServerActions.recieveErrors(response.responseJSON.errors);

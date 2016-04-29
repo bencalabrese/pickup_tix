@@ -17,8 +17,9 @@ class Spectacle < ActiveRecord::Base
 
   belongs_to :venue
   has_many :seats, through: :venue
-
   has_many :performances
+  has_many :taggings
+  has_many :tags, through: :taggings
 
   def first_performance
     performances.order(:datetime).first.datetime
