@@ -91,6 +91,14 @@ var LoginForm = React.createClass({
     }
   },
 
+  changeUsername: function(event) {
+    this.setState({ username: event.target.value});
+  },
+
+  changePassword: function(event) {
+    this.setState({ password: event.target.value});
+  },
+
   render: function() {
     var authErrorsUL, toggleTypeText;
 
@@ -114,11 +122,15 @@ var LoginForm = React.createClass({
           <h2>{this.state.formType}</h2>
 
           <label>Username
-            <input type="text" valueLink={this.linkState("username")}/>
+            <input type="text"
+                   value={this.state.username}
+                   onChange={this.updateUsername}/>
           </label>
 
           <label>Password
-            <input type="password" valueLink={this.linkState("password")}/>
+            <input type="password"
+                   value={this.state.password}
+                   onChange={this.updateUsername}/>
           </label>
 
           <input type="submit" value={this.state.formType}/>

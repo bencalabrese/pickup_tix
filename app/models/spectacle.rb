@@ -12,14 +12,56 @@
 #
 
 class Spectacle < ActiveRecord::Base
-  validates :title, :description, :image_url, :venue, presence: true
+  validates :title, :description, :image_url, :venue, :category presence: true
   validates :title, uniqueness: true
 
   belongs_to :venue
+  belongs_to :category
   has_many :seats, through: :venue
   has_many :performances
   has_many :taggings
   has_many :tags, through: :taggings
+
+  def self.find_by_filter_params(params = {})
+    keyword_where  = params[:keyword] ? ["title LIKE ?", "%#{params[:keyword]}%"] : [nil]
+    category_ids   = params[:category_ids]
+    category_where = params[:category_ids] ? { category_id: category_ids } : nil
+    order_type     = params[:random] ? "random()" : nil
+    limit          = params[:limit]
+
+    if params[:date_range]
+      performances_join  = :performances
+      date_min, date_max = params[:date_range]
+      performances_where = { performances: { datetime: (date_min..date_max) } }
+    end
+
+    if params[:tag_ids]
+      taggings_join      = :taggings
+      tag_ids            = params[:tag_ids]
+      taggings_where     = { taggings: { tag_id: tag_ids } }
+    end
+
+    if params[:venue_size]
+      seats_join         = { venue: [{sections: [{seat_blocks: :seats}]}] }
+      seat_min, seat_max = params[:venue_size]
+      seats_group        = "spectacles.id"
+      seats_having       = ["COUNT(seats.id) BETWEEN ? AND ?", seat_min, seat_max]
+    else
+      seats_having   = [nil]
+    end
+
+    self.where(*keyword_where)
+        .where(category_where)
+        .joins(performances_join)
+        .where(performances_where)
+        .joins(taggings_join)
+        .where(taggings_where)
+        .joins(seats_join)
+        .group(seats_group)
+        .having(*seats_having)
+        .order(order_type)
+        .limit(limit)
+  end
 
   def first_performance
     performances.order(:datetime).first.datetime
