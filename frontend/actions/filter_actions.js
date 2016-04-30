@@ -1,7 +1,7 @@
 var FilterConstants = require('../constants/filter_constants'),
     dispatcher = require('../dispatcher/dispatcher');
 
-var CartServerActions = {
+var FilterActions = {
   setFilter: function(filter) {
     dispatcher.dispatch({
       actionType: FilterConstants.UPDATE_FILTER,
@@ -17,4 +17,4 @@ var CartServerActions = {
   }
 };
 
-module.exports = CartServerActions;
+module.exports = FilterActions;

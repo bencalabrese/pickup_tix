@@ -1,6 +1,6 @@
 var FilterActions = require('../actions/filter_actions');
 
-var CurrenUserStateMixin = {
+var SetFilterStep = {
   goToCategories: function() {
     FilterActions.updateFilterStep(1);
   },
@@ -18,4 +18,4 @@ var CurrenUserStateMixin = {
   }
 };
 
-module.exports = CurrenUserStateMixin;
+module.exports = SetFilterStep;

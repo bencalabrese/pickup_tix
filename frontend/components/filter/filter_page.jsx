@@ -8,7 +8,6 @@ var FilterPage = React.createClass({
     return {
       filters: FilterStore.all(),
       filterStep: FilterStore.filterStep(),
-      availableFilters: FilterStore.availableFilters()
     };
   },
 
@@ -24,7 +23,6 @@ var FilterPage = React.createClass({
     this.setState({
       filters: FilterStore.all(),
       filterStep: FilterStore.filterStep(),
-      availableFilters: FilterStore.availableFilters()
     });
   },
 
@@ -33,8 +31,7 @@ var FilterPage = React.createClass({
       <div className="filter">
         <FilterSidebar
           filters={this.state.filters}
-          filterStep={this.state.filterStep}
-          availableFilters={this.state.availableFilters}/>
+          filterStep={this.state.filterStep}/>
         <FilterResults filters={this.state.filters}/>
       </div>
     );

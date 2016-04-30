@@ -15,11 +15,6 @@ FilterStore.__onDispatch = function(payload) {
       setFilterStep(payload.filterStep);
       this.__emitChange();
       break;
-
-    case FilterConstants.UPDATE_AVAILABLE_FILTERS:
-      setAvailableFilters(payload.availableFilters);
-      this.__emitChange();
-      break;
   }
 };
 
@@ -31,19 +26,14 @@ FilterStore.filterStep = function() {
   return _filterStep;
 };
 
-FilterStore.availableFilters = function() {
-  _availableFilters.slice();
-};
-
 // private
 var _filters = {
   dates: ["2013-02-08", "2013-04-08"],
-  venueSize: "200+"
+  venueSize: "200+",
+  categories: [1, 3]
 };
 
-var _filterStep = 3;
-
-var _availableFilters = [];
+var _filterStep = 1;
 
 function setFilter(filter) {
   // TODO
@@ -53,10 +43,6 @@ function setFilter(filter) {
 
 function setFilterStep(filterStep) {
   _filterStep = filterStep;
-}
-
-function setAvailableFilters(availableFilters) {
-  _availableFilters = availableFilters;
 }
 
 module.exports = FilterStore;

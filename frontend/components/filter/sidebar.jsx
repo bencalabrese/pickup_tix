@@ -1,5 +1,6 @@
 var React = require('react'),
-    CurrentFilters = require('./current_filters');
+    CurrentFilters = require('./current_filters'),
+    FiltersIndex = require('./filters_index');
 
 var FilterSidebar = React.createClass({
   render: function() {
@@ -9,9 +10,7 @@ var FilterSidebar = React.createClass({
         <CurrentFilters
           filters={this.props.filters}
           filterStep={this.props.filterStep}/>
-        <FiltersIndex
-          availableFilters={this.props.availableFilters}
-          filterStep={this.props.filterStep}/>
+        <FiltersIndex filterStep={this.props.filterStep}/>
       </div>
     );
   }
