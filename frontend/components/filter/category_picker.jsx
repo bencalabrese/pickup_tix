@@ -1,9 +1,12 @@
 var React = require('react'),
     FilterStore = require('../../stores/filter'),
     FilterActions = require('../../actions/filter_actions'),
+    SetFilterStep = require('../../mixins/set_filter_step'),
     CATEGORIES = require('../../constants/filter_name_maps').CATEGORIES;
 
 var CategoryPicker = React.createClass({
+  mixins: [SetFilterStep],
+
   getInitialState: function() {
     return { selectedCategories: FilterStore.all().category_ids };
   },
@@ -60,7 +63,7 @@ var CategoryPicker = React.createClass({
           {categoryLIs}
         </ul>
 
-        <button>Pick dates >></button>
+        <p onClick={this.goToDates}>Pick dates >></p>
       </div>
     );
   }

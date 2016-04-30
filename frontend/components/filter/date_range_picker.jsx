@@ -1,12 +1,15 @@
 var React = require('react'),
     FilterStore = require('../../stores/filter'),
     FilterActions = require('../../actions/filter_actions'),
+    SetFilterStep = require('../../mixins/set_filter_step'),
     moment = require('moment'),
     DatePicker = require('react-datepicker');
 
 require('react-datepicker/dist/react-datepicker.css');
 
 var DateRangePicker = React.createClass({
+  mixins: [SetFilterStep],
+
   getInitialState: function() {
     return { date_range: [moment(), moment()] };
   },
@@ -47,7 +50,7 @@ var DateRangePicker = React.createClass({
         <h5>End Date</h5>
         <DatePicker selected={endDate} onChange={this.updateEnd}/>
 
-        <button>Pick Venue Size >></button>
+        <p onClick={this.goToVenueSize}>Pick Venue Size >></p>
       </div>
     );
   }

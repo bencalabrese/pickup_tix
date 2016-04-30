@@ -31,7 +31,7 @@ var _filters = {
   category_ids: [1, 2, 3]
 };
 
-var _filterStep = 2;
+var _filterStep = 1;
 
 function setFilter(filter) {
   $.extend(_filters, filter);

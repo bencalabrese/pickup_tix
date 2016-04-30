@@ -1,19 +1,32 @@
 var React = require('react'),
     CategoryPicker = require('./category_picker'),
-    DateRangePicker = require('./date_range_picker');
+    DateRangePicker = require('./date_range_picker'),
+    VenueSizePicker = require('./venue_size_picker');
 
 var FiltersIndex = React.createClass({
+  getInitialState: function() {
+    return { filterStep: this.props.filterStep };
+  },
+
+  componentWillReceiveProps: function(newProps) {
+    this.setState({ filterStep: newProps.filterStep });
+  },
+
   render: function() {
     var content;
 
-    switch (this.props.filterStep) {
+    switch (this.state.filterStep) {
       case 1:
         content = <CategoryPicker/>;
         break;
 
       case 2:
         content = <DateRangePicker/>;
-        break
+        break;
+
+      case 3:
+        content = <VenueSizePicker/>;
+        break;
     }
 
     return content;

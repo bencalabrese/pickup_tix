@@ -36,3 +36,5 @@ var appRouter = (
 $(function() {
   ReactDOM.render(appRouter, document.getElementById('root'));
 });
+
+window.FilterStore = require('./stores/filter');
