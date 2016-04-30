@@ -28,7 +28,7 @@ FilterStore.filterStep = function() {
 
 // private
 var _filters = {
-  category_ids: [1, 3]
+  category_ids: [1, 2, 3]
 };
 
 var _filterStep = 1;

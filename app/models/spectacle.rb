@@ -35,6 +35,8 @@ class Spectacle < ActiveRecord::Base
   ]
 
   def self.find_by_filter_params(params = {})
+    return [] if params[:none]
+
     keyword_where  = params[:keyword] ? ["title LIKE ?", "%#{params[:keyword]}%"] : [nil]
     category_ids   = params[:category_ids]
     category_where = params[:category_ids] ? { category_id: category_ids } : nil
@@ -73,6 +75,11 @@ class Spectacle < ActiveRecord::Base
         .having(*seats_having)
         .order(order_type)
         .limit(limit)
+  end
+
+  def self.exclusionary_params?(params)
+    (params[:category_ids] && params[:category_ids].empty?) ||
+      (params[:tag_ids] && params[:tag_ids].empty?)
   end
 
   def first_performance

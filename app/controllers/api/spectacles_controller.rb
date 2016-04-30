@@ -11,6 +11,15 @@ class Api::SpectaclesController < ApplicationController
 
   private
   def filter_params
-    params.require(:filter).permit(category_ids: [])
+    params.require(:filter).permit(
+      :none,
+      :keyword,
+      :random,
+      :limit,
+      category_ids: [],
+      date_range: [],
+      tag_ids: [],
+      venue_size: [],
+    )
   end
 end
