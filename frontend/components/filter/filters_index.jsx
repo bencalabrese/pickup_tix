@@ -1,7 +1,8 @@
 var React = require('react'),
     CategoryPicker = require('./category_picker'),
     DateRangePicker = require('./date_range_picker'),
-    VenueSizePicker = require('./venue_size_picker');
+    VenueSizePicker = require('./venue_size_picker'),
+    TagPicker = require('./tag_picker');
 
 var FiltersIndex = React.createClass({
   getInitialState: function() {
@@ -26,6 +27,10 @@ var FiltersIndex = React.createClass({
 
       case 3:
         content = <VenueSizePicker/>;
+        break;
+
+      case 4:
+        content = <TagPicker/>;
         break;
     }
 

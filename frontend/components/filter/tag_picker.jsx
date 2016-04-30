@@ -2,13 +2,13 @@ var React = require('react'),
     FilterStore = require('../../stores/filter'),
     FilterActions = require('../../actions/filter_actions'),
     SetFilterStep = require('../../mixins/set_filter_step'),
-    CATEGORIES = require('../../constants/filter_name_maps').CATEGORIES;
+    TAGS = require('../../constants/filter_name_maps').TAGS;
 
-var CategoryPicker = React.createClass({
+var TagPicker = React.createClass({
   mixins: [SetFilterStep],
 
   getInitialState: function() {
-    return { category_ids: FilterStore.all().category_ids };
+    return { tag_ids: FilterStore.all().tag_ids };
   },
 
   componentDidMount: function() {
@@ -20,53 +20,51 @@ var CategoryPicker = React.createClass({
   },
 
   _onChange: function() {
-    this.setState({ category_ids: FilterStore.all().category_ids });
+    this.setState({ tag_ids: FilterStore.all().tag_ids });
   },
 
-  inStore: function(categoryId) {
-    return this.state.category_ids.indexOf(categoryId) !== -1;
+  inStore: function(tag_id) {
+    return this.state.tag_ids.indexOf(tag_id) !== -1;
   },
 
   toggleCategory: function(event) {
     var id = parseInt(event.currentTarget.getAttribute("data-id"));
-    var category_ids = this.state.category_ids;
+    var tag_ids = this.state.tag_ids;
     var updatedCategories;
 
     if (this.inStore(id)) {
-      var idIndex = category_ids.indexOf(id);
-      category_ids.splice(idIndex, 1);
+      var idIndex = tag_ids.indexOf(id);
+      tag_ids.splice(idIndex, 1);
     } else {
-      category_ids.push(id);
+      tag_ids.push(id);
     }
 
-    FilterActions.setFilter({ category_ids: category_ids });
+    FilterActions.setFilter({ tag_ids: tag_ids });
   },
 
   render: function() {
-    var categoryLIs = CATEGORIES.map(function(c) {
-      var className = this.inStore(c.id) ? "selected" : "unselected";
+    var tagLIs = TAGS.map(function(tag) {
+      var className = this.inStore(tag.id) ? "selected" : "unselected";
 
       return (
-        <li data-id={c.id}
+        <li data-id={tag.id}
             onClick={this.toggleCategory}
             className={className}
-            key={c.id}>
-          {c.name}
+            key={tag.id}>
+          {tag.name}
         </li>
       );
     }.bind(this));
 
     return (
       <div>
-        <h3>Select Categories</h3>
+        <h3>Select Tags</h3>
         <ul>
-          {categoryLIs}
+          {tagLIs}
         </ul>
-
-        <p onClick={this.goToDates}>Pick dates >></p>
       </div>
     );
   }
 });
 
-module.exports = CategoryPicker;
+module.exports = TagPicker;

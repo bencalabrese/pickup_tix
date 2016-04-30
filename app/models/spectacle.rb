@@ -59,7 +59,7 @@ class Spectacle < ActiveRecord::Base
       seats_join         = { venue: [{sections: [{seat_blocks: :seats}]}] }
       seat_min, seat_max = params[:venue_size]
       seats_group        = "spectacles.id"
-      seats_having       = ["COUNT(seats.id) BETWEEN ? AND ?", seat_min, seat_max]
+      seats_having       = ["COUNT(DISTINCT seats.id) BETWEEN ? AND ?", seat_min, seat_max]
     else
       seats_having   = [nil]
     end
