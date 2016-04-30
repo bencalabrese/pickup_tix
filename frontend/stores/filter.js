@@ -28,16 +28,12 @@ FilterStore.filterStep = function() {
 
 // private
 var _filters = {
-  dates: ["2013-02-08", "2013-04-08"],
-  venueSize: "200+",
-  categories: [1, 3]
+  category_ids: [1, 3]
 };
 
 var _filterStep = 1;
 
 function setFilter(filter) {
-  // TODO
-  // doublecheck that this mutates _filters
   $.extend(_filters, filter);
 }
 

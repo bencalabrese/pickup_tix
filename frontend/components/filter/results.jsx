@@ -1,16 +1,31 @@
 var React = require('react'),
-    SpectaclesIndex = require('../spectacles/spectacles_index');
+    SpectaclesIndex = require('../spectacles/spectacles_index'),
+    FilterStore = require('../../stores/filter');
 
 var FilterResults = React.createClass({
+  getInitialState: function() {
+    return { filters: FilterStore.all() };
+  },
+
+  componentWillMount: function() {
+    this.listener = FilterStore.addListener(this._onChange);
+  },
+
+  componentWillUnmount: function() {
+    this.listener.remove();
+  },
+
+  _onChange: function() {
+    this.setState({ filters: FilterStore.all() });
+  },
 
   render: function() {
     return (
       <div>
-        <SpectaclesIndex filters={this.props.filters}/>
+        <SpectaclesIndex filters={this.state.filters}/>
       </div>
     );
   }
-
 });
 
 module.exports = FilterResults;

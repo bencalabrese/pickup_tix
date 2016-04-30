@@ -10,7 +10,7 @@ var CATEGORIES = [
 
 var CategoryPicker = React.createClass({
   getInitialState: function() {
-    return { selectedCategories: FilterStore.all().categories };
+    return { selectedCategories: FilterStore.all().category_ids };
   },
 
   componentDidMount: function() {
@@ -22,7 +22,7 @@ var CategoryPicker = React.createClass({
   },
 
   _onChange: function() {
-    this.setState({ selectedCategories: FilterStore.all().categories });
+    this.setState({ selectedCategories: FilterStore.all().category_ids });
   },
 
   inStore: function(categoryId) {
@@ -41,7 +41,7 @@ var CategoryPicker = React.createClass({
       selectedCategories.push(id);
     }
 
-    FilterActions.setFilter({ categories: selectedCategories });
+    FilterActions.setFilter({ category_ids: selectedCategories });
   },
 
   render: function() {

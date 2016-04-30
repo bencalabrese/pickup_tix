@@ -11,6 +11,6 @@ class Api::SpectaclesController < ApplicationController
 
   private
   def filter_params
-    params.require(:filter).permit(*Spectacle::FILTER_PARAM_KEYS)
+    params.require(:filter).permit(category_ids: [])
   end
 end

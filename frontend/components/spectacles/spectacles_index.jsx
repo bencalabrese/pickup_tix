@@ -13,7 +13,7 @@ var SpectaclesIndex = React.createClass({
     SpectacleClientActions.fetchSpectaclesByParams(this.props.filters);
   },
 
-  willReceiveProps: function(newProps) {
+  componentWillReceiveProps: function(newProps) {
     SpectacleClientActions.fetchSpectaclesByParams(newProps.filters);
   },
 

@@ -13,8 +13,8 @@ var CurrentFilters = React.createClass({
         venueSize = " > Any venue size",
         allFilters = [];
 
-    if (filters.categories) {
-      categories = filters.categories.join(", ");
+    if (filters.category_ids) {
+      categories = filters.category_ids.join(", ");
     }
 
     if (filters.dates) {
