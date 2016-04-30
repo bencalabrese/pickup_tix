@@ -1,20 +1,24 @@
 var React = require('react'),
     moment = require('moment'),
     SetFilterStep = require('../../mixins/set_filter_step'),
-    FilterActions = require("../../actions/filter_actions");
+    FilterActions = require("../../actions/filter_actions"),
+    CATEGORIES = require('../../constants/filter_name_maps').CATEGORIES;
 
 var CurrentFilters = React.createClass({
   mixins: [SetFilterStep],
 
   render: function() {
     var filters = this.props.filters,
-        categories = "All Event Types",
+        categories = "Music, Dance, Theater",
         dates = " > All dates",
         venueSize = " > Any venue size",
         allFilters = [];
 
     if (filters.category_ids) {
-      categories = filters.category_ids.join(", ");
+      categories = filters.category_ids.map(function(id) {
+        return CATEGORIES[id - 1].name;
+      }).join(", ");
+      if (categories.length < 1) { categories = "None"; }
     }
 
     if (filters.dates) {

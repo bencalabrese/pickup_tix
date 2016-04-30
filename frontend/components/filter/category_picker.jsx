@@ -1,12 +1,7 @@
 var React = require('react'),
     FilterStore = require('../../stores/filter'),
-    FilterActions = require('../../actions/filter_actions');
-
-var CATEGORIES = [
-  { id: 1, name: "Dance"   },
-  { id: 2, name: "Music"   },
-  { id: 3, name: "Theater" }
-];
+    FilterActions = require('../../actions/filter_actions'),
+    CATEGORIES = require('../../constants/filter_name_maps').CATEGORIES;
 
 var CategoryPicker = React.createClass({
   getInitialState: function() {
@@ -61,9 +56,9 @@ var CategoryPicker = React.createClass({
     return (
       <div>
         <h3>Select Categories</h3>
-        <form>
+        <ul>
           {categoryLIs}
-        </form>
+        </ul>
 
         <button>Pick dates >></button>
       </div>

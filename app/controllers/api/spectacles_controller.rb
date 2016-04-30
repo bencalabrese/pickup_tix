@@ -11,7 +11,7 @@ class Api::SpectaclesController < ApplicationController
 
   private
   def filter_params
-    params.require(:filter).permit(
+    filter_params = params.require(:filter).permit(
       :none,
       :keyword,
       :random,
@@ -21,5 +21,11 @@ class Api::SpectaclesController < ApplicationController
       tag_ids: [],
       venue_size: [],
     )
+
+    if filter_params[:date_range]
+      filter_params[:date_range].map! { |date| DateTime.parse(date) }
+    end
+
+    filter_params
   end
 end
