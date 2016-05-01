@@ -1,10 +1,9 @@
 var React = require('react'),
     UserActions = require('../../actions/user_actions'),
-    LinkedStateMixin = require('react-addons-linked-state-mixin'),
     CurrentUserStateMixin = require('../../mixins/current_user_state');
 
 var LoginForm = React.createClass({
-  mixins: [CurrentUserStateMixin, LinkedStateMixin],
+  mixins: [CurrentUserStateMixin],
 
   DEMO_USERNAME: ["G", "u", "e", "s", "t"],
 
