@@ -11,7 +11,7 @@ var DateRangePicker = React.createClass({
   mixins: [SetFilterStep],
 
   getInitialState: function() {
-    return { date_range: [moment(), moment()] };
+    return { date_range: FilterStore.all().date_range };
   },
 
   componentDidMount: function() {
@@ -27,13 +27,15 @@ var DateRangePicker = React.createClass({
   },
 
   updateStart: function(newStart) {
-    this.state.date_range[0] = newStart;
-    FilterActions.setFilter({ date_range: this.state.date_range });
+    var newRange = [newStart, this.state.date_range[1]];
+    newRange = [moment.min(newRange), moment.max(newRange)];
+    FilterActions.setFilter({ date_range: newRange });
   },
 
   updateEnd: function(newEnd) {
-    this.state.date_range[1] = newEnd;
-    FilterActions.setFilter({ date_range: this.state.date_range });
+    var newRange = [this.state.date_range[0], newEnd];
+    newRange = [moment.min(newRange), moment.max(newRange)];
+    FilterActions.setFilter({ date_range: newRange });
   },
 
   render: function() {
@@ -45,10 +47,18 @@ var DateRangePicker = React.createClass({
         <h3>Select Date Range</h3>
 
         <h5>Start Date</h5>
-        <DatePicker selected={startDate} onChange={this.updateStart}/>
+        <DatePicker
+            selected={startDate}
+            onChange={this.updateStart}
+            startDate={startDate}
+            endDate={endDate}/>
 
         <h5>End Date</h5>
-        <DatePicker selected={endDate} onChange={this.updateEnd}/>
+        <DatePicker
+          selected={endDate}
+          onChange={this.updateEnd}
+          startDate={startDate}
+          endDate={endDate}/>
 
         <p onClick={this.goToVenueSize}>Pick Venue Size >></p>
       </div>

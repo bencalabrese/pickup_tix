@@ -1,7 +1,8 @@
 var Store = require('flux/utils').Store,
     FilterConstants = require('../constants/filter_constants'),
     dispatcher = require('../dispatcher/dispatcher'),
-    FilterStore = new Store(dispatcher);
+    FilterStore = new Store(dispatcher),
+    moment = require('moment');
 
 // API
 FilterStore.__onDispatch = function(payload) {
@@ -29,7 +30,8 @@ FilterStore.filterStep = function() {
 // private
 var _filters = {
   category_ids: [],
-  tag_ids: []
+  tag_ids: [],
+  date_range: [moment(), moment().add(1, 'week')]
 };
 
 var _filterStep = 1;

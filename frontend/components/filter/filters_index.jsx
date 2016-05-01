@@ -1,4 +1,5 @@
 var React = require('react'),
+    ReactCSSTransitionGroup = require('react-addons-css-transition-group'),
     CategoryPicker = require('./category_picker'),
     DateRangePicker = require('./date_range_picker'),
     VenueSizePicker = require('./venue_size_picker'),
@@ -18,19 +19,47 @@ var FiltersIndex = React.createClass({
 
     switch (this.state.filterStep) {
       case 1:
-        content = <CategoryPicker/>;
+        content = (
+          <ReactCSSTransitionGroup
+            transitionName="carousel"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300}>
+              <CategoryPicker key="categories"/>
+          </ReactCSSTransitionGroup>
+        );
         break;
 
       case 2:
-        content = <DateRangePicker/>;
+        content = (
+          <ReactCSSTransitionGroup
+            transitionName="carousel"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300}>
+              <DateRangePicker key="dates"/>
+          </ReactCSSTransitionGroup>
+        );
         break;
 
       case 3:
-        content = <VenueSizePicker/>;
+        content = (
+          <ReactCSSTransitionGroup
+            transitionName="carousel"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300}>
+              <VenueSizePicker key="venueSizes"/>
+          </ReactCSSTransitionGroup>
+        );
         break;
 
       case 4:
-        content = <TagPicker/>;
+        content = (
+          <ReactCSSTransitionGroup
+            transitionName="carousel"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300}>
+              <TagPicker key="tags"/>
+          </ReactCSSTransitionGroup>
+        );
         break;
     }
 

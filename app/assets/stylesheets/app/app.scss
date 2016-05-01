@@ -92,8 +92,11 @@ footer {
 
 .sidebar {
   background: $dark-pink;
+  width: 300px;
   min-width: 300px;
   padding: 25px;
+  position: relative;
+  overflow: hidden;
 }
 
 .modal-overlay {
@@ -115,4 +118,38 @@ footer {
   -webkit-overflow-scrolling: touch;
   border-radius: 4px;
   outline: none;
+}
+
+.carousel-enter {
+  transform:   translate(100%,0);
+  transform: translate3d(100%,0,0);
+  position: absolute;
+  width: 100%;
+}
+
+.carousel-enter.carousel-enter-active {
+	transform:   translate(0,0);
+	transform: translate3d(0,0,0);
+	transition-property: transform;
+	transition-duration: 500ms;
+	transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+  position: absolute;
+  width: 100%;
+}
+
+.carousel-leave {
+	transform:   translate(0,0,0);
+	transform: translate3d(0,0,0);
+	transition-property: transform;
+	transition-duration: 500ms;
+	transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+  position: absolute;
+  width: 100%;
+}
+
+.carousel-leave.carousel-leave-active {
+	transform:   translate(-100%,0);
+	transform: translate3d(-100%,0,0);
+  position: absolute;
+  width: 100%;
 }
