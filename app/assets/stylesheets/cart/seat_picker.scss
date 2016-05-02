@@ -17,7 +17,7 @@
   background-color: $light_pink;
 }
 
-.available:hover {
+.available:hover, .selected {
   background-color: $dark-pink;
 }
 
@@ -27,4 +27,8 @@
 
 .null-seat {
   background-color: transparent;
+}
+
+.tickets-list {
+  float:right;
 }

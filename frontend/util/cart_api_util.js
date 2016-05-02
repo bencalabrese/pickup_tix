@@ -22,7 +22,7 @@ var CartApiUtil = {
       url: 'api/tickets',
       data: { ticket_ids: ticketIds },
       success: function() {
-        CartServerActions.updateCartStatus("checkout completed");
+        CartServerActions.resetCart();
       },
       error: function(response) {
       }

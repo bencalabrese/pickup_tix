@@ -12,12 +12,12 @@ CartStore.__onDispatch = function(payload) {
       break;
 
     case CartConstants.ADD_SINGLE_TICKET:
-      addTicket(payload.ticket);
+      addTicket(payload.ticketId);
       this.__emitChange();
       break;
 
     case CartConstants.REMOVE_SINGLE_TICKET:
-      removeTicket(payload.ticket);
+      removeTicket(payload.ticketId);
       this.__emitChange();
       break;
 
@@ -55,12 +55,13 @@ function resetPerformance(fetchedPerformance) {
   _performance = fetchedPerformance;
 }
 
-function addTicket(ticket) {
-  _tickets.push(ticket);
+function addTicket(ticketId) {
+
+  _tickets.push(ticketId);
 }
 
-function removeTicket(ticket) {
-  _tickets.splice(_tickets.indexOf(ticket), 1);
+function removeTicket(ticketId) {
+  _tickets.splice(_tickets.indexOf(ticketId), 1);
 }
 
 function updateCartStatus(newStatus) {

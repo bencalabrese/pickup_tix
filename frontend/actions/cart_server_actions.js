@@ -7,6 +7,12 @@ var CartServerActions = {
       actionType: CartConstants.RECEIVE_SINGLE_PERFORMANCE,
       fetchedPerformance: fetchedPerformance
     });
+  },
+
+  resetCart: function() {
+    dispatcher.dispatch({
+      actionType: CartConstants.RESET_CART
+    });
   }
 };
 

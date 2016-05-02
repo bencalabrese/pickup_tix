@@ -6,7 +6,10 @@ var React = require('react'),
 
 var SeatPicker = React.createClass({
   getInitialState: function() {
-    return { venueMap: CartStore.performance().venueMap };
+    return {
+      venueMap: CartStore.performance().venueMap,
+      tickets: CartStore.tickets()
+    };
   },
 
   componentDidMount: function() {
@@ -18,13 +21,10 @@ var SeatPicker = React.createClass({
   },
 
   _onChange: function() {
-    this.setState({ venueMap: CartStore.performance().venueMap });
-  },
-
-  toggleTicket: function(event) {
-    var ticketId = event.currentTarget.getAttribute("data-id");
-
-    CartActions.addSingleTicket(ticketId);
+    this.setState({
+      venueMap: CartStore.performance().venueMap,
+      tickets: CartStore.tickets()
+    });
   },
 
   render: function() {
@@ -36,11 +36,19 @@ var SeatPicker = React.createClass({
                seatBlocks={section.seat_blocks}/>;
     });
 
+    var tickets = this.state.tickets.map(function(ticket) {
+      return <li key={ticket}>{ticket}</li>;
+    });
+
     return (
 
       <div>
         Hello world
         {sections}
+
+        <ul className="tickets-list">
+          {tickets}
+        </ul>
       </div>
     );
   }
