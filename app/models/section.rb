@@ -15,4 +15,10 @@ class Section < ActiveRecord::Base
   belongs_to :venue
   has_many :seat_blocks
   has_many :seats, through: :seat_blocks
+
+  def gen_seat_blocks_matrix(tickets)
+    seat_blocks.map do |seat_block|
+      seat_block.gen_seats_matrix(tickets)
+    end
+  end
 end

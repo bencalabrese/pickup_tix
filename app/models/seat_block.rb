@@ -15,4 +15,15 @@ class SeatBlock < ActiveRecord::Base
   belongs_to :section
   has_one :venue, through: :section
   has_many :seats
+
+  def gen_seats_matrix(tickets)
+    matrix = []
+
+    seats.each do |seat|
+      matrix[seat.row] ||= []
+      matrix[seat.row][seat.col] = tickets[seat.id]
+    end
+
+    { style: style, matrix: matrix }
+  end
 end

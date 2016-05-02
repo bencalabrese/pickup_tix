@@ -45,7 +45,7 @@ def gen_performances(spectacle)
 end
 
 def gen_sections(venue)
-  %w(Orchestra Mezzanine Balcony).each do |section_name|
+  %w(Orchestra).each do |section_name|
     section = Section.create!(name: section_name, venue: venue)
     gen_seat_blocks(section)
   end
@@ -59,8 +59,15 @@ def gen_seat_blocks(section)
 end
 
 def gen_seats(seat_block)
-  10.times do |i|
-    Seat.create!(seat_block: seat_block, name: "#{i}")
+  5.times do |row|
+    4.times do |col|
+      Seat.create!(
+        seat_block: seat_block,
+        row: row,
+        col: col,
+        name: "#{seat_block.id}: #{row}#{col}"
+      )
+    end
   end
 end
 

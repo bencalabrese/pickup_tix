@@ -37,4 +37,4 @@ $(function() {
   ReactDOM.render(appRouter, document.getElementById('root'));
 });
 
-window.FilterStore = require('./stores/filter');
+window.CartStore = require('./stores/cart');

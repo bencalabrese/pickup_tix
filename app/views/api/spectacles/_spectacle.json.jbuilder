@@ -9,5 +9,6 @@ json.last_performance spectacle.last_performance
 if performances_needed
   json.performances spectacle.performances,
     partial: "api/performances/performance",
-    as: :performance
+    as: :performance,
+    tickets: false
 end

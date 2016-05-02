@@ -16,6 +16,7 @@ class Performance < ActiveRecord::Base
   after_create :generate_tickets
 
   belongs_to :spectacle
+  has_one :venue, through: :spectacle
 
   def generate_tickets
     spectacle.venue.seats.each do |seat|

@@ -16,4 +16,13 @@ class Venue < ActiveRecord::Base
   has_many :seats, through: :seat_blocks
 
   has_many :spectacles
+
+  def gen_sections_matrix(tickets)
+    sections.map do |section|
+      {
+        name: section.name,
+        seat_blocks: section.gen_seat_blocks_matrix(tickets)
+      }
+    end
+  end
 end
