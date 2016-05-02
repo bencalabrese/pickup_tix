@@ -8,7 +8,6 @@ CartStore.__onDispatch = function(payload) {
   switch (payload.actionType) {
     case CartConstants.RECEIVE_SINGLE_PERFORMANCE:
       resetPerformance(payload.fetchedPerformance);
-      setTickets(payload.fetchedPerformance);
       this.__emitChange();
       break;
 
@@ -44,30 +43,24 @@ CartStore.cartStatus = function() {
 };
 
 CartStore.tickets = function() {
-  var result = [];
-
-  Object.keys(_tickets).forEach(function(id){
-    result.push($.extend(true, {}, _tickets[id]));
-  });
-
-  return result;
+  return _tickets.slice();
 };
 
 // private
 var _performance = null;
-var _tickets = {};
+var _tickets = [];
 var _cartStatus = "closed";
 
-function resetPerformance(newPerformance) {
-  _performance = newPerformance;
+function resetPerformance(fetchedPerformance) {
+  _performance = fetchedPerformance;
 }
 
 function addTicket(ticket) {
-  _tickets[ticket.id] = ticket;
+  _tickets.push(ticket);
 }
 
 function removeTicket(ticket) {
-  delete _tickets[ticket.id];
+  _tickets.splice(_tickets.indexOf(ticket), 1);
 }
 
 function updateCartStatus(newStatus) {
@@ -76,12 +69,8 @@ function updateCartStatus(newStatus) {
 
 function resetCart() {
   _cartStatus = "closed";
-  _tickets = {};
+  _tickets = [];
   _performance = null;
-}
-
-function setTickets(fetchedPerformance) {
-  console.log(fetchedPerformance);
 }
 
 module.exports = CartStore;

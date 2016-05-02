@@ -4,9 +4,9 @@ var React = require('react'),
     SpectacleStore = require('../../stores/spectacle'),
     SpectacleModalNav = require('./spectacle_modal_nav'),
     SpectacleModalDetail = require('./spectacle_modal_detail'),
-    PerformancePicker = require('./performance_picker'),
-    SeatPicker = require('./seat_picker'),
-    OrderConfirmation = require('./order_confirmation');
+    PerformancePicker = require('../cart/performance_picker'),
+    SeatPicker = require('../cart/seat_picker'),
+    OrderConfirmation = require('../cart/order_confirmation');
 
 var SpectacleModal = React.createClass({
   getInitialState: function() {
@@ -73,7 +73,8 @@ var SpectacleModal = React.createClass({
             transitionName="carousel"
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}>
-              <SeatPicker key="seats"/>
+              <SeatPicker
+                key="seats"/>
           </ReactCSSTransitionGroup>
         );
         break;

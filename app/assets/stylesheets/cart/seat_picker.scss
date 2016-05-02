@@ -1,0 +1,30 @@
+@import "../app/app";
+
+.seating-section {
+  table {
+    float: left;
+  }
+}
+
+.seat {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.available {
+  background-color: $light_pink;
+}
+
+.available:hover {
+  background-color: $dark-pink;
+}
+
+.unavailable {
+  background-color: $medium-gray;
+}
+
+.null-seat {
+  background-color: transparent;
+}

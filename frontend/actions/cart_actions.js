@@ -22,6 +22,20 @@ var CartClientActions = {
     dispatcher.dispatch({
       actionType: CartConstants.RESET_CART
     });
+  },
+
+  addSingleTicket: function(id) {
+    dispatcher.dispatch({
+      actionType: CartConstants.ADD_SINGLE_TICKET,
+      ticketId: id
+    });
+  },
+
+  removeSingleTicket: function(id) {
+    dispatcher.dispatch({
+      actionType: CartConstants.REMOVE_SINGLE_TICKET,
+      ticketId: id
+    });
   }
 };
 

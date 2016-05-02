@@ -15,5 +15,5 @@ if tickets
     }
   end
 
-  json.venueMap = performance.venue.gen_sections_matrix(ticket_map)
+  json.venueMap performance.venue.gen_sections_matrix(ticket_map)
 end
