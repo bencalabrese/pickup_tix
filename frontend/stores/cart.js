@@ -81,9 +81,7 @@ function resetCart() {
 }
 
 function setTickets(fetchedPerformance) {
-  fetchedPerformance.tickets.forEach(function(ticket) {
-    _tickets[ticket.id] = ticket;
-  });
+  console.log(fetchedPerformance);
 }
 
 module.exports = CartStore;

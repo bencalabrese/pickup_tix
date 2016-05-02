@@ -1,1 +1,1 @@
-json.partial! "performance", performance: @performance, tickets: true
+json.partial! "performance", performance: @performance, tickets: @performance.tickets
