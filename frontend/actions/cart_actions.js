@@ -1,4 +1,6 @@
-var CartApiUtil = require('../util/cart_api_util');
+var CartApiUtil = require('../util/cart_api_util'),
+    CartConstants = require('../constants/cart_constants'),
+    dispatcher = require('../dispatcher/dispatcher');
 
 var CartClientActions = {
   fetchSinglePerformance: function(id) {
@@ -7,6 +9,19 @@ var CartClientActions = {
 
   assignTickets: function(ticketIds) {
     CartApiUtil.assignTickets(ticketIds);
+  },
+
+  updateCartStatus: function(newStatus) {
+    dispatcher.dispatch({
+      actionType: CartConstants.UPDATE_CART_STATUS,
+      newStatus: newStatus
+    });
+  },
+
+  resetCart: function() {
+    dispatcher.dispatch({
+      actionType: CartConstants.RESET_CART
+    });
   }
 };
 

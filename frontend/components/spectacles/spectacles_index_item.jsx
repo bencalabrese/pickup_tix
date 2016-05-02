@@ -1,7 +1,9 @@
 var React = require('react'),
     Modal = require('react-modal'),
     moment = require('moment'),
-    SpectacleModal = require('./spectacle_modal');
+    SpectacleActions = require('../../actions/spectacle_actions'),
+    SpectacleModal = require('./spectacle_modal'),
+    CartActions = require('../../actions/cart_actions');
 
 var SpectaclesIndexItem = React.createClass({
   getInitialState: function() {
@@ -13,10 +15,12 @@ var SpectaclesIndexItem = React.createClass({
   },
 
   openModal: function() {
+    SpectacleActions.fetchSingleSpectacle(this.props.spectacle.id);
     this.setState({ modalIsOpen: true });
   },
 
   closeModal: function() {
+    CartActions.resetCart();
     this.setState({ modalIsOpen: false });
   },
 
@@ -24,7 +28,7 @@ var SpectaclesIndexItem = React.createClass({
     var spectacle = this.props.spectacle,
         startDate = moment(spectacle.first_performance).format("MMM D"),
         endDate = moment(spectacle.last_performance).format("MMM D");
-        
+
     var dateRange = startDate + " - " + endDate;
 
     return (
@@ -33,7 +37,7 @@ var SpectaclesIndexItem = React.createClass({
                onRequestClose={this.closeModal}
                className="modal"
                overlayClassName="modal-overlay">
-          <SpectacleModal spectacle={spectacle}/>
+          <SpectacleModal id={spectacle.id}/>
         </Modal>
 
         <img src={spectacle.image_url} alt={spectacle.title}/>

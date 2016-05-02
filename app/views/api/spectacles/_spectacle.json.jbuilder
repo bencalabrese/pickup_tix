@@ -5,3 +5,9 @@ json.category spectacle.category.name
 # this needs to be an includes in a hugely bad way
 json.first_performance spectacle.first_performance
 json.last_performance spectacle.last_performance
+
+if performances_needed
+  json.performances spectacle.performances,
+    partial: "api/performances/performance",
+    as: :performance
+end

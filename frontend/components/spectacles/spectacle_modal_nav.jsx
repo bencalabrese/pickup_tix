@@ -1,14 +1,16 @@
-var React = require('react');
+var React = require('react'),
+    SetCartStatus = require('../../mixins/set_cart_status');
 
 var SpectacleModalNav = React.createClass({
+  mixins: [SetCartStatus],
 
   render: function() {
     return (
       <nav className="spectacle-modal-nav">
-        <button>Show Details</button>
-        <button>Select Date</button>
-        <button>Choose Seats</button>
-        <button>Confirmation</button>
+        <button onClick={this.goToDetail}>Show Details</button>
+        <button onClick={this.goToPerformances}>Select Date</button>
+        <button onClick={this.goToSeats}>Choose Seats</button>
+        <button onClick={this.goToConfirmation}>Confirmation</button>
       </nav>
     );
   }

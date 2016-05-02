@@ -7,13 +7,6 @@ var CartServerActions = {
       actionType: CartConstants.RECEIVE_SINGLE_PERFORMANCE,
       fetchedPerformance: fetchedPerformance
     });
-  },
-
-  updateCartStatus: function(newStatus) {
-    dispatcher.dispatch({
-      actionType: CartConstants.UPDATE_CART_STATUS,
-      newStatus: newStatus
-    });
   }
 };
 
