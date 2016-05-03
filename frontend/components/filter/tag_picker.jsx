@@ -49,9 +49,8 @@ var TagPicker = React.createClass({
       return (
         <li data-id={tag.id}
             onClick={this.toggleCategory}
-            className={className}
             key={tag.id}>
-          {tag.name}
+          <a className={className}>{tag.name}</a>
         </li>
       );
     }.bind(this));
@@ -59,7 +58,7 @@ var TagPicker = React.createClass({
     return (
       <div>
         <h3>Select Tags</h3>
-        <ul>
+        <ul className="filter-options">
           {tagLIs}
         </ul>
       </div>

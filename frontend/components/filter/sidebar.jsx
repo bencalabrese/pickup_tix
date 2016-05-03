@@ -29,7 +29,10 @@ var FilterSidebar = React.createClass({
   render: function() {
     return (
       <div className="sidebar">
-        <img src="http://www.placekitten.com/250/250"/>
+        <img
+          className="sidebar-sticks"
+          src="http://res.cloudinary.com/bencalabrese/image/upload/v1462293719/White_Sticks_xrezol.svg"/>
+
         <CurrentFilters
           filters={this.state.filters}
           filterStep={this.state.filterStep}/>

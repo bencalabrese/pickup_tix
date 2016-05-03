@@ -68,7 +68,7 @@ var LoginForm = React.createClass({
         });
 
         this.fillDemoUsername(_username);
-      }.bind(this), 150);
+      }.bind(this), 100);
     } else {
       var _password = this.DEMO_PASSWORD.slice();
       this.fillDemoPassword(_password);
@@ -83,7 +83,7 @@ var LoginForm = React.createClass({
         });
 
         this.fillDemoPassword(_password);
-      }.bind(this), 150);
+      }.bind(this), 100);
     } else {
       var dummyEvent = { preventDefault: function(){} };
       this.handleSubmit(dummyEvent);
@@ -116,31 +116,28 @@ var LoginForm = React.createClass({
     return (
       <div className="credentials-modal">
         {authErrorsUL}
-
-        <form onSubmit={this.handleSubmit}>
+        <div className="login-form">
           <h2>{this.state.formType}</h2>
+          <form onSubmit={this.handleSubmit}>
 
-          <label>Username
             <input type="text"
                    value={this.state.username}
                    onChange={this.changeUsername}/>
-          </label>
 
-          <label>Password
             <input type="password"
                    value={this.state.password}
                    onChange={this.changePassword}/>
-          </label>
 
-          <input type="submit" value={this.state.formType}/>
-          {toggleTypeText}
-        </form>
+            <input type="submit" value={this.state.formType}/>
+            {toggleTypeText}
+          </form>
+        </div>
 
         <h5>Or</h5>
 
-        <div>
+        <div className="login-form">
+          <h2>Demo</h2>
           <form onSubmit={this.demoLogin}>
-            <h2>Demo</h2>
 
             <input type="submit" value="Use Demo Account"/>
           </form>

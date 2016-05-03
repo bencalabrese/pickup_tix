@@ -12,9 +12,7 @@ var CurrenUserStateMixin = {
   componentDidMount: function() {
     this.UserStorelistener = UserStore.addListener(this.updateUser);
 
-    if (!UserStore.currentUser) {
-      UserActions.fetchCurrentUser();
-    }
+    UserActions.fetchCurrentUser();
   },
 
   componentWillUnmount: function(nextProps, nextState) {

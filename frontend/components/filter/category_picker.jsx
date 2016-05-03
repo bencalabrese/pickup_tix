@@ -49,9 +49,8 @@ var CategoryPicker = React.createClass({
       return (
         <li data-id={c.id}
             onClick={this.toggleCategory}
-            className={className}
             key={c.id}>
-          {c.name}
+          <a className={className}>{c.name}</a>
         </li>
       );
     }.bind(this));
@@ -59,11 +58,14 @@ var CategoryPicker = React.createClass({
     return (
       <div>
         <h3>Select Categories</h3>
-        <ul>
+        <ul className="filter-options">
           {categoryLIs}
         </ul>
 
-        <p onClick={this.goToDates}>Pick dates >></p>
+        <p className="next-filter-link"
+           onClick={this.goToDates}>
+           Pick dates >>
+        </p>
       </div>
     );
   }

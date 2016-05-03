@@ -10,7 +10,6 @@ var UserNav = React.createClass({
 
   componentWillMount: function() {
     Modal.setAppElement("body");
-    UserActions.fetchCurrentUser();
   },
 
   getInitialState: function() {

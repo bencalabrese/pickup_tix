@@ -9,7 +9,7 @@ var Header = React.createClass({
         <Link to="/">
           <img src="https://placekitten.com/150/40"
             alt="logo"
-            className="logo"/>          
+            className="logo"/>
         </Link>
 
         <nav>

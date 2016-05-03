@@ -37,4 +37,4 @@ $(function() {
   ReactDOM.render(appRouter, document.getElementById('root'));
 });
 
-window.CartStore = require('./stores/cart');
+window.UserStore = require('./stores/user');

@@ -84,8 +84,8 @@ the terminal.
 **Objective:** Performances can be read, through the API.
 
 - [X] Performances have seats through their Spectacle
-- [ ] API can read seats from `performance`
-- [ ] API can read remaining seats and booked seats
+- [X] API can read seats from `performance`
+- [X] API can read remaining seats and booked seats
 - [X] API allows booking of remaining seats
 
 ### Phase 6: Tags (0.5 day)
@@ -100,15 +100,15 @@ the terminal.
 **Objective:** Views for search bar and filter page
 
 - [ ] Search Bar searches by Spectacle name
-- [ ] Filtering allows searches to be broken down by tags, venue size, and dates
-- [ ] SpectaclesStore updates according to filter and displays results
+- [X] Filtering allows searches to be broken down by tags, venue size, and dates
+- [X] SpectaclesStore updates according to filter and displays results
 
 ### Phase 8: SpectacleDetail Modal and Checkout process (2 days)
 
 **Objective:** Spectacles can be seen in detail. Create ticketings through UI.
 
 - [X] Spectacle detail modal shows individual Spectacle
-- [ ] Pick performances, seats (from dropdown), checkout in modal
+- [X] Pick performances, seats (from dropdown), checkout in modal
 - [ ] Style modal
 
 ### Phase 9: Seed and build logo (1 day)
@@ -134,7 +134,7 @@ the terminal.
 - [ ] See all upcoming Spectacles and all past Spectacles attended
 
 ### Bonus Features (TBD)
-- [ ] Seat picker in purchase modal
+- [X] Seat picker in purchase modal
 - [ ] Recommendation engine in Rails
 - [ ] Display recommended Spectacles
 - [ ] Animations

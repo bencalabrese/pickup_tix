@@ -9,7 +9,7 @@ var Store = require('flux/utils').Store,
 UserStore.__onDispatch = function(payload) {
   switch (payload.actionType) {
     case UserConstants.RECEIVE_CURRENT_USER:
-      _currentUser = payload.currentUser;
+      resetCurrentUser(payload.currentUser);
       _authErrors = [];
       this.__emitChange();
       break;
@@ -34,5 +34,14 @@ UserStore.currentUser = function() {
 UserStore.authErrors = function() {
   return _authErrors.slice();
 };
+
+// private
+function resetCurrentUser(newUser) {
+  if (newUser.username) {
+    _currentUser = newUser;
+  } else {
+    _currentUser = null;
+  }
+}
 
 module.exports = UserStore;

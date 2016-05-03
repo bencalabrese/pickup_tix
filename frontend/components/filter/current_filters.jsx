@@ -44,7 +44,7 @@ var CurrentFilters = React.createClass({
     var filterLinks = allFilters.slice(0, this.props.filterStep);
 
     return (
-      <p>{filterLinks}</p>
+      <p className="current-filters">{filterLinks}</p>
     );
   }
 });

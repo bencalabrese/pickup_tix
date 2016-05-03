@@ -77,6 +77,9 @@ class Spectacle < ActiveRecord::Base
         .limit(limit)
   end
 
+
+  # TODO
+  # Check if this is still used
   def self.exclusionary_params?(params)
     (params[:category_ids] && params[:category_ids].empty?) ||
       (params[:tag_ids] && params[:tag_ids].empty?)
