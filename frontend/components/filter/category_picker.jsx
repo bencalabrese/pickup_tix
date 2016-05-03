@@ -62,9 +62,8 @@ var CategoryPicker = React.createClass({
           {categoryLIs}
         </ul>
 
-        <p className="next-filter-link"
-           onClick={this.goToDates}>
-           Pick dates >>
+        <p onClick={this.goToDates}>
+          <span className="next-filter-link">Pick dates >></span>
         </p>
       </div>
     );

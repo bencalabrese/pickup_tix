@@ -50,9 +50,8 @@ var VenueSizePicker = React.createClass({
       return (
         <li data-tuple={vS.tuple}
             onClick={this.toggleVenueSize}
-            className={className}
             key={vS.tuple}>
-          {vS.name}
+          <a className={className}>{vS.name}</a>
         </li>
       );
     }.bind(this));
@@ -60,11 +59,13 @@ var VenueSizePicker = React.createClass({
     return (
       <div>
         <h3>Select Venue Size</h3>
-        <ul>
+        <ul className="filter-options">
           {sizeLIs}
         </ul>
 
-        <p onClick={this.goToTags}>Pick tags >></p>
+        <p onClick={this.goToTags}>
+          <span className="next-filter-link">Pick tags >></span>
+        </p>
       </div>
     );
   }

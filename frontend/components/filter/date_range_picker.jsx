@@ -47,20 +47,25 @@ var DateRangePicker = React.createClass({
         <h3>Select Date Range</h3>
 
         <h5>Start Date</h5>
-        <DatePicker
-            selected={startDate}
-            onChange={this.updateStart}
+
+        <div className="filter-options">
+          <DatePicker
+              selected={startDate}
+              onChange={this.updateStart}
+              startDate={startDate}
+              endDate={endDate}/>
+
+          <h5>End Date</h5>
+          <DatePicker
+            selected={endDate}
+            onChange={this.updateEnd}
             startDate={startDate}
             endDate={endDate}/>
+        </div>
 
-        <h5>End Date</h5>
-        <DatePicker
-          selected={endDate}
-          onChange={this.updateEnd}
-          startDate={startDate}
-          endDate={endDate}/>
-
-        <p onClick={this.goToVenueSize}>Pick Venue Size >></p>
+        <p onClick={this.goToVenueSize}>
+          <span className="next-filter-link">Pick Venue Size >></span>
+        </p>
       </div>
     );
   }
