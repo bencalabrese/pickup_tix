@@ -110,8 +110,8 @@ var LoginForm = React.createClass({
     }
 
     toggleTypeText = this.state.formType === "Login" ?
-      <p>Need an account? Sign up <a onClick={this.toggleType}>here</a></p> :
-      <p>Already have an account? Login <a onClick={this.toggleType}>here</a></p>;
+      <a onClick={this.toggleType}>Need an account? Sign up here</a> :
+      <a onClick={this.toggleType}>Already have an account? Login here</a>;
 
     return (
       <div className="credentials-modal">
