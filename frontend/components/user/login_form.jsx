@@ -86,7 +86,7 @@ var LoginForm = React.createClass({
       }.bind(this), 100);
     } else {
       var dummyEvent = { preventDefault: function(){} };
-      this.handleSubmit(dummyEvent);
+      setTimeout(this.handleSubmit.bind(this, dummyEvent), 200);
     }
   },
 
@@ -106,7 +106,7 @@ var LoginForm = React.createClass({
         return <li key={error}>{error}</li>;
       });
 
-      authErrorsUL = <ul>{authErrorLIs}</ul>;
+      authErrorsUL = <ul className="errors">{authErrorLIs}</ul>;
     }
 
     toggleTypeText = this.state.formType === "Login" ?
@@ -121,10 +121,12 @@ var LoginForm = React.createClass({
           <form onSubmit={this.handleSubmit}>
 
             <input type="text"
+                   placeholder="Username"
                    value={this.state.username}
                    onChange={this.changeUsername}/>
 
             <input type="password"
+                   placeholder="Password"
                    value={this.state.password}
                    onChange={this.changePassword}/>
 
