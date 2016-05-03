@@ -18,13 +18,13 @@ class Performance < ActiveRecord::Base
   belongs_to :spectacle
   has_one :venue, through: :spectacle
 
+  has_many :tickets
+
   def generate_tickets
     spectacle.venue.seats.each do |seat|
       Ticket.create!(seat: seat, performance: self)
     end
   end
-
-  has_many :tickets
 
   def available_tickets
     tickets.where(user_id: nil)
