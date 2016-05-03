@@ -97,6 +97,14 @@
   transform: scale3d(1, 1, 1);
 }
 
+input {
+  border: 1px solid $light-gray;
+  background-color: white;
+  border-radius: 3px;
+  padding: 5px;
+  margin: 4px 0;
+}
+
 .sidebar-sticks {
   position: relative;
   left: -15px;

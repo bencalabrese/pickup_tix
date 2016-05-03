@@ -12,13 +12,15 @@ var SpectacleClientActions = {
 };
 
 function preparedFetchParams(params) {
-  var dates = params.date_range;
+  var newParams = $.extend(true, {}, params);
 
-  if (dates) {
-    params.date_range = [dates[0].format(), dates[1].format()];
+  var date_range = newParams.date_range.slice();
+
+  if (date_range) {
+    newParams.date_range = [date_range[0].format(), date_range[1].format()];
   }
 
-  var namespacedParams = { filter: params };
+  var namespacedParams = { filter: newParams };
   if (!$.param(namespacedParams)) {
     namespacedParams = { filter: { none: true } };
   }

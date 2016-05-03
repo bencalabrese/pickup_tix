@@ -111,7 +111,7 @@ var LoginForm = React.createClass({
 
     toggleTypeText = this.state.formType === "Login" ?
       <a onClick={this.toggleType}>Need an account? Sign up here</a> :
-      <a onClick={this.toggleType}>Already have an account? Login here</a>;
+      <a onClick={this.toggleType}>Have an account? Login here</a>;
 
     return (
       <div className="credentials-modal">
@@ -122,15 +122,20 @@ var LoginForm = React.createClass({
 
             <input type="text"
                    placeholder="Username"
+                   className="login-input"
                    value={this.state.username}
                    onChange={this.changeUsername}/>
 
             <input type="password"
                    placeholder="Password"
+                   className="login-input"
                    value={this.state.password}
                    onChange={this.changePassword}/>
 
-            <input type="submit" value={this.state.formType}/>
+            <input
+              type="submit"
+              value={this.state.formType}
+              className="login-input"/>
             {toggleTypeText}
           </form>
         </div>
@@ -141,7 +146,10 @@ var LoginForm = React.createClass({
           <h2>Demo</h2>
           <form onSubmit={this.demoLogin}>
 
-            <input type="submit" value="Use Demo Account"/>
+            <input
+              type="submit"
+              value="Use Demo Account"
+              className="login-input"/>
           </form>
         </div>
       </div>

@@ -13,13 +13,11 @@ var Header = React.createClass({
         </Link>
 
         <nav>
-          <a href="#">Music</a>
-          <a href="#">Dance</a>
-          <a href="#">Theater</a>
+          <Link to="/events">Music</Link>
+          <Link to="/events">Dance</Link>
+          <Link to="/events">Theater</Link>
           <a href="#">Site Tour</a>
         </nav>
-
-        <input type="search" className="search-bar" placeholder="search"/>
 
         <UserNav/>
       </header>
