@@ -16,22 +16,6 @@ TAG_NAMES = %w(Ballet Jazz Tap Swing Rock Country Rap Classical Comedy Drama Sha
 
 tags = TAG_NAMES.map { |tag| Tag.create!(name: tag) }
 
-def gen_spectacles(venue)
-  4.times do
-    spectacle = Spectacle.create!(
-      category_id: rand(1..3),
-      venue: venue,
-      title: Faker::Name.title,
-      description: Faker::Lorem.paragraph(2),
-      image_url: "http://www.placekitten.com/240/140"
-    )
-
-    gen_taggings(spectacle)
-
-    gen_performances(spectacle)
-  end
-end
-
 def gen_taggings(spectacle)
   picked_tags = (1..11).to_a.sample(2)
 
@@ -93,8 +77,27 @@ end
   venue = Venue.create!(name: Faker::Name.first_name)
 
   gen_sections(venue)
-
-  # refetch data from database
-  venue = Venue.find(venue)
-  gen_spectacles(venue)
 end
+
+def gen_spectacles(category_id, items)
+  venues = Venue.all
+
+  items.each do |item|
+    spectacle = Spectacle.create!(
+    category_id: category_id,
+    venue: venues.sample,
+    title: item[0],
+    description: item[1],
+    image_url: item[2]
+    )
+
+    gen_taggings(spectacle)
+
+    gen_performances(spectacle)
+  end
+end
+
+path = Rails.root.join("db", "data")
+dances = File.readlines(path.join("dances.txt")).map(&:chomp).map { |dance| dance.split("*") }
+
+gen_spectacles(1, dances)

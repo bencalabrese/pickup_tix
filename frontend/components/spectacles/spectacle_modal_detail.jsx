@@ -11,10 +11,12 @@ var SpectacleModalDetail = React.createClass({
     var startDate = moment(spectacle.first_performance).format("MMMM Do YYYY");
     var endDate = moment(spectacle.last_performance).format("MMMM Do YYYY");
 
+    var photoUrl = "http://res.cloudinary.com/bencalabrese/image/upload/c_lfill,h_320,w_400/" + spectacle.image_url;
+
     return (
       <div className="spectacle-modal-content">
         <div className="spectacle-modal-picture-pane">
-          <img src={spectacle.image_url}/>
+          <img src={photoUrl} alt={spectacle.title}/>
           <button onClick={this.goToPerformances}>Reserve Tickets</button>
         </div>
 

@@ -31,6 +31,8 @@ var SpectaclesIndexItem = React.createClass({
 
     var dateRange = startDate + " - " + endDate;
 
+    var photoUrl = "http://res.cloudinary.com/bencalabrese/image/upload/c_lfill,h_140,w_240/" + spectacle.image_url;
+
     return (
       <div className="spectacle-thumbnail" onClick={this.openModal}>
         <Modal isOpen={this.state.modalIsOpen}
@@ -40,7 +42,7 @@ var SpectaclesIndexItem = React.createClass({
           <SpectacleModal id={spectacle.id}/>
         </Modal>
 
-        <img src={spectacle.image_url} alt={spectacle.title}/>
+        <img src={photoUrl} alt={spectacle.title}/>
 
         <p className="category-name">
           {spectacle.category}
