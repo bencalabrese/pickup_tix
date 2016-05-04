@@ -21,10 +21,12 @@ var SeatPicker = React.createClass({
   },
 
   _onChange: function() {
-    this.setState({
-      venueMap: CartStore.performance().venueMap,
-      tickets: CartStore.tickets()
-    });
+    if (CartStore.performance()) {
+      this.setState({
+        venueMap: CartStore.performance().venueMap,
+        tickets: CartStore.tickets()
+      });
+    }
   },
 
   render: function() {

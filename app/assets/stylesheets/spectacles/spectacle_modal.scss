@@ -26,12 +26,13 @@
 .spectacle-modal-picture-pane {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   img {
     display: block;
     width: 400px;
-    height: 280px;
+    height: 320px;
+    margin-bottom: 30px;
   }
 
   button {
@@ -71,9 +72,16 @@
   button {
     border-right: 1px solid $dark-gray;
     flex-grow: 1;
+    transition: background-color 0.5s, color 0.5s;
   }
 
   button:last-child {
     border-right: none;
+  }
+
+  .selected {
+    background-color: $dark-pink;
+    color: white;
+    transition: background-color 0.5s, color 0.5s;
   }
 }

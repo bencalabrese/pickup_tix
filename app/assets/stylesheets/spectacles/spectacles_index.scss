@@ -1,11 +1,7 @@
 @import "../app/app";
 
 .spectacles-index {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
   padding: 15px;
-  align-items: flex-start;
 }
 
 .spectacle-thumbnail {
@@ -14,6 +10,7 @@
   padding: 15px;
   color: $medium-gray;
   cursor: pointer;
+  float: left;
 
   h4 {
     font-size: 20px;

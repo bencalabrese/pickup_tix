@@ -11,4 +11,6 @@ if performances_needed
     partial: "api/performances/performance",
     as: :performance,
     tickets: false
+
+  json.venue spectacle.venue.name
 end
