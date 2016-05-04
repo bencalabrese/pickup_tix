@@ -1,6 +1,8 @@
 var React = require('react'),
     Link = require('react-router').Link,
-    SpectaclesIndex = require('../spectacles/spectacles_index');
+    SpectaclesIndex = require('../spectacles/spectacles_index'),
+    Jumbotron = require('./jumbotron'),
+    SiteDescription = require('./site_description');
 
 var Splash = React.createClass({
   render: function() {
@@ -11,6 +13,10 @@ var Splash = React.createClass({
 
     return (
       <div className="splash">
+        <Jumbotron/>
+
+        <SiteDescription/>
+
         <div className="splash-spectacles-index">
           <div className="coming-up">
             <h5>Coming Up</h5>
