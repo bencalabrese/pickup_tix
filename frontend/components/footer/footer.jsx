@@ -6,9 +6,9 @@ var Footer = React.createClass({
     return (
       <footer>
         <a href="#">About</a>
-        <a href="#">GitHub</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">Contact</a>
+        <a href="https://github.com/bencalabrese">GitHub</a>
+        <a href="https://www.linkedin.com/in/bcalabrese">LinkedIn</a>
+        <a href="mailto:bencalabrese@gmail.com">Contact</a>
       </footer>
     );
   }

@@ -1,6 +1,8 @@
 var React = require('react'),
     ReactDOM = require('react-dom');
 
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+
 var ReactRouter = require('react-router'),
     Router = ReactRouter.Router,
     Route = ReactRouter.Route,
@@ -14,10 +16,22 @@ var Header = require('./components/header/header'),
 
 var App = React.createClass({
   render: function() {
+    var key = this.props.children.type.displayName;
+
     return (
       <div className="app">
         <Header/>
-        <div className="content">{this.props.children}</div>
+
+        <ReactCSSTransitionGroup
+          transitionName="carousel"
+          transitionEnterTimeout={700}
+          transitionLeaveTimeout={700}>
+
+          <div key={key} className="content">
+            {this.props.children}
+          </div>
+
+        </ReactCSSTransitionGroup>
         <Footer/>
       </div>
     );

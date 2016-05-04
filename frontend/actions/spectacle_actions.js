@@ -14,7 +14,7 @@ var SpectacleClientActions = {
 function preparedFetchParams(params) {
   var newParams = $.extend(true, {}, params);
 
-  var date_range = newParams.date_range.slice();
+  var date_range = newParams.date_range;
 
   if (date_range) {
     newParams.date_range = [date_range[0].format(), date_range[1].format()];
