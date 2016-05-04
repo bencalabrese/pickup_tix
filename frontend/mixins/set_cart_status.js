@@ -1,5 +1,6 @@
 var CartActions = require('../actions/cart_actions'),
-    CurrentUserStateMixin = require('./current_user_state');
+    CurrentUserStateMixin = require('./current_user_state'),
+    CartStore = require('../stores/cart');
 
 var SetCartStatus = {
   mixins: [CurrentUserStateMixin],
@@ -21,7 +22,11 @@ var SetCartStatus = {
   goToSeats: function(event) {
     event.preventDefault();
     if (this.state.currentUser) {
-      CartActions.updateCartStatus("picking seats");
+      if (CartStore.performance()) {
+        CartActions.updateCartStatus("picking seats");
+      } else {
+        alert("Please pick a performance first");
+      }
     } else {
       alert("Please login to book tickets");
     }
@@ -30,7 +35,15 @@ var SetCartStatus = {
   goToConfirmation: function(event) {
     event.preventDefault();
     if (this.state.currentUser) {
-      CartActions.updateCartStatus("confirmation");
+      if (CartStore.performance()) {
+        if (CartStore.tickets().length > 0) {
+          CartActions.updateCartStatus("confirmation");
+        } else {
+          alert("Please pick seats first");
+        }
+      } else {
+        alert("Please pick a performance first");
+      }
     } else {
       alert("Please login to book tickets");
     }

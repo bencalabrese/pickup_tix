@@ -29,9 +29,10 @@ var PerformancePicker = React.createClass({
     var performances = this.props.performances.map(function(performance){
       var pretty = moment(performance.datetime).format("MMMM Do YYYY");
       return (
-        <option key={performance.id}
-            value={performance.id}>
-          {pretty}
+        <option
+          key={performance.id}
+          value={performance.id}>
+            {pretty}
         </option>
       );
     }.bind(this));

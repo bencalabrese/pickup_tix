@@ -20,8 +20,8 @@ var SpectaclesIndexItem = React.createClass({
   },
 
   closeModal: function() {
-    CartActions.resetCart();
     this.setState({ modalIsOpen: false });
+    CartActions.resetCart();
   },
 
   render: function() {

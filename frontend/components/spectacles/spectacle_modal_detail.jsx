@@ -1,7 +1,10 @@
 var React = require('react'),
-    moment = require('moment');
+    moment = require('moment'),
+    SetCartStatus = require('../../mixins/set_cart_status');
 
 var SpectacleModalDetail = React.createClass({
+  mixins: [SetCartStatus],
+
   render: function() {
     var spectacle = this.props.spectacle;
 
@@ -12,8 +15,7 @@ var SpectacleModalDetail = React.createClass({
       <div className="spectacle-modal-content">
         <div className="spectacle-modal-picture-pane">
           <img src={spectacle.image_url}/>
-          <button>Reserve Tickets</button>
-          <button>Find Other Shows</button>
+          <button onClick={this.goToPerformances}>Reserve Tickets</button>
         </div>
 
         <div className="spectacle-modal-details">
