@@ -33,6 +33,7 @@ var SeatPicker = React.createClass({
     var sections = venueMap.map(function(section) {
       return <VenueSection
                key={section.name}
+               name={section.name}
                seatBlocks={section.seat_blocks}/>;
     });
 
@@ -42,7 +43,6 @@ var SeatPicker = React.createClass({
 
     return (
       <div className="seat-picker">
-        Hello world
         {sections}
 
         <ul className="tickets-list">

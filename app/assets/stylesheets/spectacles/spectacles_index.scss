@@ -5,6 +5,7 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   padding: 15px;
+  align-items: flex-start;
 }
 
 .spectacle-thumbnail {
@@ -12,6 +13,7 @@
   width: 270px;
   padding: 15px;
   color: $medium-gray;
+  cursor: pointer;
 
   h4 {
     font-size: 20px;
@@ -21,6 +23,10 @@
     overflow: hidden;
     white-space: nowrap;
   }
+}
+
+.spectacle-thumbnail:hover h4 {
+  color: $dark-pink;
 }
 
 .category-name {

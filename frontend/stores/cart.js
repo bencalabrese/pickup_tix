@@ -56,7 +56,6 @@ function resetPerformance(fetchedPerformance) {
 }
 
 function addTicket(ticketId) {
-
   _tickets.push(ticketId);
 }
 

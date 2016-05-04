@@ -14,6 +14,8 @@ var VenueSection = React.createClass({
 
     return (
       <div className="seating-section">
+        <h2>{this.props.name}</h2>
+
         {seatBlocks}
       </div>
     );

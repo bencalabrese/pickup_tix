@@ -12,6 +12,10 @@ Category.create(name: "Dance")
 Category.create(name: "Music")
 Category.create(name: "Theater")
 
+TAG_NAMES = %w(Ballet Jazz Tap Swing Rock Country Rap Classical Comedy Drama Shakespeare)
+
+tags = TAG_NAMES.map { |tag| Tag.create!(name: tag) }
+
 def gen_spectacles(venue)
   4.times do
     spectacle = Spectacle.create!(
@@ -22,12 +26,21 @@ def gen_spectacles(venue)
       image_url: "http://www.placekitten.com/240/140"
     )
 
+    gen_taggings(spectacle)
+
     gen_performances(spectacle)
   end
 end
 
+def gen_taggings(spectacle)
+  picked_tags = (1..11).to_a.sample(2)
+
+  Tagging.create(spectacle: spectacle, tag_id: picked_tags.first)
+  Tagging.create(spectacle: spectacle, tag_id: picked_tags.last)
+end
+
 def gen_performances(spectacle)
-  first_performance = Date.today
+  first_performance = Date.today - 3.weeks
 
   first_performance += 1 while !first_performance.thursday?
   first_performance += rand(1..5).weeks
@@ -52,20 +65,25 @@ def gen_sections(venue)
 end
 
 def gen_seat_blocks(section)
-  3.times do
-    seat_block = SeatBlock.create!(style: "red", section: section)
+  styles = ["-10,10,15", "0,0,0", "10,10,-15"]
+
+  3.times do |i|
+    seat_block = SeatBlock.create!(style: styles[i], section: section)
     gen_seats(seat_block)
   end
 end
 
 def gen_seats(seat_block)
+  alpha = ("A".."Z").to_a
+
   5.times do |row|
     4.times do |col|
+
       Seat.create!(
         seat_block: seat_block,
         row: row,
         col: col,
-        name: "#{seat_block.id}: #{row}#{col}"
+        name: "#{seat_block.section.name} #{seat_block.id}: #{alpha[row]}#{col + 1}"
       )
     end
   end
