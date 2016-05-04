@@ -7,7 +7,7 @@ var Header = React.createClass({
     return (
       <header className="header">
         <Link to="/">
-          <img src="https://placekitten.com/150/40"
+          <img src="http://res.cloudinary.com/bencalabrese/image/upload/c_scale,w_162/v1462344962/Color_Logo_zxcvpk.svg"
             alt="logo"
             className="logo"/>
         </Link>

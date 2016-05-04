@@ -21,19 +21,18 @@ var PerformancePicker = React.createClass({
   },
 
   selectPerformance: function(event) {
-    var id = event.currentTarget.getAttribute("data-pos");
+    var id = event.currentTarget.value;
     CartActions.fetchSinglePerformance(id);
   },
 
   render: function() {
     var performances = this.props.performances.map(function(performance){
-      var prettyPerformance = moment(performance.datetime).format("MMMM Do YYYY");
+      var pretty = moment(performance.datetime).format("MMMM Do YYYY");
       return (
-        <li key={performance.id}
-            data-pos={performance.id}
-            onClick={this.selectPerformance}>
-          {prettyPerformance}
-        </li>
+        <option key={performance.id}
+            value={performance.id}>
+          {pretty}
+        </option>
       );
     }.bind(this));
 
@@ -44,7 +43,8 @@ var PerformancePicker = React.createClass({
       var selectedDate = moment(selected.datetime).format("MMMM Do YYYY");
       var remainingSeats = selected.availableTicketCount;
 
-      selectedText = "You have selected" + selectedDate + "\nThere are " + remainingSeats + " remaining seats.";
+      selectedText = "You have selected " + selectedDate +
+        "\nThere are " + remainingSeats + " remaining seats.";
     } else {
       selectedText = "You have not selected a performance.";
     }
@@ -52,11 +52,11 @@ var PerformancePicker = React.createClass({
     return (
 
       <div>
-        <ul>
+        <select onChange={this.selectPerformance}>
           {performances}
-        </ul>
+        </select>
 
-        <p>{selectedText}</p>
+        <pre>{selectedText}</pre>
       </div>
     );
   }

@@ -21,7 +21,7 @@ var FilterResults = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <div className="results-pane">
         <SpectaclesIndex filters={this.state.filters}/>
       </div>
     );

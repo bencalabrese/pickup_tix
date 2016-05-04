@@ -22,16 +22,10 @@ var App = React.createClass({
       <div className="app">
         <Header/>
 
-        <ReactCSSTransitionGroup
-          transitionName="carousel"
-          transitionEnterTimeout={700}
-          transitionLeaveTimeout={700}>
+        <div className="content">
+          {this.props.children}
+        </div>
 
-          <div key={key} className="content">
-            {this.props.children}
-          </div>
-
-        </ReactCSSTransitionGroup>
         <Footer/>
       </div>
     );

@@ -41,8 +41,7 @@ var SeatPicker = React.createClass({
     });
 
     return (
-
-      <div>
+      <div className="seat-picker">
         Hello world
         {sections}
 

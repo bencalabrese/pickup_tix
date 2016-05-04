@@ -10,7 +10,7 @@ $light-pink:   #f48b95;
 // RESET
 
 html, body, section, article, header, footer, h1, h2, h3, h4,
-h5, h6, p, a, ul, li, button, img, div {
+h5, h6, p, a, ul, li, button, img, div, pre {
   margin: 0;
   border: 0;
   padding: 0;
@@ -29,6 +29,10 @@ h5, h6, p, a, ul, li, button, img, div {
 
 button:focus, input {
   outline: none;
+}
+
+a, button, input[type="submit"] {
+  cursor: pointer;
 }
 
 // CLEARFIX
@@ -67,10 +71,17 @@ header {
   nav a {
     padding: 0 10px;
     border-right: 1px solid $medium-gray;
+    cursor: pointer;
   }
 
   nav a:last-child {
     border-right: none;
+  }
+
+  .logo {
+    width: 200px;
+    padding-top: 10px;
+    cursor: pointer;
   }
 }
 
@@ -83,11 +94,7 @@ header {
 }
 
 .content {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  flex-grow: 1;
   display: flex;
   justify-content: center;
 }
@@ -133,14 +140,6 @@ footer {
   border-radius: 4px;
   outline: none;
 }
-//
-// .app {
-//   span > .carousel-enter, span > .carousel-enter.carousel-enter-active,
-//   span > .carousel-leave, span > .carousel-leave.carousel-leave-active {
-//     flex-grow: 1;
-//     display: flex;
-//   }
-// }
 
 .carousel-enter {
   transform:   translate(100%,0);
@@ -153,7 +152,7 @@ footer {
 	transform:   translate(0,0);
 	transform: translate3d(0,0,0);
 	transition-property: transform;
-	transition-duration: 700ms;
+	transition-duration: 500ms;
 	transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
   position: absolute;
   width: 100%;
@@ -163,7 +162,7 @@ footer {
 	transform: translate(0,0,0);
 	transform: translate3d(0,0,0);
 	transition-property: transform;
-	transition-duration: 700ms;
+	transition-duration: 300ms;
 	transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
   position: absolute;
   width: 100%;
@@ -174,4 +173,9 @@ footer {
 	transform: translate3d(-100%,0,0);
   position: absolute;
   width: 100%;
+}
+
+.react-datepicker__day--selected.react-datepicker__day--selected,
+.react-datepicker__day--in-range.react-datepicker__day--in-range {
+  background-color: $medium-gray;
 }

@@ -12,10 +12,20 @@ var SeatBlock = React.createClass({
       return <tr key={rowIdx}>{seats}</tr>;
     });
 
+    var styles = this.props.style.split(","),
+        rotate = styles[0],
+        top    = styles[1],
+        right  = styles[2];
 
+    var style = {
+      transform: "rotate(" + rotate + "deg)",
+      top      : top + "px",
+      right    : right + "px",
+      position : "relative"
+    };
 
     return (
-      <table>
+      <table style={style}>
         <tbody>
           {rows}
         </tbody>

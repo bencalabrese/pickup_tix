@@ -111,3 +111,12 @@ input {
   width: 270px;
   padding: 10px 0 20px 0;
 }
+
+.results-pane {
+  display: flex;
+}
+
+.datepicker__day--in-range {
+  background-color: $dark-pink;
+  width: 100px;
+}

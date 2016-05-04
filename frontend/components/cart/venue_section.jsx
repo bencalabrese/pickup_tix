@@ -5,8 +5,10 @@ var VenueSection = React.createClass({
 
   render: function() {
     var seatBlocks = this.props.seatBlocks.map(function(seatBlock, idx) {
-      // be sure to add style here
-      return <SeatBlock key={idx} seats={seatBlock.matrix}/>;
+      return <SeatBlock
+        key={idx}
+        style={seatBlock.style}
+        seats={seatBlock.matrix}/>;
     });
 
 
