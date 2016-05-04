@@ -31,7 +31,7 @@ var FilterSidebar = React.createClass({
       <div className="sidebar">
         <img
           className="sidebar-sticks"
-          src="http://res.cloudinary.com/bencalabrese/image/upload/v1462344962/White_Sticks_tqeo3e.svg"/>
+          src="http://res.cloudinary.com/bencalabrese/image/upload/v1462344962/splash_page/white_sticks.svg"/>
 
         <CurrentFilters
           filters={this.state.filters}
