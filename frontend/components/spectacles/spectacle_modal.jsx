@@ -62,7 +62,8 @@ var SpectacleModal = React.createClass({
             transitionLeaveTimeout={300}>
               <PerformancePicker
                 key="dates"
-                performances={this.state.spectacle.performances}/>
+                performances={this.state.spectacle.performances}
+                spectacle={this.state.spectacle}/>
           </ReactCSSTransitionGroup>
         );
         break;

@@ -36,7 +36,7 @@ var PerformancePicker = React.createClass({
             {pretty}
         </option>
       );
-    }.bind(this));
+    });
 
     var selectedText;
     var selected = this.state.selected;
@@ -51,15 +51,40 @@ var PerformancePicker = React.createClass({
       selectedText = "You have not selected a performance.";
     }
 
-    return (
-      <div>
-        <h2>Select a Performance</h2>
-        <select onChange={this.selectPerformance}>
-          <option value="none">Pick a date</option>
-          {performances}
-        </select>
+    var spectacle = this.props.spectacle,
+        startDate = moment(spectacle.first_performance).format("MMM D"),
+        endDate = moment(spectacle.last_performance).format("MMM D");
 
-        <pre>{selectedText}</pre>
+    var dateRange = startDate + " - " + endDate;
+
+    var photoUrl = "http://res.cloudinary.com/bencalabrese/image/upload/c_lfill,h_140,w_240/" + spectacle.image_url;
+
+    return (
+      <div className="spectacle-modal-content">
+        <div className="performance-picker">
+          <h2>Select a Performance</h2>
+
+            <div className="spectacle-thumbnail performance-preview" onClick={this.openModal}>
+              <img src={photoUrl} alt={spectacle.title}/>
+
+              <p className="category-name">
+                {spectacle.category}
+                <span className="date-range">{dateRange}</span>
+              </p>
+
+              <h4>{spectacle.title}</h4>
+
+              <p className="thumbnail-description">{spectacle.description}</p>
+            </div>
+
+
+          <select onChange={this.selectPerformance}>
+            <option value="none">Pick a date</option>
+            {performances}
+          </select>
+
+          <pre>{selectedText}</pre>
+        </div>
       </div>
     );
   }
