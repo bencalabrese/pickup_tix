@@ -17,7 +17,9 @@ var SpectacleModalDetail = React.createClass({
       <div className="spectacle-modal-content">
         <div className="spectacle-modal-picture-pane">
           <img src={photoUrl} alt={spectacle.title}/>
-          <button onClick={this.goToPerformances}>Reserve Tickets</button>
+          <button onClick={this.goToPerformances}>
+            Reserve Tickets&nbsp;&nbsp;>>
+          </button>
         </div>
 
         <div className="spectacle-modal-details">

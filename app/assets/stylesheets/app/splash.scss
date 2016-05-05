@@ -64,16 +64,32 @@
   align-items: center;
   padding-bottom: 30px;
 
-  h5, .button {
+  .button {
+    background: white;
+    border: 2px solid $dark-pink;
+    color: $dark-pink;
+    transition: color 0.5s, background 0.5s;
+    padding: 10px 20px;
+    font-size: 20px;
+  }
+
+  h5, .button:hover {
     color: white;
     padding: 10px 20px;
     background: $dark-pink;
     font-size: 20px;
+    transition: color 0.5s, background 0.5s;
   }
 
   a:not(.button) {
     margin-left: auto;
     color: $medium-gray;
+    transition: text-decoration 0.5s;
+  }
+
+  a:not(.button):hover {
+    text-decoration: underline;
+    transition: text-decoration 0.5s;
   }
 
   .coming-up {

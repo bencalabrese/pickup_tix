@@ -9,10 +9,20 @@
   position: relative;
 
   button {
-    display: block;
-    background: $light-gray;
-    text-align: center;
+    background-color: white;
+    color: $dark-pink;
+    width: 300px;
     height: 45px;
+    text-align: center;
+    border: 2px solid $dark-pink;
+
+    transition: color 0.5s, background-color 0.5s;
+  }
+
+  button:hover {
+    background-color: $dark-pink;
+    color: white;
+    transition: color 0.5s, background-color 0.5s;
   }
 }
 
@@ -40,8 +50,8 @@
   }
 
   button {
-    width: 100%;
-    border: 1px solid $dark-gray;
+    width: 80%;
+    margin: auto;
   }
 }
 
@@ -70,25 +80,58 @@
   align-self: flex-end;
   display: flex;
   width: 100%;
-  background-color: $medium-gray;
+  background-color: white;
 
   button {
-    border-top: 1px solid $dark-gray;
-    border-right: 1px solid $dark-gray;
+    border: none;
+    border-top: 1px solid $light-pink;
+    border-right: 1px solid $light-pink;
+    color: $light-pink;
+    background-color: $dark-pink;
     flex-grow: 1;
-    transition: background-color 0.25s, color 0.25s;
+    transition: color 0.25s;
 
     // for positioning tooltips
     border-bottom: 1px solid transparent;
   }
 
-  button:last-child {
-    border-right: none;
+  button:hover {
+    background-color: $dark-pink;
+    color: $light-pink;
+  }
+
+  .selected:hover {
+    color: white;
   }
 
   .selected {
+    color: white;
+
+    transition: color 0.25s;
+  }
+
+  button:last-child {
+    border-right: none;
+  }
+}
+
+
+.cart-progress-buttons {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 25px;
+
+  button {
+    background-color: white;
+    color: $dark-pink;
+    width: 300px;
+
+    transition: color 0.5s, background-color 0.5s;
+  }
+
+  button:hover {
     background-color: $dark-pink;
     color: white;
-    transition: background-color 0.25s, color 0.25s;
+    transition: color 0.5s, background-color 0.5s;
   }
 }

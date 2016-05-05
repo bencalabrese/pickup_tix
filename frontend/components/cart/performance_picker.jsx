@@ -96,11 +96,11 @@ var PerformancePicker = React.createClass({
 
           <div className="cart-progress-buttons">
             <button onClick={this.goToDetail}>
-              Back to Show Details
+              &lt;&lt;&nbsp;&nbsp;&nbsp;Back to Show Details
             </button>
 
             <button onClick={this.goToSeats}>
-              Choose Your Seats
+              Choose Your Seats&nbsp;&nbsp;&nbsp;>>
             </button>
           </div>
         </div>

@@ -8,7 +8,8 @@
     width: 100%;
     font-size: 32px;
     font-weight: bold;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
+    padding-left: 20px;
   }
 
   .performance-preview {
@@ -41,14 +42,19 @@
 
   }
 
-  .cart-progress-buttons {
-    display: flex;
-    justify-content: space-around;
-    padding-top: 30px;
-
-    button {
-      width: 300px;
-      border: 1px solid $dark-gray;
-    }
+  select {
+    background-image: url(http://i62.tinypic.com/15xvbd5.png);
+    background-position: 97% center;
+    background-repeat: no-repeat;
+    border: 1px solid $reddish-gray;
+    color: $reddish-gray;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    overflow: hidden;
+    padding: 5px 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 200px;
   }
 }
