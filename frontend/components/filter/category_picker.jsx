@@ -42,6 +42,10 @@ var CategoryPicker = React.createClass({
     FilterActions.setFilter({ category_ids: category_ids });
   },
 
+  toggleAll: function(event) {
+    FilterActions.setFilter({ category_ids: [] });
+  },
+
   render: function() {
     var categoryLIs = CATEGORIES.map(function(c) {
       var className = this.inStore(c.id) ? "selected" : "unselected";
@@ -55,10 +59,17 @@ var CategoryPicker = React.createClass({
       );
     }.bind(this));
 
+    var allClass = this.state.category_ids.length === 0  ?
+      "selected" :
+      "unselected";
+
     return (
       <div>
         <h3>Select Categories</h3>
         <ul className="filter-options">
+          <li onClick={this.toggleAll}>
+            <a className={allClass}>All</a>
+          </li>
           {categoryLIs}
         </ul>
 

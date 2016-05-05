@@ -29,7 +29,7 @@ FilterStore.filterStep = function() {
 
 // private
 var _filters = {
-  category_ids: [1, 2, 3],
+  category_ids: [],
   tag_ids: [],
   date_range: [moment(), moment().add(1, 'week')],
   venue_size: [0, 1000]
