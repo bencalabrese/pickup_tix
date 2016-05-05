@@ -100,6 +100,8 @@ end
 path = Rails.root.join("db", "data")
 dances = File.readlines(path.join("dances.txt")).map(&:chomp).map { |dance| dance.split("*") }
 musics = File.readlines(path.join("music.txt")).map(&:chomp).map { |music| music.split("*") }
+theaters = File.readlines(path.join("theater.txt")).map(&:chomp).map { |theater| theater.split("*") }
 
 gen_spectacles(1, dances)
 gen_spectacles(2, musics)
+gen_spectacles(3, theaters)

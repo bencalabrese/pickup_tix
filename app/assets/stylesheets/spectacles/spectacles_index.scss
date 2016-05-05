@@ -19,11 +19,13 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    transition: color 0.5s;
   }
 }
 
 .spectacle-thumbnail:hover h4 {
   color: $dark-pink;
+  transition: color 0.5s;
 }
 
 .category-name {
