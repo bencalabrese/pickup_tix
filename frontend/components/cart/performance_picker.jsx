@@ -1,9 +1,12 @@
 var React = require('react'),
     moment = require('moment'),
     CartActions = require('../../actions/cart_actions'),
-    CartStore = require('../../stores/cart');
+    CartStore = require('../../stores/cart'),
+    SetCartStatus = require('../../mixins/set_cart_status');
 
 var PerformancePicker = React.createClass({
+  mixins: [SetCartStatus],
+
   getInitialState: function() {
     return { selected: CartStore.performance() };
   },
@@ -61,29 +64,45 @@ var PerformancePicker = React.createClass({
 
     return (
       <div className="spectacle-modal-content">
+
         <div className="performance-picker">
           <h2>Select a Performance</h2>
 
-            <div className="spectacle-thumbnail performance-preview" onClick={this.openModal}>
-              <img src={photoUrl} alt={spectacle.title}/>
+          <div
+            className="spectacle-thumbnail performance-preview"
+            onClick={this.openModal}>
+            <img src={photoUrl} alt={spectacle.title}/>
 
-              <p className="category-name">
-                {spectacle.category}
-                <span className="date-range">{dateRange}</span>
-              </p>
+            <p className="category-name">
+              {spectacle.category}
+              <span className="date-range">{dateRange}</span>
+            </p>
 
-              <h4>{spectacle.title}</h4>
+            <h4>{spectacle.title}</h4>
 
-              <p className="thumbnail-description">{spectacle.description}</p>
-            </div>
+            <p className="thumbnail-description">
+              {spectacle.description}
+            </p>
+          </div>
 
+          <div className="performance-picker-frame">
+            <select onChange={this.selectPerformance}>
+              <option value="none">Pick a date</option>
+              {performances}
+            </select>
 
-          <select onChange={this.selectPerformance}>
-            <option value="none">Pick a date</option>
-            {performances}
-          </select>
+            <pre>{selectedText}</pre>
+          </div>
 
-          <pre>{selectedText}</pre>
+          <div className="cart-progress-buttons">
+            <button onClick={this.goToDetail}>
+              Back to Show Details
+            </button>
+
+            <button onClick={this.goToSeats}>
+              Choose Your Seats
+            </button>
+          </div>
         </div>
       </div>
     );

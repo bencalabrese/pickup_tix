@@ -1,7 +1,54 @@
+@import "../app/app";
+
 .performance-picker {
+  width: 100%;
+  position: relative;
+
   h2 {
+    width: 100%;
     font-size: 32px;
     font-weight: bold;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
+  }
+
+  .performance-preview {
+    float: none;
+    width: 50%;
+    padding: 15px 65px;
+    display: inline-block;
+  }
+
+  .performance-picker-frame {
+    width: 50%;
+    height: 270px;
+    display: inline-block;
+    position: absolute;
+    padding: 15px;
+    padding-right: 35px;
+
+    select {
+      float: right;
+    }
+
+    pre {
+      color: $reddish-gray;
+      position: absolute;
+      right: 35px;
+      bottom: 20px;
+
+      text-align: right;
+    }
+
+  }
+
+  .cart-progress-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 30px;
+
+    button {
+      width: 300px;
+      border: 1px solid $dark-gray;
+    }
   }
 }
