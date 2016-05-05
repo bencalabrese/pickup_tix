@@ -15,7 +15,7 @@ var SetCartStatus = {
     if (this.state.currentUser) {
       CartActions.updateCartStatus("picking performance");
     } else {
-      alert("Please login to book tickets");
+      this.addTooltip(event.currentTarget, "Please login to book tickets");
     }
   },
 
@@ -25,10 +25,10 @@ var SetCartStatus = {
       if (CartStore.performance()) {
         CartActions.updateCartStatus("picking seats");
       } else {
-        alert("Please pick a performance first");
+        this.addTooltip(event.currentTarget, "Please pick a performance first");
       }
     } else {
-      alert("Please login to book tickets");
+      this.addTooltip(event.currentTarget, "Please login to book tickets");
     }
   },
 
@@ -39,14 +39,30 @@ var SetCartStatus = {
         if (CartStore.tickets().length > 0) {
           CartActions.updateCartStatus("confirmation");
         } else {
-          alert("Please pick seats first");
+          this.addTooltip(event.currentTarget, "Please pick seats first");
         }
       } else {
-        alert("Please pick a performance first");
+        this.addTooltip(event.currentTarget, "Please pick a performance first");
       }
     } else {
-      alert("Please login to book tickets");
+      this.addTooltip(event.currentTarget, "Please login to book tickets");
     }
+  },
+
+  addTooltip: function(button, message) {
+    var $button = $(button);
+
+    $button.attr("data-tooltip", message);
+    $button.addClass("tooltip");
+
+    setTimeout(function() {
+      $button.addClass("tooltip-fadeout");
+
+      setTimeout(function() {
+        $button.removeClass("tooltip");
+        $button.removeClass("tooltip-fadeout");
+      }, 2000);
+    }, 1500);
   }
 };
 

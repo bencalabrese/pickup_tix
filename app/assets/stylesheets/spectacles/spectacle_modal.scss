@@ -66,13 +66,16 @@
   align-self: flex-end;
   display: flex;
   width: 100%;
-  border-top: 1px solid $dark-gray;
   background-color: $medium-gray;
 
   button {
+    border-top: 1px solid $dark-gray;
     border-right: 1px solid $dark-gray;
     flex-grow: 1;
     transition: background-color 0.5s, color 0.5s;
+
+    // for positioning tooltips
+    border-bottom: 1px solid transparent;
   }
 
   button:last-child {

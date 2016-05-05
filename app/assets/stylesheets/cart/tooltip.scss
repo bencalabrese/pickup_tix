@@ -1,0 +1,48 @@
+@import "../app/app";
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip::before, .tooltip::after {
+  position: absolute;
+  display: block;
+  left: 50%;
+
+  transition: opacity 2s;
+}
+
+.tooltip::after {
+  background-color: $dark-pink;
+  color: white;
+  content: attr(data-tooltip);
+  padding: 15px;
+  width: 180px;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 5px;
+
+  // top: -65px;
+  bottom: 58px;
+  margin-left: -90px;
+}
+
+.tooltip::before {
+  content: "";
+  width: 0;
+	height: 0;
+  background-color: transparent;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+
+	border-top: 10px solid $dark-pink;
+
+  margin-left: -10px;
+  top: -15px;
+}
+
+.tooltip-fadeout::after, .tooltip-fadeout::before {
+  opacity: 0;
+
+  transition: opacity 2s;
+}
