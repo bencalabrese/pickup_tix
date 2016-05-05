@@ -53,6 +53,7 @@ var _cartStatus = "closed";
 
 function resetPerformance(fetchedPerformance) {
   _performance = fetchedPerformance;
+  _tickets = [];
 }
 
 function addTicket(ticketId) {

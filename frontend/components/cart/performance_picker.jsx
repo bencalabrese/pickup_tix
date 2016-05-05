@@ -22,7 +22,8 @@ var PerformancePicker = React.createClass({
 
   selectPerformance: function(event) {
     var id = event.currentTarget.value;
-    CartActions.fetchSinglePerformance(id);
+
+    if (id !== "none") { CartActions.fetchSinglePerformance(id); }
   },
 
   render: function() {
@@ -45,15 +46,16 @@ var PerformancePicker = React.createClass({
       var remainingSeats = selected.availableTicketCount;
 
       selectedText = "You have selected " + selectedDate +
-        "\nThere are " + remainingSeats + " remaining seats.";
+        "\n\nThere are " + remainingSeats + " remaining seats.";
     } else {
       selectedText = "You have not selected a performance.";
     }
 
     return (
-
       <div>
+        <h2>Select a Performance</h2>
         <select onChange={this.selectPerformance}>
+          <option value="none">Pick a date</option>
           {performances}
         </select>
 
