@@ -48,6 +48,7 @@ var SpectacleModal = React.createClass({
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}>
               <SpectacleModalDetail
+                closeCallback={this.props.closeCallback}
                 spectacle={this.state.spectacle}
                 key="detail"/>
           </ReactCSSTransitionGroup>
@@ -62,6 +63,7 @@ var SpectacleModal = React.createClass({
             transitionLeaveTimeout={300}>
               <PerformancePicker
                 key="dates"
+                closeCallback={this.props.closeCallback}
                 performances={this.state.spectacle.performances}
                 spectacle={this.state.spectacle}/>
           </ReactCSSTransitionGroup>
@@ -74,7 +76,9 @@ var SpectacleModal = React.createClass({
             transitionName="carousel"
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}>
-              <SeatPicker key="seats"/>
+              <SeatPicker
+                key="seats"
+                closeCallback={this.props.closeCallback}/>
           </ReactCSSTransitionGroup>
         );
         break;
@@ -87,6 +91,7 @@ var SpectacleModal = React.createClass({
             transitionLeaveTimeout={300}>
               <OrderConfirmation
                 key="confirmation"
+                closeCallback={this.props.closeCallback}
                 performance={this.state.performance}
                 spectacle={this.state.spectacle}
                 tickets={this.state.tickets}/>

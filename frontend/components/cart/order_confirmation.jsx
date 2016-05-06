@@ -33,6 +33,16 @@ var OrderConfirmation = React.createClass({
           <p>All of your seats have been reserved.</p>
           <br></br>
           <p>Enjoy the show!</p>
+
+          <div className="cart-progress-buttons">
+            <button onClick={this.goToDetail}>
+              &lt;&lt;&nbsp;&nbsp;&nbsp;Back to Show Details
+            </button>
+
+            <button onClick={this.props.closeCallback}>
+              Explore other shows&nbsp;&nbsp;&nbsp;>>
+            </button>
+          </div>
         </div>
       );
     } else {
@@ -87,6 +97,12 @@ var OrderConfirmation = React.createClass({
 
     return (
       <div className="spectacle-modal-content">
+        <div
+          onClick={this.props.closeCallback}
+          className="modal-close-x">
+            &times;
+        </div>
+
         {content}
       </div>
     );

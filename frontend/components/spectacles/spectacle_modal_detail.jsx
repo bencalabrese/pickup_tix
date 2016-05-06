@@ -15,6 +15,12 @@ var SpectacleModalDetail = React.createClass({
 
     return (
       <div className="spectacle-modal-content">
+        <div
+          onClick={this.props.closeCallback}
+          className="modal-close-x">
+            &times;
+        </div>
+
         <div className="spectacle-modal-picture-pane">
           <img src={photoUrl} alt={spectacle.title}/>
           <button onClick={this.goToPerformances}>

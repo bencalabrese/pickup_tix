@@ -64,6 +64,11 @@ var PerformancePicker = React.createClass({
 
     return (
       <div className="spectacle-modal-content">
+        <div
+          onClick={this.props.closeCallback}
+          className="modal-close-x">
+            &times;
+        </div>
 
         <div className="performance-picker">
           <h2>Select a Performance</h2>

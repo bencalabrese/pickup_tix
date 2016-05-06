@@ -94,6 +94,12 @@ var SeatPicker = React.createClass({
 
     return (
       <div className="spectacle-modal-content">
+        <div
+          onClick={this.props.closeCallback}
+          className="modal-close-x">
+            &times;
+        </div>
+        
         <div className="seat-picker">
           <div>{sectionNames}</div>
           {sections}

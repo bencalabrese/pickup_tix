@@ -40,7 +40,9 @@ var SpectaclesIndexItem = React.createClass({
                onRequestClose={this.closeModal}
                className="modal"
                overlayClassName="modal-overlay">
-          <SpectacleModal id={spectacle.id}/>
+          <SpectacleModal
+            id={spectacle.id}
+            closeCallback={this.closeModal}/>
         </Modal>
 
         <img src={photoUrl} alt={spectacle.title}/>
