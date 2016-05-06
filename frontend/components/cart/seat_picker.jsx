@@ -33,7 +33,6 @@ var SeatPicker = React.createClass({
       this.setState({
         venueMap: venueMap,
         tickets: CartStore.tickets(),
-        selected: venueMap[0].name
       });
     }
   },
