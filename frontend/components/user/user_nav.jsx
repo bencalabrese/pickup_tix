@@ -68,6 +68,12 @@ var UserNav = React.createClass({
                className="modal"
                overlayClassName="modal-overlay">
 
+           <div
+             onClick={this.closeModal}
+             className="modal-close-x">
+               &times;
+           </div>
+
           <LoginForm closeCallback={this.closeModal}
                      formType={this.state.formType}/>
         </Modal>
