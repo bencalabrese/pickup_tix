@@ -1,9 +1,12 @@
 var React = require('react'),
     moment = require('moment'),
     CartActions = require('../../actions/cart_actions'),
-    CartStore = require('../../stores/cart');
+    CartStore = require('../../stores/cart'),
+    SetCartStatus = require('../../mixins/set_cart_status');
 
 var OrderConfirmation = React.createClass({
+  mixins: [SetCartStatus],
+
   getInitialState: function() {
     return { success: false };
   },
@@ -70,7 +73,7 @@ var OrderConfirmation = React.createClass({
           <p>For the performance at:</p>
           <p>{time} on {date}</p>
           <div className="cart-progress-buttons">
-            <button onClick={this.goToDates}>
+            <button onClick={this.goToSeats}>
               &lt;&lt;&nbsp;&nbsp;&nbsp;Back to Pick Seats
             </button>
 
