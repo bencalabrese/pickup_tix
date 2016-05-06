@@ -32,17 +32,23 @@ var Header = React.createClass({
         </Link>
 
         <nav>
-          <Link to="/events" onClick={this.toggleDance}>
-            Dance
-          </Link>
+          <div className="menu-item">
+            <Link to="/events" onClick={this.toggleDance}>
+              Dance
+            </Link>
+          </div>
 
-          <Link to="/events" onClick={this.toggleMusic}>
-            Music
-          </Link>
+          <div className="menu-item">
+            <Link to="/events" onClick={this.toggleMusic}>
+              Music
+            </Link>
+          </div>
 
-          <Link to="/events" onClick={this.toggleTheater}>
-            Theater
-          </Link>
+          <div className="menu-item">
+            <Link to="/events" onClick={this.toggleTheater}>
+              Theater
+            </Link>
+          </div>
         </nav>
 
         <UserNav/>

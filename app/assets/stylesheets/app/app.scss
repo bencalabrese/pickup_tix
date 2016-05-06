@@ -71,10 +71,16 @@ header {
     padding: 0 10px;
     border-right: 1px solid $medium-gray;
     cursor: pointer;
+    transition: color 0.5s;
   }
 
   nav a:last-child {
     border-right: none;
+  }
+
+  nav a:hover {
+    color: $dark-pink;
+    transition: color 0.5s;
   }
 
   .logo {
@@ -108,6 +114,15 @@ header {
 footer {
   justify-content: space-around;
   height: 30px;
+
+  a {
+    transition: color 0.5s;
+  }
+
+  a:hover {
+    color: $dark-pink;
+    transition: color 0.5s;
+  }
 }
 
 .sidebar {
