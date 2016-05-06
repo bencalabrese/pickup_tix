@@ -9,10 +9,12 @@ var SeatPicker = React.createClass({
   mixins: [SetCartStatus],
 
   getInitialState: function() {
+    var venueMap = CartStore.performance().venueMap;
+
     return {
-      venueMap: CartStore.performance().venueMap,
+      venueMap: venueMap,
       tickets: CartStore.tickets(),
-      selected: null
+      selected: venueMap[0].name
     };
   },
 
@@ -26,9 +28,12 @@ var SeatPicker = React.createClass({
 
   _onChange: function() {
     if (CartStore.performance()) {
+      var venueMap = CartStore.performance().venueMap;
+
       this.setState({
-        venueMap: CartStore.performance().venueMap,
-        tickets: CartStore.tickets()
+        venueMap: venueMap,
+        tickets: CartStore.tickets(),
+        selected: venueMap[0].name
       });
     }
   },
@@ -40,10 +45,16 @@ var SeatPicker = React.createClass({
 
   render: function() {
     var venueMap = this.state.venueMap;
+    var selectedSection = this.state.selected;
 
     var sectionNames = venueMap.map(function(section) {
+      var className = selectedSection === section.name ?
+        "selected-section" :
+        "";
+
       return (
         <h2
+          className={className}
           key={section.name}
           name={section.name}
           onClick={this.selectSection}>
@@ -51,8 +62,6 @@ var SeatPicker = React.createClass({
         </h2>
       );
     }.bind(this));
-
-    var selectedSection = this.state.selected;
 
     var sections = venueMap.map(function(section) {
       var selected = selectedSection === section.name ? true : false;
