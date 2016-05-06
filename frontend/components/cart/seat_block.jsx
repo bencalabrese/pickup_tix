@@ -6,7 +6,7 @@ var SeatBlock = React.createClass({
   render: function() {
     var rows = this.props.seats.map(function(row, rowIdx) {
       var seats = row.map(function(seat, seatIdx) {
-        return <Seat key={seat.id} seat={seat}/>;
+        return <Seat key={seatIdx} seat={seat}/>;
       });
 
       return <tr key={rowIdx}>{seats}</tr>;

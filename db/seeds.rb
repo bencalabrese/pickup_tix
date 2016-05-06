@@ -41,12 +41,6 @@ def gen_performances(spectacle)
     current_performance += 3.days
   end
 end
-#
-# def gen_section(venue, section_name)
-#   section = Section.create!(name: section_name, venue: venue)
-#   gen_seat_blocks(section)
-# end
-
 
 def gen_seat_block(section, style, row_count, col_count)
   seat_block = SeatBlock.create!(style: style, section: section)
@@ -74,7 +68,7 @@ venue_names = [
   "The Curran Theater",
   "The EXIT Stage Left",
   "The Ashby Stage",
-  "The Fillmore"
+  "PianoFight"
 ]
 
 venue_names.each do |name|
@@ -89,25 +83,92 @@ mezz_styles = ["0,0,10", "0,0,-10"]
 # SF Playhouse
 sf_playhouse = venues[0]
 
-sfp_orch = Section.create(venue: sf_playhouse, name: "Orchestra")
-sfp_mezz = Section.create(venue: sf_playhouse, name: "Mezzanine")
+sfp_orch = Section.create!(venue: sf_playhouse, name: "Orchestra")
+sfp_mezz = Section.create!(venue: sf_playhouse, name: "Mezzanine")
 
-orch_styles.each { |style| gen_seat_block(sfp_orch, style, 5, 4) }
-mezz_styles.each { |style| gen_seat_block(sfp_mezz, style, 5, 8) }
+orch_styles.each { |style| gen_seat_block(sfp_orch, style, 4, 3) }
+mezz_styles.each { |style| gen_seat_block(sfp_mezz, style, 4, 6) }
 
+# The Curran Theater
+curran_theater = venues[1]
 
+curran_orch = Section.create!(venue: curran_theater, name: "Orchestra")
+curran_mezz = Section.create!(venue: curran_theater, name: "Mezzanine")
 
+orch_styles.each { |style| gen_seat_block(curran_orch, style, 5, 4) }
+mezz_styles.each { |style| gen_seat_block(curran_mezz, style, 5, 8) }
+
+# EXIT Stage Left
+stage_left = venues[2]
+
+stage_left_main = Section.create!(venue: stage_left, name: "Main")
+stage_left_block = SeatBlock.create!(style: "0,0,0", section: stage_left_main)
+
+stage_left_seats = [
+  [0,0], [0,1], [0,2], [0,3], [0,4], [0,5], [0,6], [0,7], [0,8], [0,9], [0,10], [0,11],
+         [1,1], [1,2], [1,3], [1,4], [1,5], [1,6], [1,7], [1,8], [1,9], [1,10], [1,11],
+         [2,1], [2,2], [2,3], [2,4], [2,5], [2,6], [2,7], [2,8], [2,9], [2,10], [2,11],
+                [3,2], [3,3], [3,4], [3,5], [3,6], [3,7], [3,8], [3,9], [3,10], [3,11],
+]
+
+alpha = ("A".."Z").to_a
+
+stage_left_seats.each do |seat|
+  row = seat.first
+  col = seat.second
+
+  Seat.create!(
+    name: "#{alpha[row]}#{col}",
+    row: row,
+    col: col,
+    seat_block: stage_left_block
+  )
+end
+
+# Ashby Stage
+ashby = venues[3]
+
+ashby_main = Section.create(venue: ashby, name: "Main")
+
+gen_seat_block(ashby_main, mezz_styles.first, 6, 3)
+gen_seat_block(ashby_main, mezz_styles.second, 6, 4)
+
+# PianoFight
+pianofight = venues[4]
+
+pianofight_main = Section.create!(venue: pianofight, name: "Café")
+pianofight_block = SeatBlock.create!(style: "0,0,0", section: pianofight_main)
+
+pianofight_seats = [
+  [1,1], [2,0], [3,1],  [2,2],
+  [0,5], [2,5], [1,4],  [1,6],
+  [1,9], [3,9], [2,10], [2,8]
+]
+
+alpha = ("A".."Z").to_a
+
+pianofight_seats.each do |seat|
+  row = seat.first
+  col = seat.second
+
+  Seat.create!(
+  name: "#{alpha[row]}#{col}",
+  row: row,
+  col: col,
+  seat_block: pianofight_block
+  )
+end
 
 def gen_spectacles(category_id, items)
   venues = Venue.all
 
   items.each do |item|
     spectacle = Spectacle.create!(
-    category_id: category_id,
-    venue: venues.first,
-    title: item[0],
-    description: item[1],
-    image_url: item[2]
+      category_id: category_id,
+      venue: venues.fifth,
+      title: item[0],
+      description: item[1],
+      image_url: item[2]
     )
 
     gen_taggings(spectacle)
