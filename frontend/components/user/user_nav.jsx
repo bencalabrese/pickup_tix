@@ -52,7 +52,6 @@ var UserNav = React.createClass({
     if (this.state.currentUser) {
       links = [
         <p key="user">Logged in as: {this.state.currentUser.username}</p>,
-        <a key="myShows" href="#">My Shows</a>,
         <a key="logout" onClick={this.handleLogout}>Logout</a>,
       ];
     } else {

@@ -1,8 +1,27 @@
 var React = require('react'),
     UserNav = require('../user/user_nav'),
-    Link = require('react-router').Link;
+    Link = require('react-router').Link,
+    FilterActions = require('../../actions/filter_actions');
 
 var Header = React.createClass({
+
+  toggleDance: function() {
+    setTimeout(function() {
+      FilterActions.setFilter({ category_ids: [1] });
+    }, 0);  },
+
+  toggleMusic: function() {
+    setTimeout(function() {
+      FilterActions.setFilter({ category_ids: [2] });
+    }, 0);
+  },
+
+  toggleTheater: function() {
+    setTimeout(function() {
+      FilterActions.setFilter({ category_ids: [3] });
+    }, 0);  },
+
+
   render: function() {
     return (
       <header className="header">
@@ -13,10 +32,17 @@ var Header = React.createClass({
         </Link>
 
         <nav>
-          <Link to="/events">Music</Link>
-          <Link to="/events">Dance</Link>
-          <Link to="/events">Theater</Link>
-          <a href="#">Site Tour</a>
+          <Link to="/events" onClick={this.toggleDance}>
+            Dance
+          </Link>
+
+          <Link to="/events" onClick={this.toggleMusic}>
+            Music
+          </Link>
+
+          <Link to="/events" onClick={this.toggleTheater}>
+            Theater
+          </Link>
         </nav>
 
         <UserNav/>
