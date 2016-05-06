@@ -69,7 +69,6 @@ function updateCartStatus(newStatus) {
 }
 
 function resetCart() {
-  _cartStatus = "closed";
   _tickets = [];
   _performance = null;
 }

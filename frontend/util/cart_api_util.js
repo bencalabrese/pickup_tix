@@ -15,14 +15,14 @@ var CartApiUtil = {
     });
   },
 
-  assignTickets: function(ticketIds) {
+  assignTickets: function(ticketIds, cb) {
     $.ajax({
       method: 'PATCH',
       dataType: 'json',
       url: 'api/tickets',
       data: { ticket_ids: ticketIds },
       success: function() {
-        CartServerActions.resetCart();
+        cb();
       },
       error: function(response) {
       }

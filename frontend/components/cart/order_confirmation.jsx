@@ -5,52 +5,58 @@ var React = require('react'),
 
 var OrderConfirmation = React.createClass({
   getInitialState: function() {
-    return { tickets: CartStore.tickets() };
+    return { success: false };
   },
-
-  componentDidMount: function() {
-    this.listener = CartStore.addListener(this._onChange);
-  },
-
-  componentWillUnmount: function() {
-    this.listener.remove();
-  },
-
-  _onChange: function() {
-    this.setState({ tickets: CartStore.tickets() });
-  },
-
 
   assignTickets: function() {
-    CartActions.assignTickets(this.state.tickets);
+    CartActions.assignTickets(
+      this.props.tickets,
+      this.orderSuccess
+    );
+  },
+
+  orderSuccess: function() {
+    this.setState({ success: true });
+    CartActions.resetCart();
   },
 
   render: function() {
-    var spectacle = this.props.spectacle,
-        performance = this.props.performance,
-        tickets = this.props.tickets;
+    var content;
 
-    var datetime = moment(performance.datetime),
-        date = datetime.format("MMMM Do, YYYY"),
-        time = datetime.format("h:mm a");
+    if (this.state.success) {
+      content = (
+        <div className="order-confirmation">
+          <h2>Success!</h2>
+          <p>All of your seats have been reserved.</p>
+          <br></br>
+          <p>Enjoy the show!</p>
+        </div>
+      );
+    } else {
+      var spectacle = this.props.spectacle,
+          performance = this.props.performance,
+          tickets = this.props.tickets;
 
-    var ticketsString;
+      var datetime = moment(performance.datetime),
+          date = datetime.format("MMMM Do, YYYY"),
+          time = datetime.format("h:mm a");
 
-    switch (this.state.tickets.length) {
-      case 1:
-        ticketsString = "Yourself";
-        break;
-      case 2:
-        ticketsString = "Yourself and 1 friend";
-        break;
-      default:
-        ticketsString = "Yourself and " +
-          (this.state.tickets.length - 1) + " friends";
-        break;
-    }
+      var ticketsString;
 
-    return (
-      <div className="spectacle-modal-content">
+      switch (tickets.length) {
+        case 1:
+          ticketsString = "Yourself";
+          break;
+        case 2:
+          ticketsString = "Yourself and 1 friend";
+          break;
+        default:
+          ticketsString = "Yourself and " +
+            (this.props.tickets.length - 1) + " friends";
+          break;
+      }
+
+      content = (
         <div className="order-confirmation">
           <h2>Confirm Your Order</h2>
           <p>You have selected seats for:</p>
@@ -73,6 +79,12 @@ var OrderConfirmation = React.createClass({
             </button>
           </div>
         </div>
+      );
+    }
+
+    return (
+      <div className="spectacle-modal-content">
+        {content}
       </div>
     );
   }

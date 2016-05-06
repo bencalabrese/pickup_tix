@@ -7,8 +7,8 @@ var CartClientActions = {
     CartApiUtil.fetchSinglePerformance(id);
   },
 
-  assignTickets: function(ticketIds) {
-    CartApiUtil.assignTickets(ticketIds);
+  assignTickets: function(ticketIds, cb) {
+    CartApiUtil.assignTickets(ticketIds, cb);
   },
 
   updateCartStatus: function(newStatus) {

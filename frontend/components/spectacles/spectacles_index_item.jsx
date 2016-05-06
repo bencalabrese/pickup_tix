@@ -22,6 +22,7 @@ var SpectaclesIndexItem = React.createClass({
   closeModal: function() {
     this.setState({ modalIsOpen: false });
     CartActions.resetCart();
+    CartActions.updateCartStatus("closed");
   },
 
   render: function() {
