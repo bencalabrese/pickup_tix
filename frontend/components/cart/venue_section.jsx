@@ -16,7 +16,11 @@ var VenueSection = React.createClass({
       <div className="seating-section">
         <h2>{this.props.name}</h2>
 
-        {seatBlocks}
+        <div className="seat-blocks">
+          {seatBlocks}
+        </div>
+
+        <div className="stage">Stage</div>
       </div>
     );
   }

@@ -1,11 +1,24 @@
 @import "../app/app";
 
+.seat-picker {
+  text-align: center;
+  position: relative;
+  width: 100%;
+}
+
 .seating-section {
+  display: inline-flex;
+  flex-direction: column;
+  align-self: center;
+
+  h2 {
+    padding-bottom: 30px;
+    font-size:  20px;
+  }
+
   table {
     float: left;
   }
-
-  padding-left: 50px;
 }
 
 .seat {
@@ -25,15 +38,29 @@
 }
 
 .unavailable {
-  background-color: $medium-gray;
+  background-color: $light-gray;
+  cursor: default;
 }
 
 .null-seat {
   background-color: transparent;
 }
+//
+// .tickets-list {
+//   position: absolute;
+//   right: 15px;
+//   top: 15px;
+// }
 
-.tickets-list {
-  position: absolute;
-  right: 15px;
-  top: 15px;
+.seat-blocks {
+  display: inline-block;
+}
+
+.stage {
+  width: 100%;
+  border: 1px solid $dark-gray;
+  border-bottom: none;
+  margin: 40px 0;
+  padding: 15px 0;
+  text-align: center;
 }

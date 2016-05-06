@@ -2,9 +2,12 @@ var React = require('react'),
     moment = require('moment'),
     CartActions = require('../../actions/cart_actions'),
     CartStore = require('../../stores/cart'),
-    VenueSection = require('./venue_section');
+    VenueSection = require('./venue_section'),
+    SetCartStatus = require('../../mixins/set_cart_status');
 
 var SeatPicker = React.createClass({
+  mixins: [SetCartStatus],
+
   getInitialState: function() {
     return {
       venueMap: CartStore.performance().venueMap,
@@ -38,18 +41,48 @@ var SeatPicker = React.createClass({
                name={section.name}
                seatBlocks={section.seat_blocks}/>;
     });
+    //
+    // var tickets = this.state.tickets.map(function(ticket) {
+    //   return <li key={ticket}>{ticket}</li>;
+    // });
 
-    var tickets = this.state.tickets.map(function(ticket) {
-      return <li key={ticket}>{ticket}</li>;
-    });
+    var ticketsString;
+
+    switch (this.state.tickets.length) {
+      case 0:
+        ticketsString = "You have not selected any seats.";
+        break;
+      case 1:
+        ticketsString = "You have selected a seat for yourself.";
+        break;
+      case 2:
+        ticketsString = "You have selected seats for yourself and " +
+        (this.state.tickets.length - 1) + " friend.";
+        break;
+      default:
+        ticketsString = "You have selected seats for yourself and " +
+          (this.state.tickets.length - 1) + " friends.";
+        break;
+    }
+
 
     return (
-      <div className="seat-picker">
-        {sections}
+      <div className="spectacle-modal-content">
+        <div className="seat-picker">
+          {sections}
 
-        <ul className="tickets-list">
-          {tickets}
-        </ul>
+          <p className="tickets-string">{ticketsString}</p>
+
+          <div className="cart-progress-buttons">
+            <button onClick={this.goToDates}>
+              &lt;&lt;&nbsp;&nbsp;&nbsp;Back to Pick Dates
+            </button>
+
+            <button onClick={this.goToConfirmation}>
+              Confirm Your Reservation&nbsp;&nbsp;&nbsp;>>
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
