@@ -69,7 +69,7 @@ var SeatPicker = React.createClass({
           <p className="tickets-string">{ticketsString}</p>
 
           <div className="cart-progress-buttons">
-            <button onClick={this.goToDates}>
+            <button onClick={this.goToPerformances}>
               &lt;&lt;&nbsp;&nbsp;&nbsp;Back to Pick Dates
             </button>
 
