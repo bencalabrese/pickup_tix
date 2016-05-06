@@ -165,7 +165,7 @@ def gen_spectacles(category_id, items)
   items.each do |item|
     spectacle = Spectacle.create!(
       category_id: category_id,
-      venue: venues.fifth,
+      venue: venues.sample,
       title: item[0],
       description: item[1],
       image_url: item[2]
@@ -182,6 +182,6 @@ dances = File.readlines(path.join("dances.txt")).map(&:chomp).map { |dance| danc
 musics = File.readlines(path.join("music.txt")).map(&:chomp).map { |music| music.split("*") }
 theaters = File.readlines(path.join("theater.txt")).map(&:chomp).map { |theater| theater.split("*") }
 
-gen_spectacles(1, [dances.first])
-# gen_spectacles(2, musics)
-# gen_spectacles(3, theaters)
+gen_spectacles(1, dances)
+gen_spectacles(2, musics)
+gen_spectacles(3, theaters)
