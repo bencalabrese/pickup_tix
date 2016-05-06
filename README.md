@@ -1,141 +1,118 @@
-# PickupTix
+# FresherNote
 
-[Site page][heroku]
+[PickupTix][heroku]
 
 [heroku]: http://www.pickuptix.io
 
-## Minimum Viable Product
+PickupTix is a user-first, event-browsing and ticketing app designed to make finding and reserving seats to live performances
+an intuitive and engaging experience. It is a full-stack app built on the following technologies:
 
-PickupTix is a web application for event ticketing inspired by EventBrite
-focused on a clean and engaging UI. It will at minimum satisfy the folowing criteria:
+*  Rails backend
+*  React/Flux frontend
+*  Postgres RDBMS
 
-- [ ] New user signup, login, and demo login
-- [ ] Bug-free navigation
-- [ ] Engaging seed data
-- [ ] Searchable events, event tags/categories, reserving tickets for multiple events and for multiple nights, reservation history
-- [ ] Visually appealing styling on all pages with feedback for user interactions
+## Features & Implementation
 
-## Product Goals and Priorities
+ **NB**: don't copy and paste any of this.  Many folks will implement similar features, and many employers will see the READMEs of a lot of a/A grads.  You must write in a way that distinguishes your README from that of other students', but use this as a guide for what topics to cover.  
 
-PickupTix will allow users to do the following:
+### Just one page
 
-- [ ] Create an account (MVP)
-- [ ] Login/Logout, including a demo account (MVP)
-- [ ] Search and browse shows across multiple categories (MVP)
-- [ ] Reserve seats to specific performances (MVP)
-- [ ] Review reservation history and upcoming reservations (MVP)
-- [ ] Use a seat-picker to reserve particular seats (expected feature, but not MVP)
-- [ ] Receive recommended events based upon their reservation history and preferences (expected feature, but not MVP)
+PickupTix uses the React Router to keep all of its content on a single root page. While navigating the site, all relevent data
+including user credentials, filter parameters, and show indices are managed in local stores. All of this is managed through a
+Rails API serving JSON.
 
-## Design Docs
-* [View Wireframes][views]
-* [React Components][components]
-* [Flux Cycles][flux-cycles]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
+By using browser history, the user experiences the same familiar experience of being able to refresh or send out links to friends
+without any issues. No gobblygook in the URL. Just a nice, clean display for prospective customers.
 
-[views]: ./docs/views.md
-[components]: ./docs/components.md
-[flux-cycles]: ./docs/flux-cycles.md
-[api-endpoints]: ./docs/api-endpoints.md
-[schema]: ./docs/schema.md
+```ruby
+Rails.application.routes.draw do
+  root "static_pages#root"
+  get "/events", to: "static_pages#root"
 
-## Implementation Timeline
+  namespace :api, defaults: { format: :json } do
+    resource :user, only: [:show, :create, :destroy]
+    resource :session, only: [:create, :destroy]
 
-### Phase 1: Backend setup and User Authentication (0.5 days)
+    resources :spectacles, only: [:index, :show]
 
-**Objective:** Functioning rails project with Authentication
+    resources :performances, only: :show
 
-- [X] create project
-- [X] create `User` model
-- [X] authentication
-- [X] user signup/signin forms
-- [X] detect signed in vs. not signed in user
+    patch "/tickets", to: "tickets#assign_tickets"
+  end
+end
+```
 
-### Phase 2: Flux Architecture and Router (1 days)
+### Find only the shows you want
+<!-- ![image of notebook index](https://github.com/appacademy/sample-project-proposal/blob/master/docs/noteIndex.png) -->
 
-**Objective:** Set up basic components for index and splash pages
+Filtering is handled by using the ActiveRecord to leverage Postgres' power. `Spectacle`s (avoiding words like "show" and "event"
+to keep Javascript and Ruby happy) contain various columns of their own through which they may be filtered as well as associations
+with their `Venue`s and `Performance`s which need to be accounted for. The filtering page assembles and stores these parameters
+so that Rails can select `Spectacle`s across multiple criteria and serve them up whenever criteria change.
 
-- [X] React views
-- [X] Splash page
-- [X] Components set-up with dummy divs for spacing
-- [X] Basic styling of header, footer and main content box spacing
-- [X] Live on Heroku
+`Spectacle`s are served up both in a `SpectaclesIndex` as `SpectaclesIndexItem`s and in greater detail in a `SpectacleModal`. Details
+like specific `Performance`s are only retrieved when the modal is opened to reduce sending down extraneous data.
 
-### Phase 3: Venues Model, Spectacles Model (1 days)
+One of the key tricks to achieving this is the fact that ActiveRecord queries an accept `nil` as an argument and will pass the
+ActiveRecord relation through the query unaltered. This results in the simplest and most efficient query, only using the
+parameters the user has specified.
 
-**Objective:** Spectacles can be created, read, edited and destroyed through
-the terminal.
+```ruby
+# spectacle.rb
 
-- [X] Venues have sections, seat_blocks, and seats
-- [X] Spectacles have seats through their venue
-- [X] Venues can have multiple Spectacles
+def self.filter_by_params(params)
 
-### Phase 4: Styling (0.5 days)
+# ...
 
-**Objective:** Existing pages will look presentable and have correct spacing.
+  self.where(*keyword_where)
+      .where(category_where)
+      .joins(performances_join)
+      .where(performances_where)
+      .joins(taggings_join)
+      .where(taggings_where)
+      .joins(seats_join)
+      .group(seats_group)
+      .having(*seats_having)
+      .order(order_type)
+      .limit(limit)
+end
+```
+### Pick your own seat
 
-- [X] Layout for SpectaclesIndex
-- [X] Layout for SpectaclesIndexItem
-- [X] Make it pretty
+PickupTix implements a seat picker which allows users to choose their own seat through an intuitive UI. The entire process is
+designed to keep the ticket booking process graphically focused and to tied to the emotions of attending the event. When the user
+picks a seat, they imagine themselves in it. They think about who will be sitting next to them. When they select a number of tickets,
+they think about... a number.
 
-### Phase 5: Perfomances Model, Ticketings Model API, and basic ApiUtil (1 days)
+Getting seats to work involves abstracting out venue data a bit. PickupTix maps `Ticket`s to `Seat`s and has seats belonging to `Venue`s through `SeatBlock`s
+and `Section`s. After that, a JSON package can be sent down with this nested information in order to generate the map.
 
-**Objective:** Performances can be read, through the API.
+```ruby
+def gen_seats_matrix(tickets)
+  matrix = []
 
-- [X] Performances have seats through their Spectacle
-- [X] API can read seats from `performance`
-- [X] API can read remaining seats and booked seats
-- [X] API allows booking of remaining seats
+  seats.each do |seat|
+    matrix[seat.row] ||= []
+    matrix[seat.row][seat.col] = tickets[seat.id]
+  end
 
-### Phase 6: Tags (0.5 day)
+  { style: style, matrix: matrix }
+end
+```
 
-**Objective:** Spectacles can be tagged with multiple tags, tags are searchable.
+## Future Features
 
-- [X] Search by tags
-- [X] Also search by dates and venue size
+The next steps in developing PickupTix include:
 
-### Phase 7: Search Bar and Filtering Views (1 day)
+### Search
 
-**Objective:** Views for search bar and filter page
+Searching events by their title. Work on the back end of this feature is already set up. The front end application will be built into the filter page.  
 
-- [ ] Search Bar searches by Spectacle name
-- [X] Filtering allows searches to be broken down by tags, venue size, and dates
-- [X] SpectaclesStore updates according to filter and displays results
+### User Shows
 
-### Phase 8: SpectacleDetail Modal and Checkout process (2 days)
+Users should be able to see the seats they've booked in order to tell what shows they
+have coming up and what shows they've seen in the past.
 
-**Objective:** Spectacles can be seen in detail. Create ticketings through UI.
+### Recommendations
 
-- [X] Spectacle detail modal shows individual Spectacle
-- [X] Pick performances, seats (from dropdown), checkout in modal
-- [ ] Style modal
-
-### Phase 9: Seed and build logo (1 day)
-
-**Objective:** Create logo and seed data
-
-- [ ] SVG logo with sticks to be used in multiple places
-- [ ] Seed several Spectacles with pictures (est. 200 needed)
-
-### Phase 10: Style review and Splash layout (2 day)
-
-**Objective:** Layout splash and refine style on all pages.
-
-- [ ] Create Jumbotron and details
-- [X] Add small spectacle index to splash
-- [ ] Review and refine style on all pages
-
-### Phase 11: Users page with user purchase history (0.5 days)
-
-**Objective:** Users page
-
-- [ ] Sidebar with upcoming performances
-- [ ] See all upcoming Spectacles and all past Spectacles attended
-
-### Bonus Features (TBD)
-- [X] Seat picker in purchase modal
-- [ ] Recommendation engine in Rails
-- [ ] Display recommended Spectacles
-- [ ] Animations
-- [ ] Users can create new spectacles (lowest priority)
+Using the users history, PickupTix will be able to recommend upcoming shows that match their preferences.
