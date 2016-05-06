@@ -4,6 +4,14 @@
   text-align: center;
   position: relative;
   width: 100%;
+
+  h2 {
+    padding: 0 20px;
+    padding-bottom: 30px;
+    font-size:  20px;
+    cursor: pointer;
+    display: inline-block;
+  }
 }
 
 .seating-section {
@@ -11,13 +19,30 @@
   flex-direction: column;
   align-self: center;
 
-  h2 {
-    padding-bottom: 30px;
-    font-size:  20px;
-  }
-
   table {
     float: left;
+  }
+
+  .stage {
+    width: 100%;
+    border: 1px solid $dark-gray;
+    border-bottom: none;
+    margin: 40px 0;
+    padding: 15px 0;
+    text-align: center;
+    display: none;
+  }
+
+  .seat-blocks {
+    display: none;
+  }
+
+  .stage.selected-section {
+    display: block;
+  }
+
+  .seat-blocks.selected-section {
+    display: inline-block;
   }
 }
 
@@ -47,21 +72,8 @@
   background-color: transparent;
 }
 
-.seat-blocks {
-  display: inline-block;
-}
-
 .tickets-string {
   position: absolute;
   bottom: 70px;
   width: 100%;
-}
-
-.stage {
-  width: 100%;
-  border: 1px solid $dark-gray;
-  border-bottom: none;
-  margin: 40px 0;
-  padding: 15px 0;
-  text-align: center;
 }

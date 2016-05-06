@@ -2,6 +2,13 @@ var React = require('react'),
     SeatBlock = require('./seat_block');
 
 var VenueSection = React.createClass({
+  getInitialState: function() {
+    return { selected: this.props.selected };
+  },
+
+  componentWillReceiveProps: function(newProps) {
+    this.setState({ selected: newProps.selected });
+  },
 
   render: function() {
     var seatBlocks = this.props.seatBlocks.map(function(seatBlock, idx) {
@@ -11,16 +18,15 @@ var VenueSection = React.createClass({
         seats={seatBlock.matrix}/>;
     });
 
+    var selectedClass = this.state.selected ? " selected-section" : "";
 
     return (
       <div className="seating-section">
-        <h2>{this.props.name}</h2>
-
-        <div className="seat-blocks">
+        <div className={"seat-blocks" + selectedClass}>
           {seatBlocks}
         </div>
 
-        <div className="stage">Stage</div>
+        <div className={"stage" + selectedClass}>Stage</div>
       </div>
     );
   }

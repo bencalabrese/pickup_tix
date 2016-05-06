@@ -11,7 +11,8 @@ var SeatPicker = React.createClass({
   getInitialState: function() {
     return {
       venueMap: CartStore.performance().venueMap,
-      tickets: CartStore.tickets()
+      tickets: CartStore.tickets(),
+      selected: null
     };
   },
 
@@ -32,14 +33,36 @@ var SeatPicker = React.createClass({
     }
   },
 
+  selectSection: function(event) {
+    var sectionName = event.currentTarget.getAttribute("name");
+    this.setState({ selected: sectionName });
+  },
+
   render: function() {
     var venueMap = this.state.venueMap;
 
+    var sectionNames = venueMap.map(function(section) {
+      return (
+        <h2
+          key={section.name}
+          name={section.name}
+          onClick={this.selectSection}>
+            {section.name}
+        </h2>
+      );
+    }.bind(this));
+
+    var selectedSection = this.state.selected;
+
     var sections = venueMap.map(function(section) {
-      return <VenueSection
-               key={section.name}
-               name={section.name}
-               seatBlocks={section.seat_blocks}/>;
+      var selected = selectedSection === section.name ? true : false;
+
+      return (
+        <VenueSection
+          selected={selected}
+          key={section.name}
+          seatBlocks={section.seat_blocks}/>
+      );
     });
 
     var ticketsString;
@@ -64,6 +87,7 @@ var SeatPicker = React.createClass({
     return (
       <div className="spectacle-modal-content">
         <div className="seat-picker">
+          <div>{sectionNames}</div>
           {sections}
 
           <p className="tickets-string">{ticketsString}</p>
