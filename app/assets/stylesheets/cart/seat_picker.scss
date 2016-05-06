@@ -27,6 +27,7 @@
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
+  transition: background-color 0.25s;
 }
 
 .available {
@@ -45,15 +46,15 @@
 .null-seat {
   background-color: transparent;
 }
-//
-// .tickets-list {
-//   position: absolute;
-//   right: 15px;
-//   top: 15px;
-// }
 
 .seat-blocks {
   display: inline-block;
+}
+
+.tickets-string {
+  position: absolute;
+  bottom: 70px;
+  width: 100%;
 }
 
 .stage {

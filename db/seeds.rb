@@ -30,6 +30,7 @@ def gen_performances(spectacle)
   first_performance += rand(1..5).weeks
 
   current_performance = first_performance.to_datetime + 20.hours
+  current_performance = current_performance.change(offset: "PDT")
 
   3.times do |week|
     4.times do |day|

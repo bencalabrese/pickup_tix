@@ -74,8 +74,7 @@ var SpectacleModal = React.createClass({
             transitionName="carousel"
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}>
-              <SeatPicker
-                key="seats"/>
+              <SeatPicker key="seats"/>
           </ReactCSSTransitionGroup>
         );
         break;
@@ -86,7 +85,11 @@ var SpectacleModal = React.createClass({
             transitionName="carousel"
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}>
-              <OrderConfirmation key="confirmation"/>
+              <OrderConfirmation
+                key="confirmation"
+                performance={this.state.performance}
+                spectacle={this.state.spectacle}
+                tickets={this.state.tickets}/>
           </ReactCSSTransitionGroup>
         );
         break;

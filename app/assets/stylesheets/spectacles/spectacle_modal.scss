@@ -117,9 +117,12 @@
 
 
 .cart-progress-buttons {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   padding-top: 25px;
+  position: absolute;
+  bottom: 0;
 
   button {
     background-color: white;

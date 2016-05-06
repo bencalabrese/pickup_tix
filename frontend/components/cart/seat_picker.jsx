@@ -41,10 +41,6 @@ var SeatPicker = React.createClass({
                name={section.name}
                seatBlocks={section.seat_blocks}/>;
     });
-    //
-    // var tickets = this.state.tickets.map(function(ticket) {
-    //   return <li key={ticket}>{ticket}</li>;
-    // });
 
     var ticketsString;
 
@@ -56,8 +52,7 @@ var SeatPicker = React.createClass({
         ticketsString = "You have selected a seat for yourself.";
         break;
       case 2:
-        ticketsString = "You have selected seats for yourself and " +
-        (this.state.tickets.length - 1) + " friend.";
+        ticketsString = "You have selected seats for yourself and 1 friend.";
         break;
       default:
         ticketsString = "You have selected seats for yourself and " +
