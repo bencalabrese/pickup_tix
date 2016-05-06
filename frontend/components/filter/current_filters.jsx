@@ -15,7 +15,7 @@ var CurrentFilters = React.createClass({
       var categories = filters.category_ids.map(function(id) {
         return CATEGORIES[id - 1].name;
       }).join(", ");
-      if (categories.length < 1) { categories = "None"; }
+      if (categories.length < 1) { categories = "All"; }
     }
 
     if (filters.date_range) {
