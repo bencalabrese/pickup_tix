@@ -6,8 +6,22 @@ var SiteDescription = React.createClass({
   render: function() {
     return (
       <div className="site-description">
-        <h2>Find the events you want to see.</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div className="text">
+          <h2>Find the events you want to see.</h2>
+          <br></br>
+
+          <p>
+            PickupTix is the best way to find and book seats to your favorite performances. Want to see a big broadway production? No problem. Open mic at a local café? Yep. Thursday night at the ballet? PickupTix has you covered.
+          </p>
+          <br></br>
+          <p>Once you've found your next night out, plan ahead by picking exactly which seats you want. Never worry about being struggling to find seats together. Your entire experience can be planned here at PickupTix.</p>
+        </div>
+
+        <div className="pictures">
+          <img className="dancer" src="http://res.cloudinary.com/bencalabrese/image/upload/v1462578969/splash_page/dancer.svg"/>
+          <img className="music-notes" src="http://res.cloudinary.com/bencalabrese/image/upload/v1462578974/splash_page/eighth-note.svg"/>
+          <img className="mask" src="http://res.cloudinary.com/bencalabrese/image/upload/v1462578965/splash_page/mask.svg"/>
+        </div>
       </div>
     );
   }

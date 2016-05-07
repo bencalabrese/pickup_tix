@@ -19,11 +19,44 @@
 }
 
 .site-description {
+  color: $dark-gray;
   width: 840px;
   padding: 30px;
+  display: flex;
 
-  h2 {
-    font-size: 24px;
+  .text {
+    h2 {
+      font-size: 32px;
+      font-weight: bold;
+      padding-top: 40px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  .pictures {
+    float: right;
+    padding-left: 40px;
+
+    img {
+      display: block;
+      width: 120px;
+      height: 120px;
+    }
+
+    .dancer {
+      padding: 10px;
+    }
+
+    .music-notes {
+      padding: 22px;
+    }
+
+    .mask {
+      padding: 20px;
+    }
   }
 }
 
