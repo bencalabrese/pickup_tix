@@ -12,7 +12,8 @@ var ReactRouter = require('react-router'),
 var Header = require('./components/header/header'),
     Footer = require('./components/footer/footer'),
     Splash = require('./components/splash/splash'),
-    FilterPage = require('./components/filter/filter_page');
+    FilterPage = require('./components/filter/filter_page'),
+    MyShows = require('./components/user/my_shows');
 
 var App = React.createClass({
   render: function() {
@@ -37,6 +38,7 @@ var appRouter = (
     <Route path="/" component={App}>
       <IndexRoute component={Splash}/>
       <Route path="/events" component={FilterPage}/>
+      <Route path="/my-shows" component={MyShows}/>
     </Route>
   </Router>
 );

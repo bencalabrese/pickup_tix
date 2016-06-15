@@ -1,7 +1,7 @@
 if user
   json.username user.username
   json.upcomingPerformances user.upcoming_performances
-  json.allSpectacles user.all_spectacles
+  json.spectacleIds user.spectacle_ids
 else
   json.username nil
 end

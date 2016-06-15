@@ -37,6 +37,7 @@ class Spectacle < ActiveRecord::Base
   def self.find_by_filter_params(params = {})
     return [] if params[:none]
 
+    ids_where      = params[:ids] ? { id: params[:ids] } : nil
     keyword_where  = params[:keyword] ? ["title LIKE ?", "%#{params[:keyword]}%"] : [nil]
     category_ids   = params[:category_ids]
     category_where = params[:category_ids] ? { category_id: category_ids } : nil
@@ -64,7 +65,8 @@ class Spectacle < ActiveRecord::Base
       seats_having   = [nil]
     end
 
-    self.where(*keyword_where)
+    self.where(ids_where)
+        .where(*keyword_where)
         .where(category_where)
         .joins(performances_join)
         .where(performances_where)

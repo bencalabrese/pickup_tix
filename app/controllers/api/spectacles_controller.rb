@@ -16,6 +16,7 @@ class Api::SpectaclesController < ApplicationController
       :keyword,
       :random,
       :limit,
+      ids: [],
       category_ids: [],
       date_range: [],
       tag_ids: [],

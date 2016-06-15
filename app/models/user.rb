@@ -67,6 +67,7 @@ class User < ActiveRecord::Base
              .select("booked_shows.id, booked_shows.datetime, booked_shows.num_tickets, spectacles.title")
   end
 
-  def all_spectacles
+  def spectacle_ids
+    booked_spectacles.pluck(:id)
   end
 end
