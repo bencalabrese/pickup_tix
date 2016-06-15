@@ -20,6 +20,12 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   has_many :tickets
+  has_many :booked_performances,
+    through: :tickets,
+    source: :performance
+  has_many :booked_spectacles,
+    through: :booked_performances,
+    source: :spectacle
 
   def self.find_by_credentials(opts)
     user = find_by_username(opts[:username])
@@ -47,5 +53,20 @@ class User < ActiveRecord::Base
 
   def is_password?(password)
     BCrypt::Password.new(password_digest).is_password?(password)
+  end
+
+  def upcoming_performances
+    subquery = booked_performances.where("datetime > ?", DateTime.now)
+                                  .group(:id)
+                                  .select("COUNT(*) AS num_tickets")
+                                  .select(:id, :datetime)
+                                  .to_sql
+
+    Spectacle.joins(:performances)
+             .joins("INNER JOIN (#{subquery}) as booked_shows ON booked_shows.id = performances.id")
+             .select("booked_shows.id, booked_shows.datetime, booked_shows.num_tickets, spectacles.title")
+  end
+
+  def all_spectacles
   end
 end
