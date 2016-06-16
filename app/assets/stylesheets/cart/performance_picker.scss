@@ -19,6 +19,14 @@
     display: inline-block;
   }
 
+  .performance-preview.performance-preview:hover {
+    cursor: default;
+
+    h4 {
+      color: $dark-gray;
+    }
+  }
+
   .performance-picker-frame {
     width: 50%;
     height: 270px;

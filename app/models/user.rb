@@ -65,6 +65,7 @@ class User < ActiveRecord::Base
     Spectacle.joins(:performances)
              .joins("INNER JOIN (#{subquery}) as booked_shows ON booked_shows.id = performances.id")
              .select("booked_shows.id, booked_shows.datetime, booked_shows.num_tickets, spectacles.title")
+             .order("booked_shows.datetime DESC")
   end
 
   def spectacle_ids

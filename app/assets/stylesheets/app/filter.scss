@@ -113,7 +113,12 @@ input {
 }
 
 .results-pane {
-  display: flex;
+  flex-grow: 1;
+
+  h2 {
+    color: $dark-gray;
+    display: block;
+  }
 }
 
 .datepicker__day--in-range {

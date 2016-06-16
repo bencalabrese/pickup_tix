@@ -2,7 +2,8 @@ var React = require('react'),
     UserStore = require('../../stores/user'),
     browserHistory = require('react-router').browserHistory,
     CurrenUserStateMixin = require('../../mixins/current_user_state'),
-    SpectaclesIndex = require('../spectacles/spectacles_index');
+    UserSpectacleResults = require('./user_spectacle_results'),
+    UpcomingPerformancesPanel = require('./upcoming_performances_panel');
 
 var MyShows = React.createClass({
   mixins: [CurrenUserStateMixin],
@@ -17,9 +18,10 @@ var MyShows = React.createClass({
     var filters = { ids: user.spectacleIds };
 
     return (
-      <div>
-        Hello World
-        <SpectaclesIndex filters={filters}/>
+      <div className="my-shows">
+        <UserSpectacleResults filters={filters}/>
+        <UpcomingPerformancesPanel
+          upcomingPerformances={user.upcomingPerformances}/>
       </div>
     );
   }
