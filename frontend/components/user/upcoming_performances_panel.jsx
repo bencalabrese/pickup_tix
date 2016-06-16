@@ -10,7 +10,7 @@ var UpcomingPerformancesPanel = React.createClass({
 
 
     return (
-      <div className="sidebar">
+      <div className="sidebar upcoming-performances-panel">
         <h3>Upcoming Shows</h3>
 
         <ul>

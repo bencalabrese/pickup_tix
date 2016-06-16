@@ -12,22 +12,22 @@ var UpcomingPerformance = React.createClass({
 
     switch (performance.num_tickets) {
       case 1:
-        ticketsString = "Yourself";
+        ticketsString = "Ticket for yourself";
         break;
       case 2:
-        ticketsString = "Yourself and 1 friend";
+        ticketsString = "Tickets for yourself and 1 friend";
         break;
       default:
-        ticketsString = "Yourself and " +
+        ticketsString = "Tickets for yourself and " +
           (performance.num_tickets - 1) + " friends";
         break;
     }
 
     return (
-      <li>
+      <li className="upcoming-performance">
         <h4>{performance.title}</h4>
         <p>{time} on {date}</p>
-        <p>for {ticketsString}</p>
+        <p>{ticketsString}</p>
       </li>
     );
   }

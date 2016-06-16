@@ -5,4 +5,53 @@
   flex-grow: 1;
   justify-content: flex-end;
   color: $dark-gray;
+
+  h2 {
+    padding: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: $reddish-gray;
+  }
+}
+
+.booked-performance {
+  padding: 15px 0;
+  margin: 0 15px;
+  border-bottom: 1px solid $light-gray;
+
+  img {
+    float: left;
+    padding-right: 15px;
+  }
+
+  h4 {
+    padding-bottom: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: $reddish-gray;
+  }
+
+  p {
+    padding-top: 5px;
+  }
+}
+
+.upcoming-performances-panel {
+  h3 {
+    font-size: 20px;
+  }
+}
+
+.upcoming-performance {
+  text-align: right;
+  padding: 10px 0;
+  margin-top: 10px;
+  border-bottom: 1px solid $light-pink;
+
+  h4 {
+    font-size: 18px;
+    padding-bottom: 5px;
+  }
+
+
 }
