@@ -52,3 +52,15 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.performance-preview {
+  float: none;
+}
+
+.performance-preview.performance-preview:hover {
+  cursor: default;
+
+  h4 {
+    color: $dark-gray;
+  }
+}

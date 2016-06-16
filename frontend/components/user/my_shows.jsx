@@ -1,5 +1,4 @@
 var React = require('react'),
-    UserStore = require('../../stores/user'),
     browserHistory = require('react-router').browserHistory,
     CurrenUserStateMixin = require('../../mixins/current_user_state'),
     UserSpectacleResults = require('./user_spectacle_results'),
@@ -15,11 +14,11 @@ var MyShows = React.createClass({
       return <div>Please login to see this page</div>;
     }
 
-    var filters = { ids: user.spectacleIds };
-
     return (
       <div className="my-shows">
-        <UserSpectacleResults filters={filters}/>
+        <UserSpectacleResults
+          allBookedPerformances={user.allBookedPerformances}
+          spectacleIds={user.spectacleIds}/>
         <UpcomingPerformancesPanel
           upcomingPerformances={user.upcomingPerformances}/>
       </div>

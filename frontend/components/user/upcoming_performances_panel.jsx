@@ -5,7 +5,7 @@ var UpcomingPerformancesPanel = React.createClass({
 
   render: function() {
     var performances = this.props.upcomingPerformances.map(p => {
-      return <UpcomingPerformance key={p.id} performance={p}/>;
+      return <UpcomingPerformance key={p.performance_id} performance={p}/>;
     });
 
 

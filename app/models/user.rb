@@ -56,15 +56,18 @@ class User < ActiveRecord::Base
   end
 
   def upcoming_performances
-    subquery = booked_performances.where("datetime > ?", DateTime.now)
-                                  .group(:id)
+    all_booked_performances.where("booked_shows.datetime > ?", DateTime.now)
+  end
+
+  def all_booked_performances
+    subquery = booked_performances.group(:id)
                                   .select("COUNT(*) AS num_tickets")
                                   .select(:id, :datetime)
                                   .to_sql
 
     Spectacle.joins(:performances)
              .joins("INNER JOIN (#{subquery}) as booked_shows ON booked_shows.id = performances.id")
-             .select("booked_shows.id, booked_shows.datetime, booked_shows.num_tickets, spectacles.title")
+             .select("booked_shows.id AS performance_id, booked_shows.datetime, booked_shows.num_tickets, spectacles.title, spectacles.id AS spectacle_id")
              .order("booked_shows.datetime DESC")
   end
 
