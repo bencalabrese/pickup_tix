@@ -1,5 +1,4 @@
 var React = require('react'),
-    browserHistory = require('react-router').browserHistory,
     CurrenUserStateMixin = require('../../mixins/current_user_state'),
     UserSpectacleResults = require('./user_spectacle_results'),
     UpcomingPerformancesPanel = require('./upcoming_performances_panel');

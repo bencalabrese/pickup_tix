@@ -1,5 +1,6 @@
 var React = require('react'),
     moment = require('moment'),
+    browserHistory = require('react-router').browserHistory,
     CartActions = require('../../actions/cart_actions'),
     CartStore = require('../../stores/cart'),
     SetCartStatus = require('../../mixins/set_cart_status');
@@ -23,6 +24,11 @@ var OrderConfirmation = React.createClass({
     CartActions.resetCart();
   },
 
+  goToMyShows: function() {
+    this.props.closeCallback();
+    browserHistory.push('/my-shows');
+  },
+
   render: function() {
     var content;
 
@@ -39,8 +45,8 @@ var OrderConfirmation = React.createClass({
               &lt;&lt;&nbsp;&nbsp;&nbsp;Back to Show Details
             </button>
 
-            <button onClick={this.props.closeCallback}>
-              Explore other shows&nbsp;&nbsp;&nbsp;>>
+            <button onClick={this.goToMyShows}>
+              See My Shows&nbsp;&nbsp;&nbsp;>>
             </button>
           </div>
         </div>
