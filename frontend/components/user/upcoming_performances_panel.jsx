@@ -4,7 +4,7 @@ var React = require('react'),
 var UpcomingPerformancesPanel = React.createClass({
 
   render: function() {
-    var performances = this.props.upcomingPerformances.map(p => {
+    var performances = this.props.upcomingPerformances.map(function(p) {
       return <UpcomingPerformance key={p.performance_id} performance={p}/>;
     });
 

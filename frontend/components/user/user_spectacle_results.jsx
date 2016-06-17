@@ -6,7 +6,7 @@ var React = require('react'),
 var UserSpecatcleResults = React.createClass({
   componentDidMount: function() {
     this.listener = SpectacleStore.addListener(this._onChange);
-    
+
     var filters = { ids: this.props.spectacleIds };
     SpectacleClientActions.fetchSpectaclesByParams(filters);
   },
@@ -25,7 +25,7 @@ var UserSpecatcleResults = React.createClass({
   },
 
   render: function() {
-    var allBookedPerformances = this.props.allBookedPerformances.map(p => {
+    var allBookedPerformances = this.props.allBookedPerformances.map(function(p) {
       var spectacle = SpectacleStore.find(p.spectacle_id);
 
       return <BookedPerformance
