@@ -8,6 +8,7 @@
 
 
 User.create!(username: "Guest", password: "password")
+User.create!(username: "Dummy", password: "password")
 Category.create(name: "Dance")
 Category.create(name: "Music")
 Category.create(name: "Theater")
@@ -34,11 +35,28 @@ def gen_performances(spectacle)
 
   3.times do |week|
     4.times do |day|
-      Performance.create!(spectacle: spectacle, datetime: current_performance)
+      performance = Performance.create!(spectacle: spectacle, datetime: current_performance)
+      assign_dummy_tickets(performance)
       current_performance += 1.days
     end
 
     current_performance += 3.days
+  end
+end
+
+def assign_dummy_tickets(performance)
+  count = performance.available_tickets.count
+  performance.available_tickets
+             .order("random()")
+             .limit(rand(count / 1.5))
+             .update_all(user_id: 2)
+end
+
+def assign_guest_tickets
+  performances = Performance.includes(:tickets).order("random()").limit(8)
+
+  performances.each do |performance|
+    performance.available_tickets.limit(rand(1..6)).update_all(user_id: 1)
   end
 end
 
@@ -185,3 +203,4 @@ theaters = File.readlines(path.join("theater.txt")).map(&:chomp).map { |theater|
 gen_spectacles(1, dances)
 gen_spectacles(2, musics)
 gen_spectacles(3, theaters)
+assign_guest_tickets
