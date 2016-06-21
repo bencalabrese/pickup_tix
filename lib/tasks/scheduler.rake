@@ -11,7 +11,9 @@ task reset_users: :environment do
 end
 
 task update_performance_dates: :environment do
-  Performance.find_each.reverse_each do |p|
-    p.update(datetime: p.datetime + 7.days)
+  if Time.now.sunday?
+    Performance.find_each.reverse_each do |p|
+      p.update(datetime: p.datetime + 7.days)
+    end
   end
 end
