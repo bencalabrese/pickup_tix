@@ -13,8 +13,6 @@ an intuitive and engaging experience. It is a full-stack app built on the follow
 
 ## Features & Implementation
 
- **NB**: don't copy and paste any of this.  Many folks will implement similar features, and many employers will see the READMEs of a lot of a/A grads.  You must write in a way that distinguishes your README from that of other students', but use this as a guide for what topics to cover.  
-
 ### Just one page
 
 PickupTix uses the React Router to keep all of its content on a single root page. While navigating the site, all relevent data
@@ -43,7 +41,6 @@ end
 ```
 
 ### Find only the shows you want
-<!-- ![image of notebook index](https://github.com/appacademy/sample-project-proposal/blob/master/docs/noteIndex.png) -->
 
 Filtering is handled by using the ActiveRecord to leverage Postgres' power. `Spectacle`s (avoiding words like "show" and "event"
 to keep Javascript and Ruby happy) contain various columns of their own through which they may be filtered as well as associations
@@ -83,6 +80,11 @@ PickupTix implements a seat picker which allows users to choose their own seat t
 designed to keep the ticket booking process graphically focused and to tied to the emotions of attending the event. When the user
 picks a seat, they imagine themselves in it. They think about who will be sitting next to them. When they select a number of tickets,
 they think about... a number.
+
+
+<p style="text-align:center">
+  <img src="./readme-images/seat_picker.png" style="-webkit-box-shadow: 0px 5px 60px -15px rgba(0,0,0,0.75);-moz-box-shadow: 0px 5px 60px -15px rgba(0,0,0,0.75);box-shadow: 0px 5px 60px -15px rgba(0,0,0,0.75);width:600px;"/>
+</p>
 
 Getting seats to work involves abstracting out venue data a bit. PickupTix maps `Ticket`s to `Seat`s and has seats belonging to `Venue`s through `SeatBlock`s
 and `Section`s. After that, a JSON package can be sent down with this nested information in order to generate the map.
