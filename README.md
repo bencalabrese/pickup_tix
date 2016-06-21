@@ -110,7 +110,7 @@ The next steps in developing PickupTix include:
 
 Searching events by their title. Work on the back end of this feature is already set up. The front end application will be built into the filter page.  
 
-### User Shows
+### User Shows (completed)
 
 Users should be able to see the seats they've booked in order to tell what shows they
 have coming up and what shows they've seen in the past.
