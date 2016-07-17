@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
     resources :performances, only: :show
 
-    resources :orders, only: :post
+    resources :orders, only: :create
   end
 end
 ```
