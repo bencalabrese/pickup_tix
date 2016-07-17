@@ -1,5 +1,5 @@
-class Api::TicketsController < ApplicationController
-  def assign_tickets
+class Api::OrdersController < ApplicationController
+  def create
     ids = params[:ticket_ids]
 
     @tickets = Ticket.where(id: ids, user_id: nil).all

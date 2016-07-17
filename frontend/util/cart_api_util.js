@@ -17,9 +17,9 @@ var CartApiUtil = {
 
   assignTickets: function(ticketIds, cb) {
     $.ajax({
-      method: 'PATCH',
+      method: 'POST',
       dataType: 'json',
-      url: 'api/tickets',
+      url: 'api/orders',
       data: { ticket_ids: ticketIds },
       success: function() {
         cb();

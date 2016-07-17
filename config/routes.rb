@@ -11,6 +11,6 @@ Rails.application.routes.draw do
 
     resources :performances, only: :show
 
-    patch "/tickets", to: "tickets#assign_tickets"
+    resources :orders, only: :create
   end
 end

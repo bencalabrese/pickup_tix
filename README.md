@@ -26,6 +26,7 @@ without any issues. No gobblygook in the URL. Just a nice, clean display for pro
 Rails.application.routes.draw do
   root "static_pages#root"
   get "/events", to: "static_pages#root"
+  get "/my-shows", to: "static_pages#root"
 
   namespace :api, defaults: { format: :json } do
     resource :user, only: [:show, :create, :destroy]
@@ -35,7 +36,7 @@ Rails.application.routes.draw do
 
     resources :performances, only: :show
 
-    patch "/tickets", to: "tickets#assign_tickets"
+    resources :orders, only: :post
   end
 end
 ```
